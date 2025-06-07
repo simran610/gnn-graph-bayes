@@ -9,12 +9,12 @@ def generate_tree(config: dict):
 
     G = nx.DiGraph()
     node_id = 0
-    stack = [(node_id, 0)]  # (node_id, depth)
+    stack = [(node_id, 0)] 
     G.add_node(node_id, depth=0)
     depth_dict = {0: [node_id]}
     node_id += 1
 
-   # Step 1: Create tree
+ 
     while stack:
         parent, depth = stack.pop()
         if depth >= max_depth:
@@ -29,15 +29,14 @@ def generate_tree(config: dict):
             depth_dict.setdefault(depth + 1, []).append(child)
             node_id += 1
 
-    # Step 2: Add cross-depth edges
+   
     for d1 in depth_dict:
-        for d2 in range(d1 + 2, max_depth + 1):  # skip d1+1 to avoid tree edges
+        for d2 in range(d1 + 2, max_depth + 1): 
             for from_node in depth_dict[d1]:
-                for to_node in random.sample(depth_dict[d2], k=min(1, len(depth_dict[d2]))):  # one random link
+                for to_node in random.sample(depth_dict[d2], k=min(1, len(depth_dict[d2]))): 
                     if not G.has_edge(from_node, to_node) and nx.has_path(G.reverse(), to_node, from_node) is False:
                         G.add_edge(from_node, to_node)
 
-    # Step 3: Relabel node types based on in/out degree
     for node in G.nodes:
         in_deg = G.in_degree(node)
         out_deg = G.out_degree(node)

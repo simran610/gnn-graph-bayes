@@ -86,7 +86,6 @@ def save_graph_with_details(G, model, config, index):
             "type": G.nodes[node].get("type", ""),
             "in_degree": G.in_degree(node),
             "out_degree": G.out_degree(node),
-        #   "eigenvector": eigen.get(node, 0),
             "betweenness": betweenness.get(node, 0),
             "closeness": closeness.get(node, 0),
             "pagerank": pagerank.get(node, 0),
@@ -110,10 +109,22 @@ def save_graph_with_details(G, model, config, index):
     with open(out_path, 'w') as f:
         json.dump(full_graph_data, f, indent=2)
 
-def pad_cpd_values(values, target_len):
-    if isinstance(values[0], list):
-        flat = [v for row in values for v in row]
+def flatten(values):
+    """Recursively flattens a nested list of any depth."""
+    if isinstance(values, list):
+        result = []
+        for v in values:
+            result.extend(flatten(v))
+        return result
     else:
-        flat = values  # Already flat
-    padded = flat + [0.0] * (target_len - len(flat))
-    return padded
+        return [values]
+
+def pad_cpd_values(values, target_len):
+    # Robust flatten
+    values = flatten(values)
+    # Pad or truncate
+    if len(values) < target_len:
+        values += [0.0] * (target_len - len(values))
+    else:
+        values = values[:target_len]
+    return values
