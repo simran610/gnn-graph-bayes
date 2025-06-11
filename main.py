@@ -14,7 +14,7 @@ if __name__ == "__main__":
         tree = generate_tree(config)
         bn = build_bn_from_tree(tree, config)
 
-        save_cpds_as_numpy_tables(bn, f"./generated_graphs2/cpds_numpy_table_{i}.npy")
+        save_cpds_as_numpy_tables(bn, f"./generated_graphs/cpds_numpy_table_{i}.npy")
 
         # save_graph(tree, config, i)
         save_graph_with_details(tree, bn, config, i)
@@ -26,10 +26,10 @@ if __name__ == "__main__":
     print(f"Total execution time: {end_time - start_time:.2f} seconds")
 
 # Load and view the CPD tables saved as a .npy file
-cpd_tables = np.load(f"./generated_graphs2/cpds_numpy_table_0.npy", allow_pickle=True).item()
+cpd_tables = np.load(f"./generated_graphs/cpds_numpy_table_0.npy", allow_pickle=True).item()
 
 # Print all node CPDs
-print("\nAll CPD tables:")
-for node, table in cpd_tables.items():
-   print(f"\nNode {node} CPD:")
-   print(table)
+# print("\nAll CPD tables:")
+# for node, table in cpd_tables.items():
+#    print(f"\nNode {node} CPD:")
+#    print(table)

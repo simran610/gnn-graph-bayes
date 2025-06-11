@@ -4,7 +4,7 @@ import torch.nn.functional as F
 from torch_geometric.nn import GATConv
 
 class GAT(torch.nn.Module):
-    def __init__(self, in_channels, hidden_channels, out_channels, heads=1, dropout=0.5):
+    def __init__(self, in_channels, hidden_channels, out_channels, heads=1, dropout=0.8):
         super(GAT, self).__init__()
         self.dropout = dropout
         self.gat1 = GATConv(in_channels, hidden_channels, heads=heads, dropout=dropout)

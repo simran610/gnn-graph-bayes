@@ -1,8 +1,10 @@
 # File: graph_generator.py
 import random
 import networkx as nx
+from utils import set_seed
 
 def generate_tree(config: dict):
+    random.seed(42)
     max_depth = config['max_depth']
     min_children = config['min_children']
     max_children = config['max_children']

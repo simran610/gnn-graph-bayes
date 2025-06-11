@@ -3,9 +3,22 @@ from torch.nn import MSELoss
 from torch_geometric.loader import DataLoader
 import matplotlib.pyplot as plt
 from gat_model import GAT
+from early_stopping_pytorch import EarlyStopping
 import os
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
+#'Values tried '------------------------
+#'epoch 1-101 '
+#'early stopping patience 5 '
+#'learning rate 0.001 '  ----- 0.0001
+#'weight decay 5e-4 '---- 5e-4
+#'droupout 0.5 '---- 0.8
+#'batch size 32 '
+#'hidden channels 32 '
+
+# Initialize early stopping object
+early_stopping = EarlyStopping(patience=5, verbose=True)
 
 # Load datasets
 train_set = torch.load("saved_datasets/train.pt", weights_only=False)
@@ -27,8 +40,8 @@ out_channels = global_cpd_len
 loss_fn = MSELoss()
 
 # Initialize model and optimizer
-model = GAT(in_channels, 32, out_channels, dropout=0.5).to(device)
-optimizer = torch.optim.Adam(model.parameters(), lr=0.001, weight_decay=5e-4)
+model = GAT(in_channels, 32, out_channels, dropout=0.8).to(device)
+optimizer = torch.optim.Adam(model.parameters(), lr=0.0001, weight_decay=5e-4)
 
 # Evaluates model
 def evaluate(loader):
@@ -64,8 +77,7 @@ def scatter_true_vs_pred(loader, title="True vs Predicted (Validation Set)"):
 
     plt.figure(figsize=(6, 6))
     plt.scatter(true_vals, pred_vals, alpha=0.5, label="Predicted vs True")
-    plt.plot([true_vals.min(), true_vals.max()],
-             [true_vals.min(), true_vals.max()], 'r--', label='Ideal Line')
+    plt.plot([true_vals.min(), true_vals.max()], [true_vals.min(), true_vals.max()], 'r--', label='Ideal Line')
     plt.xlabel("True Value")
     plt.ylabel("Predicted Value")
     plt.title(title)
@@ -98,6 +110,10 @@ for epoch in range(1, 101):
 
     train_losses.append(train_loss_avg)
     val_losses.append(val_loss)
+    early_stopping(val_loss, model)
+    if early_stopping.early_stop:
+        print("Early stopping triggered")
+        break
 
     print(f"Epoch {epoch:03d}: Train Loss = {train_loss_avg:.4f}, Val Loss = {val_loss:.4f}")
 
