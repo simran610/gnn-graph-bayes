@@ -1,34 +1,33 @@
-# GAT model with dropout
 import torch
 import torch.nn.functional as F
-from torch_geometric.nn import GATConv
+from torch_geometric.nn import SAGEConv
 
-class GAT(torch.nn.Module):
-    def __init__(self, in_channels, hidden_channels, out_channels, heads=1, dropout=0.5):
-        super(GAT, self).__init__()
+class GraphSAGE(torch.nn.Module):
+    def __init__(self, in_channels, hidden_channels, out_channels, dropout=0.5):
+        super(GraphSAGE, self).__init__()
         self.dropout = dropout
-        self.gat1 = GATConv(in_channels, hidden_channels, heads=heads, dropout=dropout)
-        self.gat2 = GATConv(hidden_channels * heads, out_channels, heads=1, concat=False, dropout=dropout)
+        self.sage1 = SAGEConv(in_channels, hidden_channels)
+        self.sage2 = SAGEConv(hidden_channels, out_channels)
 
     def forward(self, data):
         x, edge_index = data.x, data.edge_index
         batch = data.batch if hasattr(data, 'batch') else None
+        
         x = F.dropout(x, p=self.dropout, training=self.training)
-        x = self.gat1(x, edge_index)
-        x = F.elu(x)
+        x = self.sage1(x, edge_index)
+        x = F.relu(x)
         x = F.dropout(x, p=self.dropout, training=self.training)
-        x = self.gat2(x, edge_index)
+        x = self.sage2(x, edge_index)
 
-       # Find root nodes (type == 0)
+        # Find root nodes (type == 0)
         node_types = data.x[:, 0]
         root_mask = (node_types == 0)
         root_indices = root_mask.nonzero(as_tuple=False).squeeze()
 
-        # Handle batches - select 1 root per graph
+         # Handle batches - select 1 root per graph
         if batch is not None and batch.numel() > 0:
             roots_per_graph = []
             for i in range(batch.max().item() + 1):
-                # For each graph in batch, find root node index
                 idx = ((batch == i) & (node_types == 0)).nonzero(as_tuple=False)
                 if idx.numel() == 0:
                     raise ValueError(f"No root node found in graph {i}")

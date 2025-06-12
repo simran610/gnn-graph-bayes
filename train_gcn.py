@@ -2,7 +2,7 @@ import torch
 from torch.nn import MSELoss
 from torch_geometric.loader import DataLoader
 import matplotlib.pyplot as plt
-from gat_model import GAT
+from gcn_model import GCN
 from early_stopping_pytorch import EarlyStopping
 import os
 
@@ -40,7 +40,7 @@ out_channels = global_cpd_len
 loss_fn = MSELoss()
 
 # Initialize model and optimizer
-model = GAT(in_channels, 32, out_channels, dropout=0.5).to(device)
+model = GCN(in_channels, 32, out_channels, dropout=0.5).to(device)
 optimizer = torch.optim.Adam(model.parameters(), lr=0.0001, weight_decay=5e-4)
 
 # Evaluates model
@@ -138,4 +138,4 @@ scatter_true_vs_pred(val_loader)
 
 # Save Model
 os.makedirs("checkpoints", exist_ok=True)
-torch.save(model.state_dict(), "checkpoints/gat_model_regression.pt")
+torch.save(model.state_dict(), "checkpoints/gcn_model_regression.pt")
