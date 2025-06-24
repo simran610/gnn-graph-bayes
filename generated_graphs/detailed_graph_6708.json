@@ -4,42 +4,103 @@
     "0": {
       "type": "root",
       "in_degree": 0,
-      "out_degree": 2,
+      "out_degree": 1,
       "betweenness": 0.0,
       "closeness": 0.0,
-      "pagerank": 0.009153839304435366,
-      "degree_centrality": 0.02631578947368421,
+      "pagerank": 0.007400845766459579,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
           0.5,
           0.5,
           0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
           0.0
         ],
         "evidence": [],
-        "evidence_card": []
+        "evidence_card": [],
+        "original_shape": [
+          2
+        ],
+        "num_parents": 0,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [],
+            "child_state": 1,
+            "flattened_position": 1
+          }
+        ]
       }
     },
     "1": {
       "type": "intermediate",
       "in_degree": 1,
-      "out_degree": 4,
-      "betweenness": 0.008596491228070175,
-      "closeness": 0.013157894736842105,
-      "pagerank": 0.013043825104499586,
-      "degree_centrality": 0.06578947368421052,
+      "out_degree": 1,
+      "betweenness": 0.010869565217391304,
+      "closeness": 0.010869565217391304,
+      "pagerank": 0.013691371728651033,
+      "degree_centrality": 0.021739130434782608,
       "cpd": {
         "values": [
-          0.3595304336299505,
-          0.5337402227576642,
-          0.6404695663700496,
-          0.4662597772423358
+          0.41965608398157517,
+          0.43911734485633425,
+          0.5803439160184248,
+          0.5608826551436656,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
           0
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
@@ -47,68 +108,188 @@
       "type": "intermediate",
       "in_degree": 1,
       "out_degree": 3,
-      "betweenness": 0.0043859649122807015,
-      "closeness": 0.013157894736842105,
-      "pagerank": 0.013043825104499586,
-      "degree_centrality": 0.05263157894736842,
+      "betweenness": 0.02150023889154324,
+      "closeness": 0.014492753623188404,
+      "pagerank": 0.019039603164553547,
+      "degree_centrality": 0.043478260869565216,
       "cpd": {
         "values": [
-          0.3982881969691463,
-          0.6213706888640275,
-          0.6017118030308537,
-          0.3786293111359727
+          0.07410414841235262,
+          0.4916791400442509,
+          0.9258958515876474,
+          0.508320859955749,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          0
+          1
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "3": {
       "type": "intermediate",
       "in_degree": 1,
-      "out_degree": 3,
-      "betweenness": 0.0017543859649122805,
-      "closeness": 0.017543859649122806,
-      "pagerank": 0.012850041993232655,
-      "degree_centrality": 0.05263157894736842,
+      "out_degree": 6,
+      "betweenness": 0.016841853798375536,
+      "closeness": 0.016304347826086956,
+      "pagerank": 0.012794434639163016,
+      "degree_centrality": 0.07608695652173914,
       "cpd": {
         "values": [
-          0.7176969064836666,
-          0.08231414029291369,
-          0.28230309351633337,
-          0.9176858597070863
+          0.27444666485284414,
+          0.14023880707441955,
+          0.7255533351471559,
+          0.8597611929255804,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
           2
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "4": {
       "type": "intermediate",
       "in_degree": 1,
-      "out_degree": 4,
-      "betweenness": 0.0038596491228070173,
-      "closeness": 0.017543859649122806,
-      "pagerank": 0.012850041993232655,
-      "degree_centrality": 0.06578947368421052,
+      "out_degree": 2,
+      "betweenness": 0.00591256569517439,
+      "closeness": 0.016304347826086956,
+      "pagerank": 0.012794434639163016,
+      "degree_centrality": 0.03260869565217391,
       "cpd": {
         "values": [
-          0.9591529048511923,
-          0.5331435890096647,
-          0.04084709514880772,
-          0.4668564109903353
+          0.14269285912162663,
+          0.9770257200969931,
+          0.8573071408783735,
+          0.022974279903007034,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
           2
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
@@ -116,45 +297,125 @@
       "type": "intermediate",
       "in_degree": 1,
       "out_degree": 3,
-      "betweenness": 0.0024561403508771926,
-      "closeness": 0.017543859649122806,
-      "pagerank": 0.012850041993232655,
-      "degree_centrality": 0.05263157894736842,
+      "betweenness": 0.008420926899187768,
+      "closeness": 0.016304347826086956,
+      "pagerank": 0.012794434639163016,
+      "degree_centrality": 0.043478260869565216,
       "cpd": {
         "values": [
-          0.9057532093059443,
-          0.27217599043043034,
-          0.09424679069405568,
-          0.7278240095695696
+          0.9534465205003982,
+          0.9830683416904777,
+          0.046553479499601744,
+          0.01693165830952229,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
           2
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "6": {
       "type": "intermediate",
       "in_degree": 1,
-      "out_degree": 1,
-      "betweenness": 0.0005263157894736842,
-      "closeness": 0.019736842105263157,
-      "pagerank": 0.012794404873913187,
-      "degree_centrality": 0.02631578947368421,
+      "out_degree": 6,
+      "betweenness": 0.007345914954610606,
+      "closeness": 0.017391304347826087,
+      "pagerank": 0.011025097575690711,
+      "degree_centrality": 0.07608695652173914,
       "cpd": {
         "values": [
-          0.4212704213548601,
-          0.2233427148733966,
-          0.5787295786451399,
-          0.7766572851266034
+          0.8876761672337716,
+          0.9329926104685023,
+          0.11232383276622847,
+          0.06700738953149772,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
           5
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
@@ -162,68 +423,188 @@
       "type": "intermediate",
       "in_degree": 1,
       "out_degree": 3,
-      "betweenness": 0.0015789473684210526,
-      "closeness": 0.019736842105263157,
-      "pagerank": 0.012794404873913187,
-      "degree_centrality": 0.05263157894736842,
+      "betweenness": 0.002866698518872432,
+      "closeness": 0.017391304347826087,
+      "pagerank": 0.011025097575690711,
+      "degree_centrality": 0.043478260869565216,
       "cpd": {
         "values": [
-          0.024257041177189242,
-          0.7204565240400732,
-          0.9757429588228107,
-          0.2795434759599268
+          0.9785899025855126,
+          0.3576328386010736,
+          0.02141009741448743,
+          0.6423671613989264,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
           5
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "8": {
-      "type": "leaf",
+      "type": "intermediate",
       "in_degree": 1,
-      "out_degree": 0,
-      "betweenness": 0.0,
-      "closeness": 0.021052631578947368,
-      "pagerank": 0.012778715600879037,
-      "degree_centrality": 0.013157894736842105,
+      "out_degree": 1,
+      "betweenness": 0.0005972288580984233,
+      "closeness": 0.018115942028985504,
+      "pagerank": 0.010524589113514329,
+      "degree_centrality": 0.021739130434782608,
       "cpd": {
         "values": [
-          0.41289583890718035,
-          0.1839172157180701,
-          0.5871041610928196,
-          0.8160827842819299
+          0.18345193273039628,
+          0.9521713266068984,
+          0.8165480672696037,
+          0.04782867339310159,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
           7
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "9": {
-      "type": "leaf",
+      "type": "intermediate",
       "in_degree": 1,
-      "out_degree": 0,
-      "betweenness": 0.0,
-      "closeness": 0.021052631578947368,
-      "pagerank": 0.012778715600879037,
-      "degree_centrality": 0.013157894736842105,
+      "out_degree": 2,
+      "betweenness": 0.0011944577161968465,
+      "closeness": 0.018115942028985504,
+      "pagerank": 0.010524589113514329,
+      "degree_centrality": 0.03260869565217391,
       "cpd": {
         "values": [
-          0.796089555462618,
-          0.277015521872219,
-          0.20391044453738202,
-          0.7229844781277811
+          0.43128838714339235,
+          0.24168709367862268,
+          0.5687116128566078,
+          0.7583129063213774,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
           7
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
@@ -232,21 +613,61 @@
       "in_degree": 1,
       "out_degree": 0,
       "betweenness": 0.0,
-      "closeness": 0.021052631578947368,
-      "pagerank": 0.012778715600879037,
-      "degree_centrality": 0.013157894736842105,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.011874026198071156,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.8158753548046866,
-          0.24702699296689315,
-          0.1841246451953134,
-          0.7529730070331069
+          0.9223805899847234,
+          0.7176502923228183,
+          0.07761941001527678,
+          0.2823497076771817,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          7
+          9
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
@@ -255,161 +676,478 @@
       "in_degree": 1,
       "out_degree": 0,
       "betweenness": 0.0,
-      "closeness": 0.021052631578947368,
-      "pagerank": 0.020028468193766375,
-      "degree_centrality": 0.013157894736842105,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.011874026198071156,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.7333818961133468,
-          0.6854669732116332,
-          0.26661810388665313,
-          0.31453302678836687
+          0.33754447607774585,
+          0.20809963331880355,
+          0.6624555239222542,
+          0.7919003666811966,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          6
+          9
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "12": {
-      "type": "intermediate",
+      "type": "leaf",
       "in_degree": 1,
-      "out_degree": 2,
-      "betweenness": 0.0010526315789473684,
-      "closeness": 0.019736842105263157,
-      "pagerank": 0.011884263481543731,
-      "degree_centrality": 0.039473684210526314,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.016347206629682736,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.17199925116843648,
-          0.5980066799097925,
-          0.8280007488315635,
-          0.40199332009020744
+          0.47502978677571267,
+          0.08671436300247368,
+          0.5249702132242872,
+          0.9132856369975263,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          4
+          8
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "13": {
       "type": "intermediate",
       "in_degree": 1,
-      "out_degree": 4,
-      "betweenness": 0.002105263157894737,
-      "closeness": 0.019736842105263157,
-      "pagerank": 0.011884263481543731,
-      "degree_centrality": 0.06578947368421052,
+      "out_degree": 1,
+      "betweenness": 0.0005972288580984233,
+      "closeness": 0.018115942028985504,
+      "pagerank": 0.008962717439986953,
+      "degree_centrality": 0.021739130434782608,
       "cpd": {
         "values": [
-          0.4538498806168229,
-          0.482913943451678,
-          0.5461501193831771,
-          0.5170860565483222
+          0.33254082277041325,
+          0.29647646726031707,
+          0.6674591772295868,
+          0.7035235327396828,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          4
+          6
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "14": {
       "type": "intermediate",
-      "in_degree": 1,
+      "in_degree": 2,
       "out_degree": 1,
-      "betweenness": 0.0005263157894736842,
-      "closeness": 0.019736842105263157,
-      "pagerank": 0.011884263481543731,
-      "degree_centrality": 0.02631578947368421,
+      "betweenness": 0.000716674629718108,
+      "closeness": 0.030100334448160536,
+      "pagerank": 0.010774843344602521,
+      "degree_centrality": 0.03260869565217391,
       "cpd": {
         "values": [
-          0.11359418411723866,
-          0.6077882119224713,
-          0.8864058158827613,
-          0.39221178807752866
+          0.7816177343443745,
+          0.970183628726242,
+          0.20420623929273446,
+          0.004146111863865131,
+          0.2183822656556254,
+          0.029816371273758035,
+          0.7957937607072655,
+          0.995853888136135
         ],
         "evidence": [
-          4
+          3,
+          6
         ],
         "evidence_card": [
+          2,
           2
+        ],
+        "original_shape": [
+          2,
+          2,
+          2
+        ],
+        "num_parents": 2,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0,
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0,
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              0,
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              0,
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          },
+          {
+            "parent_config": [
+              1,
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 4
+          },
+          {
+            "parent_config": [
+              1,
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 5
+          },
+          {
+            "parent_config": [
+              1,
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 6
+          },
+          {
+            "parent_config": [
+              1,
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 7
+          }
         ]
       }
     },
     "15": {
       "type": "intermediate",
-      "in_degree": 2,
-      "out_degree": 1,
-      "betweenness": 0.0007017543859649122,
-      "closeness": 0.03508771929824561,
-      "pagerank": 0.014656415498141697,
-      "degree_centrality": 0.039473684210526314,
+      "in_degree": 1,
+      "out_degree": 4,
+      "betweenness": 0.002030578117534639,
+      "closeness": 0.018115942028985504,
+      "pagerank": 0.008962717439986953,
+      "degree_centrality": 0.05434782608695652,
       "cpd": {
         "values": [
-          0.4573092118109822,
-          0.8659867597651059,
-          0.5461195879931054,
-          0.4796405447769161
+          0.4027895131300983,
+          0.5252504472247644,
+          0.5972104868699015,
+          0.4747495527752356,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          1,
-          4
+          6
         ],
         "evidence_card": [
+          2
+        ],
+        "original_shape": [
           2,
           2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "16": {
-      "type": "leaf",
+      "type": "intermediate",
       "in_degree": 1,
-      "out_degree": 0,
-      "betweenness": 0.0,
-      "closeness": 0.02990430622009569,
-      "pagerank": 0.021611097702694496,
-      "degree_centrality": 0.013157894736842105,
+      "out_degree": 5,
+      "betweenness": 0.0029861442904921165,
+      "closeness": 0.018115942028985504,
+      "pagerank": 0.008962717439986953,
+      "degree_centrality": 0.06521739130434782,
       "cpd": {
         "values": [
-          0.6518570893918486,
-          0.5738770024830939,
-          0.34814291060815145,
-          0.426122997516906
+          0.7067922063785291,
+          0.49266439373253734,
+          0.29320779362147104,
+          0.5073356062674628,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          15
+          6
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "17": {
-      "type": "leaf",
+      "type": "intermediate",
       "in_degree": 1,
-      "out_degree": 0,
-      "betweenness": 0.0,
-      "closeness": 0.021052631578947368,
-      "pagerank": 0.019254803871465734,
-      "degree_centrality": 0.013157894736842105,
+      "out_degree": 1,
+      "betweenness": 0.0005972288580984233,
+      "closeness": 0.018115942028985504,
+      "pagerank": 0.008962717439986953,
+      "degree_centrality": 0.021739130434782608,
       "cpd": {
         "values": [
-          0.2944611376068094,
-          0.5502223235324097,
-          0.7055388623931905,
-          0.4497776764675903
+          0.5533303966498215,
+          0.47354943220665485,
+          0.4466696033501785,
+          0.5264505677933451,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          14
+          6
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
@@ -418,21 +1156,61 @@
       "in_degree": 1,
       "out_degree": 0,
       "betweenness": 0.0,
-      "closeness": 0.021052631578947368,
-      "pagerank": 0.011679080446192959,
-      "degree_centrality": 0.013157894736842105,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.015019289179166884,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.32263361537561136,
-          0.42609937309914847,
-          0.6773663846243886,
-          0.5739006269008514
+          0.8941532240659812,
+          0.09617313874777819,
+          0.10584677593401878,
+          0.9038268612522217,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          13
+          17
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
@@ -441,21 +1219,61 @@
       "in_degree": 1,
       "out_degree": 0,
       "betweenness": 0.0,
-      "closeness": 0.021052631578947368,
-      "pagerank": 0.011679080446192959,
-      "degree_centrality": 0.013157894736842105,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.008924534449001039,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.5272811692575954,
-          0.6119022331319648,
-          0.47271883074240456,
-          0.3880977668680352
+          0.7521494902160015,
+          0.6765227340462533,
+          0.2478505097839985,
+          0.32347726595374665,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          13
+          16
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
@@ -464,21 +1282,61 @@
       "in_degree": 1,
       "out_degree": 0,
       "betweenness": 0.0,
-      "closeness": 0.021052631578947368,
-      "pagerank": 0.011679080446192959,
-      "degree_centrality": 0.013157894736842105,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.008924534449001039,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.2597076104394252,
-          0.23596595457718564,
-          0.7402923895605749,
-          0.7640340454228144
+          0.217759406665241,
+          0.15908595276981127,
+          0.7822405933347589,
+          0.8409140472301887,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          13
+          16
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
@@ -487,21 +1345,61 @@
       "in_degree": 1,
       "out_degree": 0,
       "betweenness": 0.0,
-      "closeness": 0.021052631578947368,
-      "pagerank": 0.011679080446192959,
-      "degree_centrality": 0.013157894736842105,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.008924534449001039,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.1310418540680549,
-          0.8796857095846624,
-          0.8689581459319451,
-          0.12031429041533763
+          0.7191419383685284,
+          0.45287841648503135,
+          0.2808580616314716,
+          0.5471215835149686,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          13
+          16
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
@@ -510,21 +1408,61 @@
       "in_degree": 1,
       "out_degree": 0,
       "betweenness": 0.0,
-      "closeness": 0.021052631578947368,
-      "pagerank": 0.01420432158795055,
-      "degree_centrality": 0.013157894736842105,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.008924534449001039,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.5626565616264412,
-          0.10448474177016052,
-          0.4373434383735589,
-          0.8955152582298395
+          0.8851719529437155,
+          0.18700586702125874,
+          0.11482804705628452,
+          0.8129941329787412,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          12
+          16
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
@@ -533,67 +1471,187 @@
       "in_degree": 1,
       "out_degree": 0,
       "betweenness": 0.0,
-      "closeness": 0.021052631578947368,
-      "pagerank": 0.01420432158795055,
-      "degree_centrality": 0.013157894736842105,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.008924534449001039,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.8625606968711861,
-          0.6982449459333929,
-          0.13743930312881392,
-          0.3017550540666071
+          0.9182164401450151,
+          0.2821609347456763,
+          0.08178355985498477,
+          0.7178390652543237,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          12
+          16
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "24": {
-      "type": "intermediate",
+      "type": "leaf",
       "in_degree": 1,
-      "out_degree": 1,
-      "betweenness": 0.0005263157894736842,
-      "closeness": 0.019736842105263157,
-      "pagerank": 0.012794404873913187,
-      "degree_centrality": 0.02631578947368421,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.009305456619636405,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.5431722531023361,
-          0.23622055006286458,
-          0.45682774689766403,
-          0.7637794499371354
+          0.952510770352162,
+          0.017732332467327003,
+          0.047489229647837895,
+          0.982267667532673,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          3
+          15
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "25": {
-      "type": "intermediate",
+      "type": "leaf",
       "in_degree": 1,
-      "out_degree": 1,
-      "betweenness": 0.0005263157894736842,
-      "closeness": 0.019736842105263157,
-      "pagerank": 0.012794404873913187,
-      "degree_centrality": 0.02631578947368421,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.009305456619636405,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.5312738769948794,
-          0.46717711210581125,
-          0.4687261230051206,
-          0.5328228878941887
+          0.02985435940780098,
+          0.24371496561533015,
+          0.9701456405921989,
+          0.7562850343846699,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          3
+          15
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
@@ -602,205 +1660,604 @@
       "in_degree": 1,
       "out_degree": 0,
       "betweenness": 0.0,
-      "closeness": 0.021052631578947368,
-      "pagerank": 0.020028468193766375,
-      "degree_centrality": 0.013157894736842105,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.009305456619636405,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.5395066630298725,
-          0.9267116197041299,
-          0.46049333697012745,
-          0.07328838029587018
+          0.6897434966854156,
+          0.5166968493760283,
+          0.3102565033145845,
+          0.48330315062397167,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          25
+          15
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "27": {
       "type": "leaf",
-      "in_degree": 1,
+      "in_degree": 2,
       "out_degree": 0,
       "betweenness": 0.0,
-      "closeness": 0.021052631578947368,
-      "pagerank": 0.020028468193766375,
-      "degree_centrality": 0.013157894736842105,
+      "closeness": 0.03312629399585921,
+      "pagerank": 0.011915749286862355,
+      "degree_centrality": 0.021739130434782608,
       "cpd": {
         "values": [
-          0.7016180291938829,
-          0.4708640442795276,
-          0.29838197080611695,
-          0.5291359557204725
+          0.1759183906934041,
+          0.10035299730007743,
+          0.03467846509596446,
+          0.30478742305591117,
+          0.8240816093065959,
+          0.8996470026999227,
+          0.9653215349040356,
+          0.6952125769440888
         ],
         "evidence": [
-          24
+          43,
+          15
         ],
         "evidence_card": [
+          2,
           2
+        ],
+        "original_shape": [
+          2,
+          2,
+          2
+        ],
+        "num_parents": 2,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0,
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0,
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              0,
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              0,
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          },
+          {
+            "parent_config": [
+              1,
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 4
+          },
+          {
+            "parent_config": [
+              1,
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 5
+          },
+          {
+            "parent_config": [
+              1,
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 6
+          },
+          {
+            "parent_config": [
+              1,
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 7
+          }
         ]
       }
     },
     "28": {
-      "type": "intermediate",
+      "type": "leaf",
       "in_degree": 1,
-      "out_degree": 5,
-      "betweenness": 0.005614035087719298,
-      "closeness": 0.017543859649122806,
-      "pagerank": 0.011925991321033332,
-      "degree_centrality": 0.07894736842105263,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.026630434782608695,
+      "pagerank": 0.016559641218653283,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.7977641825301732,
-          0.5211852525081719,
-          0.20223581746982677,
-          0.47881474749182806
+          0.3377758816573831,
+          0.7696482151399733,
+          0.6622241183426169,
+          0.23035178486002686,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          1
+          14
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "29": {
-      "type": "intermediate",
+      "type": "leaf",
       "in_degree": 1,
-      "out_degree": 5,
-      "betweenness": 0.005964912280701754,
-      "closeness": 0.017543859649122806,
-      "pagerank": 0.011925991321033332,
-      "degree_centrality": 0.07894736842105263,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.015019289179166884,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.5150183781457309,
-          0.7297089223071016,
-          0.4849816218542691,
-          0.2702910776928984
+          0.32438912959294824,
+          0.7771195845594248,
+          0.6756108704070519,
+          0.2228804154405752,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          1
+          13
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "30": {
       "type": "intermediate",
       "in_degree": 1,
-      "out_degree": 4,
-      "betweenness": 0.004210526315789474,
-      "closeness": 0.017543859649122806,
-      "pagerank": 0.011925991321033332,
-      "degree_centrality": 0.06578947368421052,
+      "out_degree": 3,
+      "betweenness": 0.004777830864787386,
+      "closeness": 0.017391304347826087,
+      "pagerank": 0.012837223480306277,
+      "degree_centrality": 0.043478260869565216,
       "cpd": {
         "values": [
-          0.6492064276795707,
-          0.7453682307247592,
-          0.3507935723204293,
-          0.25463176927524084
+          0.924164812400403,
+          0.9366920283064373,
+          0.07583518759959694,
+          0.06330797169356282,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          1
+          4
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "31": {
       "type": "intermediate",
       "in_degree": 1,
-      "out_degree": 2,
-      "betweenness": 0.0010526315789473684,
-      "closeness": 0.019736842105263157,
-      "pagerank": 0.011687905662274668,
-      "degree_centrality": 0.039473684210526314,
+      "out_degree": 5,
+      "betweenness": 0.0029861442904921165,
+      "closeness": 0.018115942028985504,
+      "pagerank": 0.01103803979334313,
+      "degree_centrality": 0.06521739130434782,
       "cpd": {
         "values": [
-          0.7610522602994891,
-          0.7407592093361453,
-          0.23894773970051086,
-          0.2592407906638547
+          0.7231641117727231,
+          0.018197300444721284,
+          0.2768358882272769,
+          0.9818026995552788,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
           30
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "32": {
       "type": "intermediate",
       "in_degree": 1,
-      "out_degree": 4,
-      "betweenness": 0.0017543859649122805,
-      "closeness": 0.019736842105263157,
-      "pagerank": 0.011687905662274668,
-      "degree_centrality": 0.06578947368421052,
+      "out_degree": 2,
+      "betweenness": 0.0011944577161968465,
+      "closeness": 0.018115942028985504,
+      "pagerank": 0.01103803979334313,
+      "degree_centrality": 0.03260869565217391,
       "cpd": {
         "values": [
-          0.7205020941506795,
-          0.41886937818200304,
-          0.27949790584932055,
-          0.581130621817997
+          0.0520651658925627,
+          0.16081610784795114,
+          0.9479348341074373,
+          0.8391838921520488,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
           30
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "33": {
-      "type": "intermediate",
+      "type": "leaf",
       "in_degree": 1,
-      "out_degree": 2,
-      "betweenness": 0.0010526315789473684,
-      "closeness": 0.019736842105263157,
-      "pagerank": 0.011687905662274668,
-      "degree_centrality": 0.039473684210526314,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.012092298970337206,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.1615723853134477,
-          0.35367211287320666,
-          0.8384276146865524,
-          0.6463278871267933
+          0.8408396635586115,
+          0.11561320700534454,
+          0.15916033644138847,
+          0.8843867929946554,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          30
+          32
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "34": {
-      "type": "intermediate",
+      "type": "leaf",
       "in_degree": 1,
-      "out_degree": 1,
-      "betweenness": 0.0005263157894736842,
-      "closeness": 0.019736842105263157,
-      "pagerank": 0.011687905662274668,
-      "degree_centrality": 0.02631578947368421,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.012092298970337206,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.45356308822600166,
-          0.803043851255849,
-          0.5464369117739982,
-          0.196956148744151
+          0.7570886319684649,
+          0.9117844827234735,
+          0.24291136803153515,
+          0.08821551727652639,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          30
+          32
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
@@ -809,21 +2266,61 @@
       "in_degree": 1,
       "out_degree": 0,
       "betweenness": 0.0,
-      "closeness": 0.021052631578947368,
-      "pagerank": 0.019088135188023183,
-      "degree_centrality": 0.013157894736842105,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.00927742704801063,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.8605943422074721,
-          0.5380991228583212,
-          0.13940565779252787,
-          0.4619008771416789
+          0.4984796074097727,
+          0.5586632604425581,
+          0.5015203925902272,
+          0.44133673955744174,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          34
+          31
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
@@ -832,21 +2329,61 @@
       "in_degree": 1,
       "out_degree": 0,
       "betweenness": 0.0,
-      "closeness": 0.021052631578947368,
-      "pagerank": 0.014120987246229273,
-      "degree_centrality": 0.013157894736842105,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.00927742704801063,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.3929719391174903,
-          0.6425516904161455,
-          0.6070280608825096,
-          0.3574483095838545
+          0.8077405967841047,
+          0.21751353610265473,
+          0.19225940321589527,
+          0.7824864638973452,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          33
+          31
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
@@ -855,21 +2392,61 @@
       "in_degree": 1,
       "out_degree": 0,
       "betweenness": 0.0,
-      "closeness": 0.021052631578947368,
-      "pagerank": 0.014120987246229273,
-      "degree_centrality": 0.013157894736842105,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.00927742704801063,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.7442748520617082,
-          0.05258000828714331,
-          0.2557251479382918,
-          0.9474199917128567
+          0.2876611746525365,
+          0.7153523256794617,
+          0.7123388253474635,
+          0.28464767432053834,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          33
+          31
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
@@ -878,21 +2455,61 @@
       "in_degree": 1,
       "out_degree": 0,
       "betweenness": 0.0,
-      "closeness": 0.021052631578947368,
-      "pagerank": 0.01163741327533232,
-      "degree_centrality": 0.013157894736842105,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.00927742704801063,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.4230804819696033,
-          0.9300901896881991,
-          0.5769195180303966,
-          0.0699098103118009
+          0.8414740416620613,
+          0.47531519266857597,
+          0.1585259583379387,
+          0.5246848073314241,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          32
+          31
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
@@ -901,207 +2518,604 @@
       "in_degree": 1,
       "out_degree": 0,
       "betweenness": 0.0,
-      "closeness": 0.021052631578947368,
-      "pagerank": 0.01163741327533232,
-      "degree_centrality": 0.013157894736842105,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.00927742704801063,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.504530424734304,
-          0.7262918343826921,
-          0.495469575265696,
-          0.27370816561730804
+          0.8466119844222605,
+          0.28751025458922186,
+          0.1533880155777396,
+          0.7124897454107781,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          32
+          31
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "40": {
-      "type": "leaf",
+      "type": "intermediate",
       "in_degree": 1,
-      "out_degree": 0,
-      "betweenness": 0.0,
-      "closeness": 0.021052631578947368,
-      "pagerank": 0.01163741327533232,
-      "degree_centrality": 0.013157894736842105,
+      "out_degree": 3,
+      "betweenness": 0.004061156235069278,
+      "closeness": 0.017391304347826087,
+      "pagerank": 0.009212971671075144,
+      "degree_centrality": 0.043478260869565216,
       "cpd": {
         "values": [
-          0.8111880639980613,
-          0.6348416765913866,
-          0.18881193600193866,
-          0.3651583234086135
+          0.6769020193051416,
+          0.6180496393807444,
+          0.3230979806948584,
+          0.3819503606192556,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          32
+          3
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "41": {
-      "type": "leaf",
-      "in_degree": 2,
-      "out_degree": 0,
-      "betweenness": 0.0,
-      "closeness": 0.03654970760233918,
-      "pagerank": 0.013664666361603761,
-      "degree_centrality": 0.02631578947368421,
+      "type": "intermediate",
+      "in_degree": 1,
+      "out_degree": 4,
+      "betweenness": 0.004777830864787386,
+      "closeness": 0.017391304347826087,
+      "pagerank": 0.009212971671075144,
+      "degree_centrality": 0.05434782608695652,
       "cpd": {
         "values": [
-          0.7267335311708873,
-          0.8689150716919887,
-          0.40457535948816836,
-          0.060403094722541545
+          0.713538749597921,
+          0.1391603454762387,
+          0.28646125040207904,
+          0.8608396545237612,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          29,
-          32
+          3
         ],
         "evidence_card": [
+          2
+        ],
+        "original_shape": [
           2,
           2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "42": {
-      "type": "leaf",
+      "type": "intermediate",
       "in_degree": 1,
-      "out_degree": 0,
-      "betweenness": 0.0,
-      "closeness": 0.021052631578947368,
-      "pagerank": 0.014120987246229273,
-      "degree_centrality": 0.013157894736842105,
+      "out_degree": 2,
+      "betweenness": 0.002747252747252747,
+      "closeness": 0.017391304347826087,
+      "pagerank": 0.009212971671075144,
+      "degree_centrality": 0.03260869565217391,
       "cpd": {
         "values": [
-          0.860367248987161,
-          0.389619294382554,
-          0.139632751012839,
-          0.610380705617446
+          0.6738858029404697,
+          0.5838943978369752,
+          0.3261141970595303,
+          0.41610560216302495,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          31
+          3
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "43": {
-      "type": "leaf",
+      "type": "intermediate",
       "in_degree": 1,
-      "out_degree": 0,
-      "betweenness": 0.0,
-      "closeness": 0.021052631578947368,
-      "pagerank": 0.014120987246229273,
-      "degree_centrality": 0.013157894736842105,
+      "out_degree": 3,
+      "betweenness": 0.005733397037744864,
+      "closeness": 0.017391304347826087,
+      "pagerank": 0.009212971671075144,
+      "degree_centrality": 0.043478260869565216,
       "cpd": {
         "values": [
-          0.4518415620380773,
-          0.3843198823869039,
-          0.5481584379619227,
-          0.6156801176130962
+          0.8888733747279834,
+          0.39923158037095313,
+          0.11112662527201649,
+          0.6007684196290468,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          31
+          3
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "44": {
       "type": "intermediate",
       "in_degree": 1,
-      "out_degree": 4,
-      "betweenness": 0.0017543859649122805,
-      "closeness": 0.019736842105263157,
-      "pagerank": 0.011181092390706807,
-      "degree_centrality": 0.06578947368421052,
+      "out_degree": 2,
+      "betweenness": 0.002866698518872432,
+      "closeness": 0.017391304347826087,
+      "pagerank": 0.009212971671075144,
+      "degree_centrality": 0.03260869565217391,
       "cpd": {
         "values": [
-          0.6426275912588759,
-          0.19257175723072342,
-          0.3573724087411242,
-          0.8074282427692766
+          0.8399491338199275,
+          0.29118661682213864,
+          0.16005086618007264,
+          0.7088133831778614,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          29
+          3
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "45": {
       "type": "intermediate",
       "in_degree": 1,
-      "out_degree": 3,
-      "betweenness": 0.0014035087719298245,
-      "closeness": 0.019736842105263157,
-      "pagerank": 0.011181092390706807,
-      "degree_centrality": 0.05263157894736842,
+      "out_degree": 5,
+      "betweenness": 0.002508361204013378,
+      "closeness": 0.018115942028985504,
+      "pagerank": 0.011316284767298505,
+      "degree_centrality": 0.06521739130434782,
       "cpd": {
         "values": [
-          0.4319394885726635,
-          0.8326211432717163,
-          0.5680605114273365,
-          0.16737885672828362
+          0.22240985598282537,
+          0.4519625099694031,
+          0.7775901440171745,
+          0.548037490030597,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          29
+          44
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "46": {
-      "type": "intermediate",
+      "type": "leaf",
       "in_degree": 1,
-      "out_degree": 4,
-      "betweenness": 0.0019298245614035087,
-      "closeness": 0.019736842105263157,
-      "pagerank": 0.011181092390706807,
-      "degree_centrality": 0.06578947368421052,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.00932473776584775,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.14915474446777616,
-          0.680225370523315,
-          0.8508452555322238,
-          0.31977462947668495
+          0.0385449587146184,
+          0.12764546407442498,
+          0.9614550412853817,
+          0.8723545359255751,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          29
+          45
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "47": {
-      "type": "intermediate",
-      "in_degree": 1,
-      "out_degree": 3,
-      "betweenness": 0.0015789473684210526,
-      "closeness": 0.019736842105263157,
-      "pagerank": 0.011181092390706807,
-      "degree_centrality": 0.05263157894736842,
+      "type": "leaf",
+      "in_degree": 2,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.02958937198067633,
+      "pagerank": 0.011282457266267212,
+      "degree_centrality": 0.021739130434782608,
       "cpd": {
         "values": [
-          0.6301998280818788,
-          0.3064124512671613,
-          0.36980017191812126,
-          0.6935875487328387
+          0.5987658143041543,
+          0.6498987852640307,
+          0.5344437180286082,
+          0.3034611333061652,
+          0.4012341856958458,
+          0.35010121473596917,
+          0.46555628197139176,
+          0.6965388666938348
         ],
         "evidence": [
-          29
+          41,
+          45
         ],
         "evidence_card": [
+          2,
           2
+        ],
+        "original_shape": [
+          2,
+          2,
+          2
+        ],
+        "num_parents": 2,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0,
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0,
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              0,
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              0,
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          },
+          {
+            "parent_config": [
+              1,
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 4
+          },
+          {
+            "parent_config": [
+              1,
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 5
+          },
+          {
+            "parent_config": [
+              1,
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 6
+          },
+          {
+            "parent_config": [
+              1,
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 7
+          }
         ]
       }
     },
@@ -1110,21 +3124,61 @@
       "in_degree": 1,
       "out_degree": 0,
       "betweenness": 0.0,
-      "closeness": 0.021052631578947368,
-      "pagerank": 0.012321649646734012,
-      "degree_centrality": 0.013157894736842105,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.00932473776584775,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.5506770363343718,
-          0.426606729875916,
-          0.4493229636656282,
-          0.573393270124084
+          0.24755836665526315,
+          0.6064091352730467,
+          0.7524416333447369,
+          0.39359086472695315,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          47
+          45
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
@@ -1133,21 +3187,61 @@
       "in_degree": 1,
       "out_degree": 0,
       "betweenness": 0.0,
-      "closeness": 0.021052631578947368,
-      "pagerank": 0.012321649646734012,
-      "degree_centrality": 0.013157894736842105,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.00932473776584775,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.134895038863972,
-          0.5596281768785675,
-          0.8651049611360281,
-          0.4403718231214326
+          0.5460996165110613,
+          0.6012553987960294,
+          0.45390038348893863,
+          0.3987446012039707,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          47
+          45
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
@@ -1156,92 +3250,250 @@
       "in_degree": 1,
       "out_degree": 0,
       "betweenness": 0.0,
-      "closeness": 0.021052631578947368,
-      "pagerank": 0.012321649646734012,
-      "degree_centrality": 0.013157894736842105,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.00932473776584775,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.8502606121384002,
-          0.7801216376833083,
-          0.14973938786159977,
-          0.21987836231669153
+          0.6742422972253498,
+          0.5838319398017036,
+          0.32575770277465016,
+          0.41616806019829633,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          47
+          45
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "51": {
-      "type": "leaf",
+      "type": "intermediate",
       "in_degree": 1,
-      "out_degree": 0,
-      "betweenness": 0.0,
-      "closeness": 0.021052631578947368,
-      "pagerank": 0.01152969706115935,
-      "degree_centrality": 0.013157894736842105,
+      "out_degree": 4,
+      "betweenness": 0.002388915432393693,
+      "closeness": 0.018115942028985504,
+      "pagerank": 0.010011138433685528,
+      "degree_centrality": 0.05434782608695652,
       "cpd": {
         "values": [
-          0.5893485877460815,
-          0.27568077334041036,
-          0.41065141225391866,
-          0.7243192266595897
+          0.9462433216484454,
+          0.6056112031916259,
+          0.053756678351554496,
+          0.39438879680837424,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          46
+          43
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "52": {
-      "type": "leaf",
+      "type": "intermediate",
       "in_degree": 1,
-      "out_degree": 0,
-      "betweenness": 0.0,
-      "closeness": 0.021052631578947368,
-      "pagerank": 0.01152969706115935,
-      "degree_centrality": 0.013157894736842105,
+      "out_degree": 5,
+      "betweenness": 0.0029861442904921165,
+      "closeness": 0.018115942028985504,
+      "pagerank": 0.010011138433685528,
+      "degree_centrality": 0.06521739130434782,
       "cpd": {
         "values": [
-          0.49021099105749427,
-          0.19129899527240793,
-          0.5097890089425058,
-          0.8087010047275921
+          0.9008115305001347,
+          0.14939322135762578,
+          0.09918846949986523,
+          0.8506067786423742,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          46
+          43
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "53": {
       "type": "leaf",
-      "in_degree": 2,
+      "in_degree": 1,
       "out_degree": 0,
       "betweenness": 0.0,
-      "closeness": 0.039473684210526314,
-      "pagerank": 0.015170262630637171,
-      "degree_centrality": 0.02631578947368421,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.00910280883019779,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.757762325274609,
-          0.9860865902678309,
-          0.15316760501556706,
-          0.5446668899507854
+          0.24454753047413252,
+          0.49249787076185664,
+          0.7554524695258675,
+          0.5075021292381433,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          5,
-          46
+          52
         ],
         "evidence_card": [
+          2
+        ],
+        "original_shape": [
           2,
           2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
@@ -1250,46 +3502,124 @@
       "in_degree": 1,
       "out_degree": 0,
       "betweenness": 0.0,
-      "closeness": 0.021052631578947368,
-      "pagerank": 0.01152969706115935,
-      "degree_centrality": 0.013157894736842105,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.00910280883019779,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.23972273204815467,
-          0.634885325763362,
-          0.7602772679518452,
-          0.3651146742366381
+          0.0882658200460446,
+          0.3066874043608981,
+          0.9117341799539554,
+          0.693312595639102,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          46
+          52
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "55": {
       "type": "leaf",
-      "in_degree": 2,
+      "in_degree": 1,
       "out_degree": 0,
       "betweenness": 0.0,
-      "closeness": 0.039473684210526314,
-      "pagerank": 0.01596221521621183,
-      "degree_centrality": 0.02631578947368421,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.00910280883019779,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.42942821783462337,
-          0.3511135747166667,
-          0.5355336804003812,
-          0.7414131734651425
+          0.8835430357141139,
+          0.8277499683333689,
+          0.11645696428588624,
+          0.1722500316666311,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          3,
-          45
+          52
         ],
         "evidence_card": [
+          2
+        ],
+        "original_shape": [
           2,
           2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
@@ -1298,21 +3628,61 @@
       "in_degree": 1,
       "out_degree": 0,
       "betweenness": 0.0,
-      "closeness": 0.021052631578947368,
-      "pagerank": 0.012321649646734012,
-      "degree_centrality": 0.013157894736842105,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.00910280883019779,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.48153473952937054,
-          0.5210764661000474,
-          0.5184652604706295,
-          0.47892353389995257
+          0.4266969829916024,
+          0.2686513277948571,
+          0.5733030170083975,
+          0.7313486722051429,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          45
+          52
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
@@ -1321,21 +3691,61 @@
       "in_degree": 1,
       "out_degree": 0,
       "betweenness": 0.0,
-      "closeness": 0.021052631578947368,
-      "pagerank": 0.012321649646734012,
-      "degree_centrality": 0.013157894736842105,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.00910280883019779,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.9428238801240503,
-          0.657824676929735,
-          0.05717611987594968,
-          0.34217532307026494
+          0.7403319825669902,
+          0.6314941404594682,
+          0.2596680174330098,
+          0.3685058595405318,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          45
+          52
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
@@ -1344,21 +3754,61 @@
       "in_degree": 1,
       "out_degree": 0,
       "betweenness": 0.0,
-      "closeness": 0.021052631578947368,
-      "pagerank": 0.01152969706115935,
-      "degree_centrality": 0.013157894736842105,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.009528299596132344,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.48955882053893873,
-          0.23066573889500314,
-          0.5104411794610613,
-          0.7693342611049969
+          0.19128980537820742,
+          0.8249215704498816,
+          0.8087101946217925,
+          0.17507842955011846,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          44
+          51
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
@@ -1367,21 +3817,61 @@
       "in_degree": 1,
       "out_degree": 0,
       "betweenness": 0.0,
-      "closeness": 0.021052631578947368,
-      "pagerank": 0.01152969706115935,
-      "degree_centrality": 0.013157894736842105,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.009528299596132344,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.9128498290257047,
-          0.7467291857225502,
-          0.08715017097429532,
-          0.2532708142774497
+          0.7873789657248575,
+          0.42303589111250994,
+          0.21262103427514248,
+          0.5769641088874901,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          44
+          51
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
@@ -1390,138 +3880,415 @@
       "in_degree": 1,
       "out_degree": 0,
       "betweenness": 0.0,
-      "closeness": 0.021052631578947368,
-      "pagerank": 0.01152969706115935,
-      "degree_centrality": 0.013157894736842105,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.009528299596132344,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.8937804018129306,
-          0.3067917653833224,
-          0.1062195981870694,
-          0.6932082346166776
+          0.465256645909324,
+          0.10716622143922908,
+          0.5347433540906761,
+          0.892833778560771,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          44
+          51
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "61": {
       "type": "leaf",
-      "in_degree": 2,
+      "in_degree": 1,
       "out_degree": 0,
       "betweenness": 0.0,
-      "closeness": 0.03654970760233918,
-      "pagerank": 0.013556950147430791,
-      "degree_centrality": 0.02631578947368421,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.009528299596132344,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.01318714062511839,
-          0.16552621430181097,
-          0.5258801653779835,
-          0.3889350780538028
+          0.2649353956689423,
+          0.1724771873225552,
+          0.7350646043310576,
+          0.8275228126774448,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          28,
-          44
+          51
         ],
         "evidence_card": [
+          2
+        ],
+        "original_shape": [
           2,
           2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "62": {
       "type": "intermediate",
-      "in_degree": 1,
-      "out_degree": 4,
-      "betweenness": 0.002105263157894737,
-      "closeness": 0.019736842105263157,
-      "pagerank": 0.011181092390706807,
-      "degree_centrality": 0.06578947368421052,
+      "in_degree": 2,
+      "out_degree": 5,
+      "betweenness": 0.0034042044911610126,
+      "closeness": 0.030100334448160536,
+      "pagerank": 0.0167526624811452,
+      "degree_centrality": 0.07608695652173914,
       "cpd": {
         "values": [
-          0.488665100176473,
-          0.4541816107384394,
-          0.511334899823527,
-          0.5458183892615607
+          0.0733478231611915,
+          0.41705743485173574,
+          0.4654621305696538,
+          0.8636883199154324,
+          0.9266521768388085,
+          0.5829425651482643,
+          0.5345378694303463,
+          0.1363116800845675
         ],
         "evidence": [
-          28
+          4,
+          42
         ],
         "evidence_card": [
+          2,
           2
+        ],
+        "original_shape": [
+          2,
+          2,
+          2
+        ],
+        "num_parents": 2,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0,
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0,
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              0,
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              0,
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          },
+          {
+            "parent_config": [
+              1,
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 4
+          },
+          {
+            "parent_config": [
+              1,
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 5
+          },
+          {
+            "parent_config": [
+              1,
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 6
+          },
+          {
+            "parent_config": [
+              1,
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 7
+          }
         ]
       }
     },
     "63": {
       "type": "intermediate",
       "in_degree": 1,
-      "out_degree": 1,
-      "betweenness": 0.0005263157894736842,
-      "closeness": 0.019736842105263157,
-      "pagerank": 0.011181092390706807,
-      "degree_centrality": 0.02631578947368421,
+      "out_degree": 4,
+      "betweenness": 0.002030578117534639,
+      "closeness": 0.018115942028985504,
+      "pagerank": 0.011316284767298505,
+      "degree_centrality": 0.05434782608695652,
       "cpd": {
         "values": [
-          0.5037204788224103,
-          0.08180609246897548,
-          0.49627952117758967,
-          0.9181939075310245
+          0.6419145042019849,
+          0.5657601918589996,
+          0.358085495798015,
+          0.43423980814100044,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          28
+          42
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "64": {
-      "type": "intermediate",
+      "type": "leaf",
       "in_degree": 1,
-      "out_degree": 3,
-      "betweenness": 0.0015789473684210526,
-      "closeness": 0.019736842105263157,
-      "pagerank": 0.011181092390706807,
-      "degree_centrality": 0.05263157894736842,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.009805710765694793,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.34699958892726457,
-          0.2763668887115762,
-          0.6530004110727354,
-          0.7236331112884237
+          0.9564864176552821,
+          0.3431226956609335,
+          0.04351358234471777,
+          0.6568773043390664,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          28
+          63
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "65": {
-      "type": "intermediate",
+      "type": "leaf",
       "in_degree": 1,
-      "out_degree": 3,
-      "betweenness": 0.0015789473684210526,
-      "closeness": 0.019736842105263157,
-      "pagerank": 0.011181092390706807,
-      "degree_centrality": 0.05263157894736842,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.009805710765694793,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.08017029872225029,
-          0.48185835733445326,
-          0.9198297012777497,
-          0.5181416426655469
+          0.140826319274033,
+          0.06192912165125201,
+          0.859173680725967,
+          0.938070878348748,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          28
+          63
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
@@ -1530,67 +4297,265 @@
       "in_degree": 1,
       "out_degree": 0,
       "betweenness": 0.0,
-      "closeness": 0.021052631578947368,
-      "pagerank": 0.012321649646734012,
-      "degree_centrality": 0.013157894736842105,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.009805710765694793,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.4873907368978728,
-          0.6737762269713963,
-          0.5126092631021272,
-          0.3262237730286037
+          0.7686868950903114,
+          0.5761423005011808,
+          0.23131310490968857,
+          0.4238576994988192,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          65
+          63
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "67": {
       "type": "leaf",
-      "in_degree": 1,
+      "in_degree": 2,
       "out_degree": 0,
       "betweenness": 0.0,
-      "closeness": 0.021052631578947368,
-      "pagerank": 0.012321649646734012,
-      "degree_centrality": 0.013157894736842105,
+      "closeness": 0.03312629399585921,
+      "pagerank": 0.012929454112749544,
+      "degree_centrality": 0.021739130434782608,
       "cpd": {
         "values": [
-          0.0232091155414419,
-          0.436964431671441,
-          0.9767908844585581,
-          0.5630355683285589
+          0.20819760694455527,
+          0.16356757251166365,
+          0.6313842294116069,
+          0.8775381759855525,
+          0.7918023930554448,
+          0.8364324274883363,
+          0.368615770588393,
+          0.12246182401444748
         ],
         "evidence": [
-          65
+          7,
+          63
         ],
         "evidence_card": [
+          2,
           2
+        ],
+        "original_shape": [
+          2,
+          2,
+          2
+        ],
+        "num_parents": 2,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0,
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0,
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              0,
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              0,
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          },
+          {
+            "parent_config": [
+              1,
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 4
+          },
+          {
+            "parent_config": [
+              1,
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 5
+          },
+          {
+            "parent_config": [
+              1,
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 6
+          },
+          {
+            "parent_config": [
+              1,
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 7
+          }
         ]
       }
     },
     "68": {
       "type": "leaf",
-      "in_degree": 1,
+      "in_degree": 2,
       "out_degree": 0,
       "betweenness": 0.0,
-      "closeness": 0.021052631578947368,
-      "pagerank": 0.012321649646734012,
-      "degree_centrality": 0.013157894736842105,
+      "closeness": 0.038279773156899816,
+      "pagerank": 0.011810820663066966,
+      "degree_centrality": 0.021739130434782608,
       "cpd": {
         "values": [
-          0.93338466391225,
-          0.5597774288772446,
-          0.06661533608775007,
-          0.4402225711227554
+          0.9375995517936269,
+          0.03649623103654459,
+          0.5284567743037227,
+          0.9082169278634304,
+          0.06240044820637307,
+          0.9635037689634555,
+          0.4715432256962773,
+          0.09178307213656971
         ],
         "evidence": [
-          65
+          6,
+          62
         ],
         "evidence_card": [
+          2,
           2
+        ],
+        "original_shape": [
+          2,
+          2,
+          2
+        ],
+        "num_parents": 2,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0,
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0,
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              0,
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              0,
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          },
+          {
+            "parent_config": [
+              1,
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 4
+          },
+          {
+            "parent_config": [
+              1,
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 5
+          },
+          {
+            "parent_config": [
+              1,
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 6
+          },
+          {
+            "parent_config": [
+              1,
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 7
+          }
         ]
       }
     },
@@ -1599,21 +4564,61 @@
       "in_degree": 1,
       "out_degree": 0,
       "betweenness": 0.0,
-      "closeness": 0.021052631578947368,
-      "pagerank": 0.012321649646734012,
-      "degree_centrality": 0.013157894736842105,
+      "closeness": 0.026630434782608695,
+      "pagerank": 0.01024894898953959,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.4818620396381948,
-          0.7653103931781247,
-          0.5181379603618051,
-          0.23468960682187548
+          0.8181282843212663,
+          0.059223537575906614,
+          0.18187171567873364,
+          0.9407764624240933,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          64
+          62
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
@@ -1622,21 +4627,61 @@
       "in_degree": 1,
       "out_degree": 0,
       "betweenness": 0.0,
-      "closeness": 0.021052631578947368,
-      "pagerank": 0.012321649646734012,
-      "degree_centrality": 0.013157894736842105,
+      "closeness": 0.026630434782608695,
+      "pagerank": 0.01024894898953959,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.5422497739406201,
-          0.6110437447769081,
-          0.4577502260593799,
-          0.3889562552230919
+          0.2557588815160328,
+          0.4101483594037526,
+          0.7442411184839671,
+          0.5898516405962473,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          64
+          62
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
@@ -1645,21 +4690,61 @@
       "in_degree": 1,
       "out_degree": 0,
       "betweenness": 0.0,
-      "closeness": 0.021052631578947368,
-      "pagerank": 0.012321649646734012,
-      "degree_centrality": 0.013157894736842105,
+      "closeness": 0.026630434782608695,
+      "pagerank": 0.01024894898953959,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.5018382893273476,
-          0.8428810066764112,
-          0.49816171067265236,
-          0.15711899332358886
+          0.6876221686182308,
+          0.9666375574423083,
+          0.3123778313817692,
+          0.033362442557691586,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          64
+          62
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
@@ -1668,441 +4753,2259 @@
       "in_degree": 1,
       "out_degree": 0,
       "betweenness": 0.0,
-      "closeness": 0.021052631578947368,
-      "pagerank": 0.018657270331331306,
-      "degree_centrality": 0.013157894736842105,
+      "closeness": 0.026630434782608695,
+      "pagerank": 0.01024894898953959,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.28887917510098576,
-          0.7783470252956184,
-          0.7111208248990143,
-          0.22165297470438158
+          0.714488285899513,
+          0.8828878393640417,
+          0.28551171410048704,
+          0.1171121606359583,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          63
+          62
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "73": {
-      "type": "leaf",
+      "type": "intermediate",
       "in_degree": 1,
-      "out_degree": 0,
-      "betweenness": 0.0,
-      "closeness": 0.021052631578947368,
-      "pagerank": 0.01152969706115935,
-      "degree_centrality": 0.013157894736842105,
+      "out_degree": 4,
+      "betweenness": 0.002388915432393693,
+      "closeness": 0.018115942028985504,
+      "pagerank": 0.00935856526687904,
+      "degree_centrality": 0.05434782608695652,
       "cpd": {
         "values": [
-          0.7468024262876624,
-          0.21206099257005961,
-          0.2531975737123376,
-          0.7879390074299404
+          0.5914655603660967,
+          0.7124070195618492,
+          0.40853443963390346,
+          0.28759298043815096,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          62
+          41
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "74": {
-      "type": "leaf",
+      "type": "intermediate",
       "in_degree": 1,
-      "out_degree": 0,
-      "betweenness": 0.0,
-      "closeness": 0.021052631578947368,
-      "pagerank": 0.01152969706115935,
-      "degree_centrality": 0.013157894736842105,
+      "out_degree": 2,
+      "betweenness": 0.0011944577161968465,
+      "closeness": 0.018115942028985504,
+      "pagerank": 0.00935856526687904,
+      "degree_centrality": 0.03260869565217391,
       "cpd": {
         "values": [
-          0.515780229786744,
-          0.8190042485938758,
-          0.4842197702132559,
-          0.18099575140612426
+          0.9991570562539913,
+          0.1064839822354722,
+          0.0008429437460087051,
+          0.8935160177645277,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          62
+          41
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "75": {
-      "type": "leaf",
+      "type": "intermediate",
       "in_degree": 1,
-      "out_degree": 0,
-      "betweenness": 0.0,
-      "closeness": 0.021052631578947368,
-      "pagerank": 0.01152969706115935,
-      "degree_centrality": 0.013157894736842105,
+      "out_degree": 1,
+      "betweenness": 0.00011944577161968466,
+      "closeness": 0.018115942028985504,
+      "pagerank": 0.00935856526687904,
+      "degree_centrality": 0.021739130434782608,
       "cpd": {
         "values": [
-          0.3101520620421781,
-          0.30552506107097965,
-          0.689847937957822,
-          0.6944749389290203
+          0.1334201279826861,
+          0.9936031164306582,
+          0.866579872017314,
+          0.006396883569341741,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          62
+          41
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "76": {
       "type": "leaf",
+      "in_degree": 2,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.02958937198067633,
+      "pagerank": 0.01927127774686466,
+      "degree_centrality": 0.021739130434782608,
+      "cpd": {
+        "values": [
+          0.24796603262792902,
+          0.7696799412616109,
+          0.7194657185713761,
+          0.3361501467651151,
+          0.752033967372071,
+          0.2303200587383891,
+          0.2805342814286238,
+          0.6638498532348848
+        ],
+        "evidence": [
+          44,
+          75
+        ],
+        "evidence_card": [
+          2,
+          2
+        ],
+        "original_shape": [
+          2,
+          2,
+          2
+        ],
+        "num_parents": 2,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0,
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0,
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              0,
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              0,
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          },
+          {
+            "parent_config": [
+              1,
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 4
+          },
+          {
+            "parent_config": [
+              1,
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 5
+          },
+          {
+            "parent_config": [
+              1,
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 6
+          },
+          {
+            "parent_config": [
+              1,
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 7
+          }
+        ]
+      }
+    },
+    "77": {
+      "type": "leaf",
       "in_degree": 1,
       "out_degree": 0,
       "betweenness": 0.0,
-      "closeness": 0.021052631578947368,
-      "pagerank": 0.01152969706115935,
-      "degree_centrality": 0.013157894736842105,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.011378342256242657,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.45407149071392633,
-          0.967074866557869,
-          0.5459285092860737,
-          0.03292513344213103
+          0.08725466359368446,
+          0.2993860043162137,
+          0.9127453364063154,
+          0.7006139956837862,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          62
+          74
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "78": {
+      "type": "leaf",
+      "in_degree": 1,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.011378342256242657,
+      "degree_centrality": 0.010869565217391304,
+      "cpd": {
+        "values": [
+          0.38104726157685703,
+          0.7229423901297529,
+          0.6189527384231429,
+          0.27705760987024713,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          74
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "79": {
+      "type": "leaf",
+      "in_degree": 1,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.009389594011351116,
+      "degree_centrality": 0.010869565217391304,
+      "cpd": {
+        "values": [
+          0.32234530548040513,
+          0.21053671073955688,
+          0.6776546945195948,
+          0.7894632892604433,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          73
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "80": {
+      "type": "leaf",
+      "in_degree": 1,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.009389594011351116,
+      "degree_centrality": 0.010869565217391304,
+      "cpd": {
+        "values": [
+          0.4181555573146267,
+          0.2263993083204812,
+          0.5818444426853732,
+          0.7736006916795188,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          73
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "81": {
+      "type": "leaf",
+      "in_degree": 1,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.009389594011351116,
+      "degree_centrality": 0.010869565217391304,
+      "cpd": {
+        "values": [
+          0.1319131181080331,
+          0.6880488271878901,
+          0.8680868818919668,
+          0.31195117281210993,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          73
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "82": {
+      "type": "leaf",
+      "in_degree": 1,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.009389594011351116,
+      "degree_centrality": 0.010869565217391304,
+      "cpd": {
+        "values": [
+          0.18315067710397007,
+          0.9380084427635846,
+          0.8168493228960301,
+          0.061991557236415314,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          73
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "83": {
+      "type": "intermediate",
+      "in_degree": 1,
+      "out_degree": 2,
+      "betweenness": 0.0011944577161968465,
+      "closeness": 0.018115942028985504,
+      "pagerank": 0.010011138433685528,
+      "degree_centrality": 0.03260869565217391,
+      "cpd": {
+        "values": [
+          0.33646865045988744,
+          0.35274178788487537,
+          0.6635313495401126,
+          0.6472582121151246,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          40
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "84": {
+      "type": "intermediate",
+      "in_degree": 1,
+      "out_degree": 2,
+      "betweenness": 0.0008361204013377926,
+      "closeness": 0.018115942028985504,
+      "pagerank": 0.010011138433685528,
+      "degree_centrality": 0.03260869565217391,
+      "cpd": {
+        "values": [
+          0.8088413327337086,
+          0.9042377544479503,
+          0.19115866726629144,
+          0.09576224555204954,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          40
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "85": {
+      "type": "intermediate",
+      "in_degree": 1,
+      "out_degree": 3,
+      "betweenness": 0.001433349259436216,
+      "closeness": 0.018115942028985504,
+      "pagerank": 0.010011138433685528,
+      "degree_centrality": 0.043478260869565216,
+      "cpd": {
+        "values": [
+          0.8945950407755157,
+          0.8550032163101108,
+          0.10540495922448434,
+          0.14499678368988916,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          40
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "86": {
+      "type": "leaf",
+      "in_degree": 1,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.010237450872689931,
+      "degree_centrality": 0.010869565217391304,
+      "cpd": {
+        "values": [
+          0.557069324296616,
+          0.6400260524363263,
+          0.44293067570338407,
+          0.3599739475636737,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          85
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "87": {
+      "type": "leaf",
+      "in_degree": 2,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.03328804347826087,
+      "pagerank": 0.013861702681921063,
+      "degree_centrality": 0.021739130434782608,
+      "cpd": {
+        "values": [
+          0.32177625759296036,
+          0.7679129710510202,
+          0.13368718961728063,
+          0.5604319467751991,
+          0.6782237424070395,
+          0.2320870289489798,
+          0.8663128103827193,
+          0.4395680532248009
+        ],
+        "evidence": [
+          5,
+          85
+        ],
+        "evidence_card": [
+          2,
+          2
+        ],
+        "original_shape": [
+          2,
+          2,
+          2
+        ],
+        "num_parents": 2,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0,
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0,
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              0,
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              0,
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          },
+          {
+            "parent_config": [
+              1,
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 4
+          },
+          {
+            "parent_config": [
+              1,
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 5
+          },
+          {
+            "parent_config": [
+              1,
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 6
+          },
+          {
+            "parent_config": [
+              1,
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 7
+          }
+        ]
+      }
+    },
+    "88": {
+      "type": "leaf",
+      "in_degree": 1,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.010237450872689931,
+      "degree_centrality": 0.010869565217391304,
+      "cpd": {
+        "values": [
+          0.010867642310606052,
+          0.11472006320236977,
+          0.989132357689394,
+          0.8852799367976302,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          85
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "89": {
+      "type": "leaf",
+      "in_degree": 1,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.011655753425805106,
+      "degree_centrality": 0.010869565217391304,
+      "cpd": {
+        "values": [
+          0.48860518719581025,
+          0.04282960386561106,
+          0.5113948128041896,
+          0.9571703961343889,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          84
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "90": {
+      "type": "leaf",
+      "in_degree": 2,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.03312629399585921,
+      "pagerank": 0.015292947452688657,
+      "degree_centrality": 0.021739130434782608,
+      "cpd": {
+        "values": [
+          0.3790246856945022,
+          0.7121923469741499,
+          0.6214346993087727,
+          0.3646759452279319,
+          0.6209753143054977,
+          0.28780765302585015,
+          0.3785653006912272,
+          0.635324054772068
+        ],
+        "evidence": [
+          30,
+          84
+        ],
+        "evidence_card": [
+          2,
+          2
+        ],
+        "original_shape": [
+          2,
+          2,
+          2
+        ],
+        "num_parents": 2,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0,
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0,
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              0,
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              0,
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          },
+          {
+            "parent_config": [
+              1,
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 4
+          },
+          {
+            "parent_config": [
+              1,
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 5
+          },
+          {
+            "parent_config": [
+              1,
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 6
+          },
+          {
+            "parent_config": [
+              1,
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 7
+          }
+        ]
+      }
+    },
+    "91": {
+      "type": "leaf",
+      "in_degree": 1,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.011655753425805106,
+      "degree_centrality": 0.010869565217391304,
+      "cpd": {
+        "values": [
+          0.27033200636202354,
+          0.8589256827510231,
+          0.7296679936379765,
+          0.14107431724897704,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          83
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "92": {
+      "type": "leaf",
+      "in_degree": 1,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.011655753425805106,
+      "degree_centrality": 0.010869565217391304,
+      "cpd": {
+        "values": [
+          0.6512044057557195,
+          0.23421780604669473,
+          0.3487955942442804,
+          0.7657821939533053,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          83
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     }
   },
   "edges": [
-    [
-      0,
-      1
+    {
+      "source": 0,
+      "target": 1,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 1,
+      "target": 2,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 2,
+      "target": 3,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 2,
+      "target": 4,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 2,
+      "target": 5,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 3,
+      "target": 40,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 3,
+      "target": 41,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 3,
+      "target": 42,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 3,
+      "target": 43,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 3,
+      "target": 44,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 3,
+      "target": 14,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 4,
+      "target": 30,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 4,
+      "target": 62,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 5,
+      "target": 6,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 5,
+      "target": 7,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 5,
+      "target": 87,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 6,
+      "target": 13,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 6,
+      "target": 14,
+      "parent_index": 1,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 6,
+      "target": 15,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 6,
+      "target": 16,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 6,
+      "target": 17,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 6,
+      "target": 68,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 7,
+      "target": 8,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 7,
+      "target": 9,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 7,
+      "target": 67,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 8,
+      "target": 12,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 9,
+      "target": 10,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 9,
+      "target": 11,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 13,
+      "target": 29,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 14,
+      "target": 28,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 15,
+      "target": 24,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 15,
+      "target": 25,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 15,
+      "target": 26,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 15,
+      "target": 27,
+      "parent_index": 1,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 16,
+      "target": 19,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 16,
+      "target": 20,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 16,
+      "target": 21,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 16,
+      "target": 22,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 16,
+      "target": 23,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 17,
+      "target": 18,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 30,
+      "target": 31,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 30,
+      "target": 32,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 30,
+      "target": 90,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 31,
+      "target": 35,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 31,
+      "target": 36,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 31,
+      "target": 37,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 31,
+      "target": 38,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 31,
+      "target": 39,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 32,
+      "target": 33,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 32,
+      "target": 34,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 40,
+      "target": 83,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 40,
+      "target": 84,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 40,
+      "target": 85,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 41,
+      "target": 73,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 41,
+      "target": 74,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 41,
+      "target": 75,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 41,
+      "target": 47,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 42,
+      "target": 62,
+      "parent_index": 1,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 42,
+      "target": 63,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 43,
+      "target": 51,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 43,
+      "target": 52,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 43,
+      "target": 27,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 44,
+      "target": 45,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 44,
+      "target": 76,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 45,
+      "target": 46,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 45,
+      "target": 47,
+      "parent_index": 1,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 45,
+      "target": 48,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 45,
+      "target": 49,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 45,
+      "target": 50,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 51,
+      "target": 58,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 51,
+      "target": 59,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 51,
+      "target": 60,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 51,
+      "target": 61,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 52,
+      "target": 53,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 52,
+      "target": 54,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 52,
+      "target": 55,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 52,
+      "target": 56,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 52,
+      "target": 57,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 62,
+      "target": 68,
+      "parent_index": 1,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 62,
+      "target": 69,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 62,
+      "target": 70,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 62,
+      "target": 71,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 62,
+      "target": 72,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 63,
+      "target": 64,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 63,
+      "target": 65,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 63,
+      "target": 66,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 63,
+      "target": 67,
+      "parent_index": 1,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 73,
+      "target": 79,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 73,
+      "target": 80,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 73,
+      "target": 81,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 73,
+      "target": 82,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 74,
+      "target": 77,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 74,
+      "target": 78,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 75,
+      "target": 76,
+      "parent_index": 1,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 83,
+      "target": 91,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 83,
+      "target": 92,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 84,
+      "target": 89,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 84,
+      "target": 90,
+      "parent_index": 1,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 85,
+      "target": 86,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 85,
+      "target": 87,
+      "parent_index": 1,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 85,
+      "target": 88,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    }
+  ],
+  "node_types": {
+    "roots": [
+      0
     ],
-    [
-      0,
-      2
-    ],
-    [
-      1,
-      28
-    ],
-    [
-      1,
-      29
-    ],
-    [
-      1,
-      30
-    ],
-    [
-      1,
-      15
-    ],
-    [
-      2,
-      3
-    ],
-    [
-      2,
-      4
-    ],
-    [
-      2,
-      5
-    ],
-    [
-      3,
-      24
-    ],
-    [
-      3,
-      25
-    ],
-    [
-      3,
-      55
-    ],
-    [
-      4,
-      12
-    ],
-    [
-      4,
-      13
-    ],
-    [
-      4,
-      14
-    ],
-    [
-      4,
-      15
-    ],
-    [
-      5,
-      6
-    ],
-    [
-      5,
-      7
-    ],
-    [
-      5,
-      53
-    ],
-    [
-      6,
-      11
-    ],
-    [
-      7,
-      8
-    ],
-    [
-      7,
-      9
-    ],
-    [
-      7,
-      10
-    ],
-    [
+    "leaves": [
+      10,
+      11,
       12,
-      22
-    ],
-    [
-      12,
-      23
-    ],
-    [
-      13,
-      18
-    ],
-    [
-      13,
-      19
-    ],
-    [
-      13,
-      20
-    ],
-    [
-      13,
-      21
-    ],
-    [
-      14,
-      17
-    ],
-    [
-      15,
-      16
-    ],
-    [
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
       24,
-      27
-    ],
-    [
       25,
-      26
-    ],
-    [
+      26,
+      27,
       28,
-      62
-    ],
-    [
-      28,
-      63
-    ],
-    [
-      28,
-      64
-    ],
-    [
-      28,
-      65
-    ],
-    [
-      28,
-      61
-    ],
-    [
       29,
-      44
-    ],
-    [
-      29,
-      45
-    ],
-    [
-      29,
-      46
-    ],
-    [
-      29,
-      47
-    ],
-    [
-      29,
-      41
-    ],
-    [
-      30,
-      31
-    ],
-    [
-      30,
-      32
-    ],
-    [
-      30,
-      33
-    ],
-    [
-      30,
-      34
-    ],
-    [
-      31,
-      42
-    ],
-    [
-      31,
-      43
-    ],
-    [
-      32,
-      38
-    ],
-    [
-      32,
-      39
-    ],
-    [
-      32,
-      40
-    ],
-    [
-      32,
-      41
-    ],
-    [
       33,
-      36
-    ],
-    [
-      33,
-      37
-    ],
-    [
       34,
-      35
-    ],
-    [
-      44,
-      58
-    ],
-    [
-      44,
-      59
-    ],
-    [
-      44,
-      60
-    ],
-    [
-      44,
-      61
-    ],
-    [
-      45,
-      55
-    ],
-    [
-      45,
-      56
-    ],
-    [
-      45,
-      57
-    ],
-    [
+      35,
+      36,
+      37,
+      38,
+      39,
       46,
-      51
-    ],
-    [
-      46,
-      52
-    ],
-    [
-      46,
-      53
-    ],
-    [
-      46,
-      54
-    ],
-    [
       47,
-      48
+      48,
+      49,
+      50,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92
     ],
-    [
-      47,
-      49
-    ],
-    [
-      47,
-      50
-    ],
-    [
+    "intermediates": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      13,
+      14,
+      15,
+      16,
+      17,
+      30,
+      31,
+      32,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      51,
+      52,
       62,
-      73
-    ],
-    [
-      62,
-      74
-    ],
-    [
-      62,
-      75
-    ],
-    [
-      62,
-      76
-    ],
-    [
       63,
-      72
-    ],
-    [
-      64,
-      69
-    ],
-    [
-      64,
-      70
-    ],
-    [
-      64,
-      71
-    ],
-    [
-      65,
-      66
-    ],
-    [
-      65,
-      67
-    ],
-    [
-      65,
-      68
+      73,
+      74,
+      75,
+      83,
+      84,
+      85
     ]
-  ]
+  },
+  "paths_info": {
+    "max_path_length": 6
+  },
+  "metadata": {
+    "global_max_cpd_length": 8,
+    "total_nodes": 93,
+    "total_edges": 101,
+    "has_cycles": false
+  }
 }

@@ -4,42 +4,103 @@
     "0": {
       "type": "root",
       "in_degree": 0,
-      "out_degree": 2,
+      "out_degree": 1,
       "betweenness": 0.0,
       "closeness": 0.0,
-      "pagerank": 0.01769222988592189,
-      "degree_centrality": 0.05555555555555555,
+      "pagerank": 0.007400845766459579,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
           0.5,
           0.5,
           0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
           0.0
         ],
         "evidence": [],
-        "evidence_card": []
+        "evidence_card": [],
+        "original_shape": [
+          2
+        ],
+        "num_parents": 0,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [],
+            "child_state": 1,
+            "flattened_position": 1
+          }
+        ]
       }
     },
     "1": {
       "type": "intermediate",
       "in_degree": 1,
-      "out_degree": 2,
-      "betweenness": 0.009523809523809525,
-      "closeness": 0.027777777777777776,
-      "pagerank": 0.025211318435791916,
-      "degree_centrality": 0.08333333333333333,
+      "out_degree": 1,
+      "betweenness": 0.010869565217391304,
+      "closeness": 0.010869565217391304,
+      "pagerank": 0.013691371728651033,
+      "degree_centrality": 0.021739130434782608,
       "cpd": {
         "values": [
-          0.4365417922721942,
-          0.6804767226687588,
-          0.5634582077278057,
-          0.3195232773312412
+          0.6740647560589634,
+          0.42662677868013416,
+          0.3259352439410368,
+          0.5733732213198659,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
           0
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
@@ -47,68 +108,188 @@
       "type": "intermediate",
       "in_degree": 1,
       "out_degree": 3,
-      "betweenness": 0.01746031746031746,
-      "closeness": 0.027777777777777776,
-      "pagerank": 0.025211318435791916,
-      "degree_centrality": 0.1111111111111111,
+      "betweenness": 0.02150023889154324,
+      "closeness": 0.014492753623188404,
+      "pagerank": 0.019039603164553547,
+      "degree_centrality": 0.043478260869565216,
       "cpd": {
         "values": [
-          0.011445493294120692,
-          0.49365652503856816,
-          0.9885545067058793,
-          0.506343474961432
+          0.46307299698075843,
+          0.7304194134049503,
+          0.5369270030192417,
+          0.2695805865950497,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          0
+          1
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "3": {
       "type": "intermediate",
       "in_degree": 1,
-      "out_degree": 3,
-      "betweenness": 0.011904761904761904,
-      "closeness": 0.037037037037037035,
-      "pagerank": 0.02483503933816478,
-      "degree_centrality": 0.1111111111111111,
+      "out_degree": 6,
+      "betweenness": 0.016841853798375536,
+      "closeness": 0.016304347826086956,
+      "pagerank": 0.012794434639163016,
+      "degree_centrality": 0.07608695652173914,
       "cpd": {
         "values": [
-          0.225883559405942,
-          0.9371116594984247,
-          0.7741164405940579,
-          0.06288834050157534
+          0.8049857902819412,
+          0.40081173266657616,
+          0.1950142097180588,
+          0.5991882673334239,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
           2
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "4": {
       "type": "intermediate",
       "in_degree": 1,
-      "out_degree": 3,
-      "betweenness": 0.011111111111111112,
-      "closeness": 0.037037037037037035,
-      "pagerank": 0.02483503933816478,
-      "degree_centrality": 0.1111111111111111,
+      "out_degree": 2,
+      "betweenness": 0.00591256569517439,
+      "closeness": 0.016304347826086956,
+      "pagerank": 0.012794434639163016,
+      "degree_centrality": 0.03260869565217391,
       "cpd": {
         "values": [
-          0.399820196877488,
-          0.3807006877413897,
-          0.600179803122512,
-          0.6192993122586102
+          0.687259409651299,
+          0.34878112845432385,
+          0.31274059034870105,
+          0.6512188715456763,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
           2
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
@@ -116,45 +297,125 @@
       "type": "intermediate",
       "in_degree": 1,
       "out_degree": 3,
-      "betweenness": 0.009523809523809525,
-      "closeness": 0.037037037037037035,
-      "pagerank": 0.02483503933816478,
-      "degree_centrality": 0.1111111111111111,
+      "betweenness": 0.008420926899187768,
+      "closeness": 0.016304347826086956,
+      "pagerank": 0.012794434639163016,
+      "degree_centrality": 0.043478260869565216,
       "cpd": {
         "values": [
-          0.6147443291174672,
-          0.32231369184277386,
-          0.38525567088253276,
-          0.6776863081572262
+          0.571461467057225,
+          0.19386470730370506,
+          0.42853853294277505,
+          0.806135292696295,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
           2
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "6": {
       "type": "intermediate",
       "in_degree": 1,
-      "out_degree": 1,
-      "betweenness": 0.002380952380952381,
-      "closeness": 0.041666666666666664,
-      "pagerank": 0.02472937768005232,
-      "degree_centrality": 0.05555555555555555,
+      "out_degree": 6,
+      "betweenness": 0.007345914954610606,
+      "closeness": 0.017391304347826087,
+      "pagerank": 0.011025097575690711,
+      "degree_centrality": 0.07608695652173914,
       "cpd": {
         "values": [
-          0.5989154489612247,
-          0.65172757604471,
-          0.4010845510387752,
-          0.34827242395528996
+          0.8981656616084429,
+          0.7739451442866444,
+          0.10183433839155712,
+          0.22605485571335568,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
           5
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
@@ -162,93 +423,251 @@
       "type": "intermediate",
       "in_degree": 1,
       "out_degree": 3,
-      "betweenness": 0.005555555555555556,
-      "closeness": 0.041666666666666664,
-      "pagerank": 0.02472937768005232,
-      "degree_centrality": 0.1111111111111111,
+      "betweenness": 0.002866698518872432,
+      "closeness": 0.017391304347826087,
+      "pagerank": 0.011025097575690711,
+      "degree_centrality": 0.043478260869565216,
       "cpd": {
         "values": [
-          0.18195939239252862,
-          0.3391747201842118,
-          0.8180406076074714,
-          0.6608252798157883
+          0.5553468805637725,
+          0.7376996624250711,
+          0.44465311943622754,
+          0.2623003375749289,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
           5
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "8": {
-      "type": "leaf",
+      "type": "intermediate",
       "in_degree": 1,
-      "out_degree": 0,
-      "betweenness": 0.0,
-      "closeness": 0.044444444444444446,
-      "pagerank": 0.024698846516496033,
-      "degree_centrality": 0.027777777777777776,
+      "out_degree": 1,
+      "betweenness": 0.0005972288580984233,
+      "closeness": 0.018115942028985504,
+      "pagerank": 0.010524589113514329,
+      "degree_centrality": 0.021739130434782608,
       "cpd": {
         "values": [
-          0.9561124334042533,
-          0.5686950055078235,
-          0.043887566595746594,
-          0.4313049944921765
+          0.7541512337546484,
+          0.6917497069830407,
+          0.24584876624535168,
+          0.30825029301695916,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
           7
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "9": {
-      "type": "leaf",
+      "type": "intermediate",
       "in_degree": 1,
-      "out_degree": 0,
-      "betweenness": 0.0,
-      "closeness": 0.044444444444444446,
-      "pagerank": 0.024698846516496033,
-      "degree_centrality": 0.027777777777777776,
+      "out_degree": 2,
+      "betweenness": 0.0011944577161968465,
+      "closeness": 0.018115942028985504,
+      "pagerank": 0.010524589113514329,
+      "degree_centrality": 0.03260869565217391,
       "cpd": {
         "values": [
-          0.7353653772354618,
-          0.49089856829938955,
-          0.26463462276453814,
-          0.5091014317006104
+          0.5987720955864919,
+          0.4712247685029689,
+          0.40122790441350814,
+          0.5287752314970311,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
           7
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "10": {
       "type": "leaf",
-      "in_degree": 2,
+      "in_degree": 1,
       "out_degree": 0,
       "betweenness": 0.0,
-      "closeness": 0.0771604938271605,
-      "pagerank": 0.031735994310626466,
-      "degree_centrality": 0.05555555555555555,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.011874026198071156,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.3777569397026658,
-          0.4523923912797115,
-          0.07692962338028908,
-          0.5247984662704517
+          0.9781721215258828,
+          0.7127369108685347,
+          0.021827878474117178,
+          0.2872630891314652,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          3,
-          7
+          9
         ],
         "evidence_card": [
+          2
+        ],
+        "original_shape": [
           2,
           2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
@@ -257,67 +676,187 @@
       "in_degree": 1,
       "out_degree": 0,
       "betweenness": 0.0,
-      "closeness": 0.044444444444444446,
-      "pagerank": 0.03871207977764432,
-      "degree_centrality": 0.027777777777777776,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.011874026198071156,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.17991620854262294,
-          0.5107320695802929,
-          0.8200837914573771,
-          0.489267930419707
+          0.4832701662103146,
+          0.8306516168596688,
+          0.5167298337896854,
+          0.16934838314033118,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          6
+          9
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "12": {
-      "type": "intermediate",
+      "type": "leaf",
       "in_degree": 1,
-      "out_degree": 3,
-      "betweenness": 0.005555555555555556,
-      "closeness": 0.041666666666666664,
-      "pagerank": 0.02472937768005232,
-      "degree_centrality": 0.1111111111111111,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.016347206629682736,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.4895675840044224,
-          0.6963150265442699,
-          0.5104324159955775,
-          0.3036849734557301
+          0.5846443562733605,
+          0.047086795365949466,
+          0.41535564372663947,
+          0.9529132046340505,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          4
+          8
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "13": {
       "type": "intermediate",
       "in_degree": 1,
-      "out_degree": 2,
-      "betweenness": 0.004761904761904762,
-      "closeness": 0.041666666666666664,
-      "pagerank": 0.02472937768005232,
-      "degree_centrality": 0.08333333333333333,
+      "out_degree": 1,
+      "betweenness": 0.0005972288580984233,
+      "closeness": 0.018115942028985504,
+      "pagerank": 0.008962717439986953,
+      "degree_centrality": 0.021739130434782608,
       "cpd": {
         "values": [
-          0.051550053671647535,
-          0.7389342802652767,
-          0.9484499463283524,
-          0.2610657197347233
+          0.9148319599699235,
+          0.10593886156387224,
+          0.08516804003007648,
+          0.8940611384361278,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          4
+          6
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
@@ -325,93 +864,290 @@
       "type": "intermediate",
       "in_degree": 2,
       "out_degree": 1,
-      "betweenness": 0.0031746031746031746,
-      "closeness": 0.07407407407407407,
-      "pagerank": 0.03544359185841666,
-      "degree_centrality": 0.08333333333333333,
+      "betweenness": 0.000716674629718108,
+      "closeness": 0.030100334448160536,
+      "pagerank": 0.010774843344602521,
+      "degree_centrality": 0.03260869565217391,
       "cpd": {
         "values": [
-          0.5157705388697472,
-          0.7683964861764349,
-          0.3490083091847801,
-          0.20714114925795807
+          0.638612567571844,
+          0.14130669000487978,
+          0.15297187269874385,
+          0.21958867266434764,
+          0.3613874324281559,
+          0.8586933099951202,
+          0.8470281273012561,
+          0.7804113273356524
         ],
         "evidence": [
-          1,
-          4
+          3,
+          6
         ],
         "evidence_card": [
           2,
           2
+        ],
+        "original_shape": [
+          2,
+          2,
+          2
+        ],
+        "num_parents": 2,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0,
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0,
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              0,
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              0,
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          },
+          {
+            "parent_config": [
+              1,
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 4
+          },
+          {
+            "parent_config": [
+              1,
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 5
+          },
+          {
+            "parent_config": [
+              1,
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 6
+          },
+          {
+            "parent_config": [
+              1,
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 7
+          }
         ]
       }
     },
     "15": {
-      "type": "leaf",
+      "type": "intermediate",
       "in_degree": 1,
-      "out_degree": 0,
-      "betweenness": 0.0,
-      "closeness": 0.06313131313131314,
-      "pagerank": 0.047821979201621186,
-      "degree_centrality": 0.027777777777777776,
+      "out_degree": 4,
+      "betweenness": 0.002030578117534639,
+      "closeness": 0.018115942028985504,
+      "pagerank": 0.008962717439986953,
+      "degree_centrality": 0.05434782608695652,
       "cpd": {
         "values": [
-          0.7397616897645383,
-          0.5374281067571245,
-          0.26023831023546173,
-          0.4625718932428755
+          0.4374553557492406,
+          0.7030600018742069,
+          0.5625446442507593,
+          0.296939998125793,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          14
+          6
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "16": {
-      "type": "leaf",
+      "type": "intermediate",
       "in_degree": 1,
-      "out_degree": 0,
-      "betweenness": 0.0,
-      "closeness": 0.044444444444444446,
-      "pagerank": 0.028202154831783104,
-      "degree_centrality": 0.027777777777777776,
+      "out_degree": 5,
+      "betweenness": 0.0029861442904921165,
+      "closeness": 0.018115942028985504,
+      "pagerank": 0.008962717439986953,
+      "degree_centrality": 0.06521739130434782,
       "cpd": {
         "values": [
-          0.6510586220167977,
-          0.6263910337613432,
-          0.3489413779832024,
-          0.3736089662386568
+          0.4235175198472232,
+          0.38195235072126016,
+          0.5764824801527769,
+          0.6180476492787398,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          13
+          6
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "17": {
-      "type": "leaf",
+      "type": "intermediate",
       "in_degree": 1,
-      "out_degree": 0,
-      "betweenness": 0.0,
-      "closeness": 0.044444444444444446,
-      "pagerank": 0.028202154831783104,
-      "degree_centrality": 0.027777777777777776,
+      "out_degree": 1,
+      "betweenness": 0.0005972288580984233,
+      "closeness": 0.018115942028985504,
+      "pagerank": 0.008962717439986953,
+      "degree_centrality": 0.021739130434782608,
       "cpd": {
         "values": [
-          0.10600879412775807,
-          0.220271136651866,
-          0.8939912058722419,
-          0.779728863348134
+          0.11304117387523617,
+          0.27901813759467314,
+          0.8869588261247638,
+          0.7209818624053269,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          13
+          6
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
@@ -420,21 +1156,61 @@
       "in_degree": 1,
       "out_degree": 0,
       "betweenness": 0.0,
-      "closeness": 0.044444444444444446,
-      "pagerank": 0.024698846516496033,
-      "degree_centrality": 0.027777777777777776,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.015019289179166884,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.4320452640874115,
-          0.39939633796721236,
-          0.5679547359125884,
-          0.6006036620327876
+          0.6035981786633767,
+          0.28944685322516106,
+          0.3964018213366232,
+          0.7105531467748389,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          12
+          17
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
@@ -443,117 +1219,313 @@
       "in_degree": 1,
       "out_degree": 0,
       "betweenness": 0.0,
-      "closeness": 0.044444444444444446,
-      "pagerank": 0.024698846516496033,
-      "degree_centrality": 0.027777777777777776,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.008924534449001039,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.5659382115072873,
-          0.39398530006883803,
-          0.4340617884927127,
-          0.606014699931162
+          0.3491125432554163,
+          0.8930260316352782,
+          0.6508874567445836,
+          0.10697396836472192,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          12
+          16
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "20": {
       "type": "leaf",
-      "in_degree": 2,
+      "in_degree": 1,
       "out_degree": 0,
       "betweenness": 0.0,
-      "closeness": 0.0771604938271605,
-      "pagerank": 0.031735994310626466,
-      "degree_centrality": 0.05555555555555555,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.008924534449001039,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.49815827688690567,
-          0.6302244183071871,
-          0.7762953641934464,
-          0.5315956895967285
+          0.03639862921474504,
+          0.42580460050450675,
+          0.9636013707852551,
+          0.5741953994954933,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          5,
-          12
+          16
         ],
         "evidence_card": [
+          2
+        ],
+        "original_shape": [
           2,
           2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "21": {
-      "type": "intermediate",
+      "type": "leaf",
       "in_degree": 1,
-      "out_degree": 3,
-      "betweenness": 0.007142857142857143,
-      "closeness": 0.041666666666666664,
-      "pagerank": 0.02472937768005232,
-      "degree_centrality": 0.1111111111111111,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.008924534449001039,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.4415046411204705,
-          0.269996621884786,
-          0.5584953588795294,
-          0.7300033781152139
+          0.10993856926121962,
+          0.9857586229377652,
+          0.8900614307387804,
+          0.01424137706223499,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          3
+          16
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "22": {
-      "type": "intermediate",
+      "type": "leaf",
       "in_degree": 1,
-      "out_degree": 2,
-      "betweenness": 0.003968253968253968,
-      "closeness": 0.041666666666666664,
-      "pagerank": 0.02472937768005232,
-      "degree_centrality": 0.08333333333333333,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.008924534449001039,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.11231882229789464,
-          0.4805211094256165,
-          0.8876811777021053,
-          0.5194788905743835
+          0.8726955274124047,
+          0.26636051553943946,
+          0.12730447258759525,
+          0.7336394844605607,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          3
+          16
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "23": {
       "type": "leaf",
-      "in_degree": 2,
+      "in_degree": 1,
       "out_degree": 0,
       "betweenness": 0.0,
-      "closeness": 0.08333333333333333,
-      "pagerank": 0.036251513673022075,
-      "degree_centrality": 0.05555555555555555,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.008924534449001039,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.6602730500193122,
-          0.4166821668108831,
-          0.2432399288185044,
-          0.31173234996645044
+          0.9679762597836491,
+          0.25622554169935974,
+          0.032023740216350884,
+          0.7437744583006403,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          28,
-          22
+          16
         ],
         "evidence_card": [
+          2
+        ],
+        "original_shape": [
           2,
           2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
@@ -562,21 +1534,61 @@
       "in_degree": 1,
       "out_degree": 0,
       "betweenness": 0.0,
-      "closeness": 0.044444444444444446,
-      "pagerank": 0.028202154831783104,
-      "degree_centrality": 0.027777777777777776,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.009305456619636405,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.47126178709240557,
-          0.235264351733212,
-          0.5287382129075945,
-          0.764735648266788
+          0.8885902023908369,
+          0.011875362947882934,
+          0.11140979760916309,
+          0.9881246370521171,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          22
+          15
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
@@ -585,21 +1597,61 @@
       "in_degree": 1,
       "out_degree": 0,
       "betweenness": 0.0,
-      "closeness": 0.044444444444444446,
-      "pagerank": 0.024698846516496033,
-      "degree_centrality": 0.027777777777777776,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.009305456619636405,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.36334806900656463,
-          0.5312368899008036,
-          0.6366519309934353,
-          0.46876311009919636
+          0.32116210840461146,
+          0.8571488254283136,
+          0.6788378915953885,
+          0.14285117457168647,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          21
+          15
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
@@ -608,159 +1660,478 @@
       "in_degree": 1,
       "out_degree": 0,
       "betweenness": 0.0,
-      "closeness": 0.044444444444444446,
-      "pagerank": 0.024698846516496033,
-      "degree_centrality": 0.027777777777777776,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.009305456619636405,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.5189207510948891,
-          0.276872003580876,
-          0.4810792489051109,
-          0.7231279964191241
+          0.13516996406138054,
+          0.7366019254620623,
+          0.8648300359386196,
+          0.26339807453793773,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          21
+          15
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "27": {
       "type": "leaf",
-      "in_degree": 1,
+      "in_degree": 2,
       "out_degree": 0,
       "betweenness": 0.0,
-      "closeness": 0.044444444444444446,
-      "pagerank": 0.024698846516496033,
-      "degree_centrality": 0.027777777777777776,
+      "closeness": 0.03312629399585921,
+      "pagerank": 0.011915749286862355,
+      "degree_centrality": 0.021739130434782608,
       "cpd": {
         "values": [
-          0.00842675408437133,
-          0.7832563365547563,
-          0.9915732459156287,
-          0.2167436634452436
+          0.8742479368841135,
+          0.143225787217747,
+          0.7259496842691252,
+          0.7020450392660172,
+          0.12575206311588658,
+          0.856774212782253,
+          0.27405031573087474,
+          0.2979549607339827
         ],
         "evidence": [
-          21
+          43,
+          15
         ],
         "evidence_card": [
+          2,
           2
+        ],
+        "original_shape": [
+          2,
+          2,
+          2
+        ],
+        "num_parents": 2,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0,
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0,
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              0,
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              0,
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          },
+          {
+            "parent_config": [
+              1,
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 4
+          },
+          {
+            "parent_config": [
+              1,
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 5
+          },
+          {
+            "parent_config": [
+              1,
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 6
+          },
+          {
+            "parent_config": [
+              1,
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 7
+          }
         ]
       }
     },
     "28": {
-      "type": "intermediate",
+      "type": "leaf",
       "in_degree": 1,
-      "out_degree": 3,
-      "betweenness": 0.014285714285714285,
-      "closeness": 0.037037037037037035,
-      "pagerank": 0.02840644406428623,
-      "degree_centrality": 0.1111111111111111,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.026630434782608695,
+      "pagerank": 0.016559641218653283,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.2468757843768927,
-          0.4083810334119217,
-          0.7531242156231073,
-          0.5916189665880783
+          0.591155157422081,
+          0.5881213199947604,
+          0.4088448425779189,
+          0.4118786800052397,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          1
+          14
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "29": {
-      "type": "intermediate",
+      "type": "leaf",
       "in_degree": 1,
-      "out_degree": 4,
-      "betweenness": 0.009523809523809525,
-      "closeness": 0.041666666666666664,
-      "pagerank": 0.025741588727160862,
-      "degree_centrality": 0.1388888888888889,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.015019289179166884,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.39171445983195374,
-          0.2674819879036196,
-          0.6082855401680463,
-          0.7325180120963803
+          0.19009319016566992,
+          0.9498000006246495,
+          0.80990680983433,
+          0.05019999937535051,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          28
+          13
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "30": {
       "type": "intermediate",
       "in_degree": 1,
-      "out_degree": 2,
-      "betweenness": 0.004761904761904762,
-      "closeness": 0.041666666666666664,
-      "pagerank": 0.025741588727160862,
-      "degree_centrality": 0.08333333333333333,
+      "out_degree": 3,
+      "betweenness": 0.004777830864787386,
+      "closeness": 0.017391304347826087,
+      "pagerank": 0.012837223480306277,
+      "degree_centrality": 0.043478260869565216,
       "cpd": {
         "values": [
-          0.1565978486379403,
-          0.01058902048636686,
-          0.8434021513620596,
-          0.9894109795136331
+          0.08685936653936156,
+          0.03737149438967204,
+          0.9131406334606383,
+          0.9626285056103279,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          28
+          4
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "31": {
-      "type": "leaf",
+      "type": "intermediate",
       "in_degree": 1,
-      "out_degree": 0,
-      "betweenness": 0.0,
-      "closeness": 0.044444444444444446,
-      "pagerank": 0.028632531153613926,
-      "degree_centrality": 0.027777777777777776,
+      "out_degree": 5,
+      "betweenness": 0.0029861442904921165,
+      "closeness": 0.018115942028985504,
+      "pagerank": 0.01103803979334313,
+      "degree_centrality": 0.06521739130434782,
       "cpd": {
         "values": [
-          0.06706585170772389,
-          0.27217435907777604,
-          0.932934148292276,
-          0.7278256409222239
+          0.6845150865620029,
+          0.4926324220849621,
+          0.315484913437997,
+          0.507367577915038,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
           30
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
     "32": {
-      "type": "leaf",
+      "type": "intermediate",
       "in_degree": 1,
-      "out_degree": 0,
-      "betweenness": 0.0,
-      "closeness": 0.044444444444444446,
-      "pagerank": 0.028632531153613926,
-      "degree_centrality": 0.027777777777777776,
+      "out_degree": 2,
+      "betweenness": 0.0011944577161968465,
+      "closeness": 0.018115942028985504,
+      "pagerank": 0.01103803979334313,
+      "degree_centrality": 0.03260869565217391,
       "cpd": {
         "values": [
-          0.7918216569999663,
-          0.518170261753618,
-          0.2081783430000338,
-          0.4818297382463819
+          0.9172076555068315,
+          0.8714728372701741,
+          0.08279234449316845,
+          0.12852716272982598,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
           30
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
@@ -769,21 +2140,61 @@
       "in_degree": 1,
       "out_degree": 0,
       "betweenness": 0.0,
-      "closeness": 0.044444444444444446,
-      "pagerank": 0.02316238051976791,
-      "degree_centrality": 0.027777777777777776,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.012092298970337206,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.685064914976835,
-          0.18959549431481337,
-          0.3149350850231651,
-          0.8104045056851866
+          0.06282243586692184,
+          0.5775835069597339,
+          0.9371775641330781,
+          0.4224164930402661,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          29
+          32
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
@@ -792,21 +2203,61 @@
       "in_degree": 1,
       "out_degree": 0,
       "betweenness": 0.0,
-      "closeness": 0.044444444444444446,
-      "pagerank": 0.02316238051976791,
-      "degree_centrality": 0.027777777777777776,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.012092298970337206,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.3146285682571762,
-          0.23402431762561735,
-          0.6853714317428238,
-          0.7659756823743826
+          0.29818298420260825,
+          0.3152706089978284,
+          0.7018170157973916,
+          0.6847293910021717,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          29
+          32
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
@@ -815,21 +2266,61 @@
       "in_degree": 1,
       "out_degree": 0,
       "betweenness": 0.0,
-      "closeness": 0.044444444444444446,
-      "pagerank": 0.02316238051976791,
-      "degree_centrality": 0.027777777777777776,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.00927742704801063,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.21090463834137602,
-          0.7744352565507772,
-          0.7890953616586239,
-          0.22556474344922273
+          0.7234877835697882,
+          0.9288281939116773,
+          0.27651221643021195,
+          0.07117180608832267,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          29
+          31
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     },
@@ -838,185 +2329,4683 @@
       "in_degree": 1,
       "out_degree": 0,
       "betweenness": 0.0,
-      "closeness": 0.044444444444444446,
-      "pagerank": 0.02316238051976791,
-      "degree_centrality": 0.027777777777777776,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.00927742704801063,
+      "degree_centrality": 0.010869565217391304,
       "cpd": {
         "values": [
-          0.6191388247104427,
-          0.6777795954872177,
-          0.38086117528955743,
-          0.32222040451278233
+          0.955977610996319,
+          0.6957086302477176,
+          0.04402238900368109,
+          0.30429136975228255,
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
         "evidence": [
-          29
+          31
         ],
         "evidence_card": [
           2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "37": {
+      "type": "leaf",
+      "in_degree": 1,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.00927742704801063,
+      "degree_centrality": 0.010869565217391304,
+      "cpd": {
+        "values": [
+          0.6687422460358564,
+          0.5283506327444326,
+          0.3312577539641436,
+          0.4716493672555674,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          31
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "38": {
+      "type": "leaf",
+      "in_degree": 1,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.00927742704801063,
+      "degree_centrality": 0.010869565217391304,
+      "cpd": {
+        "values": [
+          0.6900825925853433,
+          0.10799704456188436,
+          0.3099174074146567,
+          0.8920029554381157,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          31
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "39": {
+      "type": "leaf",
+      "in_degree": 1,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.00927742704801063,
+      "degree_centrality": 0.010869565217391304,
+      "cpd": {
+        "values": [
+          0.714978753734573,
+          0.07960434358697815,
+          0.2850212462654271,
+          0.9203956564130219,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          31
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "40": {
+      "type": "intermediate",
+      "in_degree": 1,
+      "out_degree": 3,
+      "betweenness": 0.004061156235069278,
+      "closeness": 0.017391304347826087,
+      "pagerank": 0.009212971671075144,
+      "degree_centrality": 0.043478260869565216,
+      "cpd": {
+        "values": [
+          0.8714489145536127,
+          0.19156749768709286,
+          0.12855108544638727,
+          0.8084325023129072,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          3
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "41": {
+      "type": "intermediate",
+      "in_degree": 1,
+      "out_degree": 4,
+      "betweenness": 0.004777830864787386,
+      "closeness": 0.017391304347826087,
+      "pagerank": 0.009212971671075144,
+      "degree_centrality": 0.05434782608695652,
+      "cpd": {
+        "values": [
+          0.35792733721735387,
+          0.6781875051405435,
+          0.6420726627826462,
+          0.3218124948594565,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          3
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "42": {
+      "type": "intermediate",
+      "in_degree": 1,
+      "out_degree": 2,
+      "betweenness": 0.002747252747252747,
+      "closeness": 0.017391304347826087,
+      "pagerank": 0.009212971671075144,
+      "degree_centrality": 0.03260869565217391,
+      "cpd": {
+        "values": [
+          0.08567719648118245,
+          0.31576688564891,
+          0.9143228035188176,
+          0.68423311435109,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          3
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "43": {
+      "type": "intermediate",
+      "in_degree": 1,
+      "out_degree": 3,
+      "betweenness": 0.005733397037744864,
+      "closeness": 0.017391304347826087,
+      "pagerank": 0.009212971671075144,
+      "degree_centrality": 0.043478260869565216,
+      "cpd": {
+        "values": [
+          0.4717806237770741,
+          0.7616899466980434,
+          0.528219376222926,
+          0.23831005330195665,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          3
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "44": {
+      "type": "intermediate",
+      "in_degree": 1,
+      "out_degree": 2,
+      "betweenness": 0.002866698518872432,
+      "closeness": 0.017391304347826087,
+      "pagerank": 0.009212971671075144,
+      "degree_centrality": 0.03260869565217391,
+      "cpd": {
+        "values": [
+          0.9987275833749566,
+          0.9162994827626498,
+          0.0012724166250434549,
+          0.08370051723735013,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          3
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "45": {
+      "type": "intermediate",
+      "in_degree": 1,
+      "out_degree": 5,
+      "betweenness": 0.002508361204013378,
+      "closeness": 0.018115942028985504,
+      "pagerank": 0.011316284767298505,
+      "degree_centrality": 0.06521739130434782,
+      "cpd": {
+        "values": [
+          0.8330280571400747,
+          0.33652069950249003,
+          0.16697194285992542,
+          0.6634793004975099,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          44
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "46": {
+      "type": "leaf",
+      "in_degree": 1,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.00932473776584775,
+      "degree_centrality": 0.010869565217391304,
+      "cpd": {
+        "values": [
+          0.8652835031413408,
+          0.4398834619729595,
+          0.1347164968586592,
+          0.5601165380270405,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          45
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "47": {
+      "type": "leaf",
+      "in_degree": 2,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.02958937198067633,
+      "pagerank": 0.011282457266267212,
+      "degree_centrality": 0.021739130434782608,
+      "cpd": {
+        "values": [
+          0.7198239806381137,
+          0.7395769408359749,
+          0.01359787109384065,
+          0.3649887620642332,
+          0.28017601936188624,
+          0.26042305916402503,
+          0.9864021289061594,
+          0.6350112379357667
+        ],
+        "evidence": [
+          41,
+          45
+        ],
+        "evidence_card": [
+          2,
+          2
+        ],
+        "original_shape": [
+          2,
+          2,
+          2
+        ],
+        "num_parents": 2,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0,
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0,
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              0,
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              0,
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          },
+          {
+            "parent_config": [
+              1,
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 4
+          },
+          {
+            "parent_config": [
+              1,
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 5
+          },
+          {
+            "parent_config": [
+              1,
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 6
+          },
+          {
+            "parent_config": [
+              1,
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 7
+          }
+        ]
+      }
+    },
+    "48": {
+      "type": "leaf",
+      "in_degree": 1,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.00932473776584775,
+      "degree_centrality": 0.010869565217391304,
+      "cpd": {
+        "values": [
+          0.3825878868414179,
+          0.3221089877647945,
+          0.6174121131585822,
+          0.6778910122352054,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          45
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "49": {
+      "type": "leaf",
+      "in_degree": 1,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.00932473776584775,
+      "degree_centrality": 0.010869565217391304,
+      "cpd": {
+        "values": [
+          0.09985960331669351,
+          0.08551334623559312,
+          0.9001403966833065,
+          0.914486653764407,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          45
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "50": {
+      "type": "leaf",
+      "in_degree": 1,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.00932473776584775,
+      "degree_centrality": 0.010869565217391304,
+      "cpd": {
+        "values": [
+          0.9913305182700395,
+          0.7222055937708998,
+          0.00866948172996044,
+          0.27779440622910034,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          45
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "51": {
+      "type": "intermediate",
+      "in_degree": 1,
+      "out_degree": 4,
+      "betweenness": 0.002388915432393693,
+      "closeness": 0.018115942028985504,
+      "pagerank": 0.010011138433685528,
+      "degree_centrality": 0.05434782608695652,
+      "cpd": {
+        "values": [
+          0.18851191015786367,
+          0.2917540057745713,
+          0.8114880898421364,
+          0.7082459942254288,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          43
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "52": {
+      "type": "intermediate",
+      "in_degree": 1,
+      "out_degree": 5,
+      "betweenness": 0.0029861442904921165,
+      "closeness": 0.018115942028985504,
+      "pagerank": 0.010011138433685528,
+      "degree_centrality": 0.06521739130434782,
+      "cpd": {
+        "values": [
+          0.13155683517798475,
+          0.972365299763101,
+          0.8684431648220152,
+          0.027634700236898884,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          43
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "53": {
+      "type": "leaf",
+      "in_degree": 1,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.00910280883019779,
+      "degree_centrality": 0.010869565217391304,
+      "cpd": {
+        "values": [
+          0.024258657474909892,
+          0.03619839049474942,
+          0.97574134252509,
+          0.9638016095052506,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          52
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "54": {
+      "type": "leaf",
+      "in_degree": 1,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.00910280883019779,
+      "degree_centrality": 0.010869565217391304,
+      "cpd": {
+        "values": [
+          0.37194878829003425,
+          0.8585970220674467,
+          0.6280512117099657,
+          0.1414029779325532,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          52
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "55": {
+      "type": "leaf",
+      "in_degree": 1,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.00910280883019779,
+      "degree_centrality": 0.010869565217391304,
+      "cpd": {
+        "values": [
+          0.13299851567168286,
+          0.6396608661577526,
+          0.8670014843283173,
+          0.36033913384224725,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          52
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "56": {
+      "type": "leaf",
+      "in_degree": 1,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.00910280883019779,
+      "degree_centrality": 0.010869565217391304,
+      "cpd": {
+        "values": [
+          0.9246630785186009,
+          0.42686492588594815,
+          0.07533692148139906,
+          0.5731350741140516,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          52
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "57": {
+      "type": "leaf",
+      "in_degree": 1,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.00910280883019779,
+      "degree_centrality": 0.010869565217391304,
+      "cpd": {
+        "values": [
+          0.2538998254770461,
+          0.09740160541337901,
+          0.746100174522954,
+          0.9025983945866211,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          52
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "58": {
+      "type": "leaf",
+      "in_degree": 1,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.009528299596132344,
+      "degree_centrality": 0.010869565217391304,
+      "cpd": {
+        "values": [
+          0.5834833707052016,
+          0.6490487719610543,
+          0.4165166292947984,
+          0.3509512280389458,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          51
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "59": {
+      "type": "leaf",
+      "in_degree": 1,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.009528299596132344,
+      "degree_centrality": 0.010869565217391304,
+      "cpd": {
+        "values": [
+          0.07486379393392038,
+          0.2362905411441719,
+          0.9251362060660797,
+          0.7637094588558281,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          51
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "60": {
+      "type": "leaf",
+      "in_degree": 1,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.009528299596132344,
+      "degree_centrality": 0.010869565217391304,
+      "cpd": {
+        "values": [
+          0.6511579941509924,
+          0.3798182886809014,
+          0.3488420058490076,
+          0.6201817113190986,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          51
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "61": {
+      "type": "leaf",
+      "in_degree": 1,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.009528299596132344,
+      "degree_centrality": 0.010869565217391304,
+      "cpd": {
+        "values": [
+          0.5303228033657037,
+          0.08994488368428147,
+          0.46967719663429647,
+          0.9100551163157186,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          51
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "62": {
+      "type": "intermediate",
+      "in_degree": 2,
+      "out_degree": 5,
+      "betweenness": 0.0034042044911610126,
+      "closeness": 0.030100334448160536,
+      "pagerank": 0.0167526624811452,
+      "degree_centrality": 0.07608695652173914,
+      "cpd": {
+        "values": [
+          0.3237084779417359,
+          0.4340629215989919,
+          0.2471118599874424,
+          0.45127369358445735,
+          0.6762915220582643,
+          0.5659370784010082,
+          0.7528881400125575,
+          0.5487263064155425
+        ],
+        "evidence": [
+          4,
+          42
+        ],
+        "evidence_card": [
+          2,
+          2
+        ],
+        "original_shape": [
+          2,
+          2,
+          2
+        ],
+        "num_parents": 2,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0,
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0,
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              0,
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              0,
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          },
+          {
+            "parent_config": [
+              1,
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 4
+          },
+          {
+            "parent_config": [
+              1,
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 5
+          },
+          {
+            "parent_config": [
+              1,
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 6
+          },
+          {
+            "parent_config": [
+              1,
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 7
+          }
+        ]
+      }
+    },
+    "63": {
+      "type": "intermediate",
+      "in_degree": 1,
+      "out_degree": 4,
+      "betweenness": 0.002030578117534639,
+      "closeness": 0.018115942028985504,
+      "pagerank": 0.011316284767298505,
+      "degree_centrality": 0.05434782608695652,
+      "cpd": {
+        "values": [
+          0.21017382269427365,
+          0.5463457445738354,
+          0.7898261773057265,
+          0.4536542554261646,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          42
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "64": {
+      "type": "leaf",
+      "in_degree": 1,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.009805710765694793,
+      "degree_centrality": 0.010869565217391304,
+      "cpd": {
+        "values": [
+          0.27845585928047295,
+          0.2260387799035531,
+          0.7215441407195271,
+          0.7739612200964471,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          63
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "65": {
+      "type": "leaf",
+      "in_degree": 1,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.009805710765694793,
+      "degree_centrality": 0.010869565217391304,
+      "cpd": {
+        "values": [
+          0.7549894475270708,
+          0.5347909800236352,
+          0.24501055247292913,
+          0.46520901997636477,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          63
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "66": {
+      "type": "leaf",
+      "in_degree": 1,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.009805710765694793,
+      "degree_centrality": 0.010869565217391304,
+      "cpd": {
+        "values": [
+          0.8942747603974586,
+          0.5914405998289466,
+          0.10572523960254131,
+          0.4085594001710534,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          63
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "67": {
+      "type": "leaf",
+      "in_degree": 2,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.03312629399585921,
+      "pagerank": 0.012929454112749544,
+      "degree_centrality": 0.021739130434782608,
+      "cpd": {
+        "values": [
+          0.2541898064638944,
+          0.0864366582961335,
+          0.6156208589804891,
+          0.1369300221911406,
+          0.7458101935361057,
+          0.9135633417038664,
+          0.38437914101951076,
+          0.8630699778088594
+        ],
+        "evidence": [
+          7,
+          63
+        ],
+        "evidence_card": [
+          2,
+          2
+        ],
+        "original_shape": [
+          2,
+          2,
+          2
+        ],
+        "num_parents": 2,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0,
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0,
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              0,
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              0,
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          },
+          {
+            "parent_config": [
+              1,
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 4
+          },
+          {
+            "parent_config": [
+              1,
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 5
+          },
+          {
+            "parent_config": [
+              1,
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 6
+          },
+          {
+            "parent_config": [
+              1,
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 7
+          }
+        ]
+      }
+    },
+    "68": {
+      "type": "leaf",
+      "in_degree": 2,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.038279773156899816,
+      "pagerank": 0.011810820663066966,
+      "degree_centrality": 0.021739130434782608,
+      "cpd": {
+        "values": [
+          0.8762784292685294,
+          0.40016979156077576,
+          0.8373067541720366,
+          0.9107588186294892,
+          0.12372157073147046,
+          0.5998302084392244,
+          0.16269324582796335,
+          0.08924118137051089
+        ],
+        "evidence": [
+          6,
+          62
+        ],
+        "evidence_card": [
+          2,
+          2
+        ],
+        "original_shape": [
+          2,
+          2,
+          2
+        ],
+        "num_parents": 2,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0,
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0,
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              0,
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              0,
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          },
+          {
+            "parent_config": [
+              1,
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 4
+          },
+          {
+            "parent_config": [
+              1,
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 5
+          },
+          {
+            "parent_config": [
+              1,
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 6
+          },
+          {
+            "parent_config": [
+              1,
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 7
+          }
+        ]
+      }
+    },
+    "69": {
+      "type": "leaf",
+      "in_degree": 1,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.026630434782608695,
+      "pagerank": 0.01024894898953959,
+      "degree_centrality": 0.010869565217391304,
+      "cpd": {
+        "values": [
+          0.8388752887214556,
+          0.3714007438623167,
+          0.16112471127854444,
+          0.6285992561376833,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          62
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "70": {
+      "type": "leaf",
+      "in_degree": 1,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.026630434782608695,
+      "pagerank": 0.01024894898953959,
+      "degree_centrality": 0.010869565217391304,
+      "cpd": {
+        "values": [
+          0.642298060987701,
+          0.6267242729484324,
+          0.3577019390122989,
+          0.3732757270515676,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          62
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "71": {
+      "type": "leaf",
+      "in_degree": 1,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.026630434782608695,
+      "pagerank": 0.01024894898953959,
+      "degree_centrality": 0.010869565217391304,
+      "cpd": {
+        "values": [
+          0.8059184526280878,
+          0.9853901013396512,
+          0.19408154737191208,
+          0.01460989866034885,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          62
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "72": {
+      "type": "leaf",
+      "in_degree": 1,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.026630434782608695,
+      "pagerank": 0.01024894898953959,
+      "degree_centrality": 0.010869565217391304,
+      "cpd": {
+        "values": [
+          0.6393509309448007,
+          0.49059395067059924,
+          0.36064906905519944,
+          0.5094060493294006,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          62
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "73": {
+      "type": "intermediate",
+      "in_degree": 1,
+      "out_degree": 4,
+      "betweenness": 0.002388915432393693,
+      "closeness": 0.018115942028985504,
+      "pagerank": 0.00935856526687904,
+      "degree_centrality": 0.05434782608695652,
+      "cpd": {
+        "values": [
+          0.6950197802343913,
+          0.1481901879192803,
+          0.3049802197656087,
+          0.8518098120807197,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          41
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "74": {
+      "type": "intermediate",
+      "in_degree": 1,
+      "out_degree": 2,
+      "betweenness": 0.0011944577161968465,
+      "closeness": 0.018115942028985504,
+      "pagerank": 0.00935856526687904,
+      "degree_centrality": 0.03260869565217391,
+      "cpd": {
+        "values": [
+          0.24479481098191774,
+          0.6183819412666086,
+          0.7552051890180823,
+          0.3816180587333914,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          41
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "75": {
+      "type": "intermediate",
+      "in_degree": 1,
+      "out_degree": 1,
+      "betweenness": 0.00011944577161968466,
+      "closeness": 0.018115942028985504,
+      "pagerank": 0.00935856526687904,
+      "degree_centrality": 0.021739130434782608,
+      "cpd": {
+        "values": [
+          0.28002383249619983,
+          0.4658613874240663,
+          0.7199761675038001,
+          0.5341386125759336,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          41
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "76": {
+      "type": "leaf",
+      "in_degree": 2,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.02958937198067633,
+      "pagerank": 0.01927127774686466,
+      "degree_centrality": 0.021739130434782608,
+      "cpd": {
+        "values": [
+          0.4035752616450997,
+          0.7988159515803475,
+          0.5274323862436278,
+          0.7054680284653234,
+          0.5964247383549003,
+          0.20118404841965257,
+          0.4725676137563723,
+          0.29453197153467653
+        ],
+        "evidence": [
+          44,
+          75
+        ],
+        "evidence_card": [
+          2,
+          2
+        ],
+        "original_shape": [
+          2,
+          2,
+          2
+        ],
+        "num_parents": 2,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0,
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0,
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              0,
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              0,
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          },
+          {
+            "parent_config": [
+              1,
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 4
+          },
+          {
+            "parent_config": [
+              1,
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 5
+          },
+          {
+            "parent_config": [
+              1,
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 6
+          },
+          {
+            "parent_config": [
+              1,
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 7
+          }
+        ]
+      }
+    },
+    "77": {
+      "type": "leaf",
+      "in_degree": 1,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.011378342256242657,
+      "degree_centrality": 0.010869565217391304,
+      "cpd": {
+        "values": [
+          0.5857067284157678,
+          0.8616446275535974,
+          0.4142932715842323,
+          0.13835537244640264,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          74
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "78": {
+      "type": "leaf",
+      "in_degree": 1,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.011378342256242657,
+      "degree_centrality": 0.010869565217391304,
+      "cpd": {
+        "values": [
+          0.19295378402250757,
+          0.8844616651154371,
+          0.8070462159774925,
+          0.11553833488456286,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          74
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "79": {
+      "type": "leaf",
+      "in_degree": 1,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.009389594011351116,
+      "degree_centrality": 0.010869565217391304,
+      "cpd": {
+        "values": [
+          0.143526681315624,
+          0.5806367725319594,
+          0.8564733186843759,
+          0.4193632274680405,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          73
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "80": {
+      "type": "leaf",
+      "in_degree": 1,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.009389594011351116,
+      "degree_centrality": 0.010869565217391304,
+      "cpd": {
+        "values": [
+          0.46379888879276815,
+          0.31245026594942976,
+          0.5362011112072318,
+          0.6875497340505701,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          73
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "81": {
+      "type": "leaf",
+      "in_degree": 1,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.009389594011351116,
+      "degree_centrality": 0.010869565217391304,
+      "cpd": {
+        "values": [
+          0.9837512739062017,
+          0.9419005762422691,
+          0.01624872609379846,
+          0.058099423757730924,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          73
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "82": {
+      "type": "leaf",
+      "in_degree": 1,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.009389594011351116,
+      "degree_centrality": 0.010869565217391304,
+      "cpd": {
+        "values": [
+          0.454113913346042,
+          0.56623174121118,
+          0.5458860866539579,
+          0.43376825878881997,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          73
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "83": {
+      "type": "intermediate",
+      "in_degree": 1,
+      "out_degree": 2,
+      "betweenness": 0.0011944577161968465,
+      "closeness": 0.018115942028985504,
+      "pagerank": 0.010011138433685528,
+      "degree_centrality": 0.03260869565217391,
+      "cpd": {
+        "values": [
+          0.2829192112634655,
+          0.20717694604170425,
+          0.7170807887365345,
+          0.7928230539582959,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          40
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "84": {
+      "type": "intermediate",
+      "in_degree": 1,
+      "out_degree": 2,
+      "betweenness": 0.0008361204013377926,
+      "closeness": 0.018115942028985504,
+      "pagerank": 0.010011138433685528,
+      "degree_centrality": 0.03260869565217391,
+      "cpd": {
+        "values": [
+          0.5778469748410037,
+          0.7781899651238147,
+          0.4221530251589963,
+          0.22181003487618547,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          40
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "85": {
+      "type": "intermediate",
+      "in_degree": 1,
+      "out_degree": 3,
+      "betweenness": 0.001433349259436216,
+      "closeness": 0.018115942028985504,
+      "pagerank": 0.010011138433685528,
+      "degree_centrality": 0.043478260869565216,
+      "cpd": {
+        "values": [
+          0.9624375596908014,
+          0.04632932728389181,
+          0.03756244030919865,
+          0.9536706727161081,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          40
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "86": {
+      "type": "leaf",
+      "in_degree": 1,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.010237450872689931,
+      "degree_centrality": 0.010869565217391304,
+      "cpd": {
+        "values": [
+          0.9047007601334427,
+          0.19407858655307458,
+          0.09529923986655739,
+          0.8059214134469256,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          85
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "87": {
+      "type": "leaf",
+      "in_degree": 2,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.03328804347826087,
+      "pagerank": 0.013861702681921063,
+      "degree_centrality": 0.021739130434782608,
+      "cpd": {
+        "values": [
+          0.6693178133691005,
+          0.7045932757227197,
+          0.5212966767704511,
+          0.33733031447042294,
+          0.3306821866308996,
+          0.2954067242772803,
+          0.47870332322954884,
+          0.6626696855295772
+        ],
+        "evidence": [
+          5,
+          85
+        ],
+        "evidence_card": [
+          2,
+          2
+        ],
+        "original_shape": [
+          2,
+          2,
+          2
+        ],
+        "num_parents": 2,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0,
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0,
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              0,
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              0,
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          },
+          {
+            "parent_config": [
+              1,
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 4
+          },
+          {
+            "parent_config": [
+              1,
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 5
+          },
+          {
+            "parent_config": [
+              1,
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 6
+          },
+          {
+            "parent_config": [
+              1,
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 7
+          }
+        ]
+      }
+    },
+    "88": {
+      "type": "leaf",
+      "in_degree": 1,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.010237450872689931,
+      "degree_centrality": 0.010869565217391304,
+      "cpd": {
+        "values": [
+          0.9343191129891153,
+          0.04913648493389861,
+          0.06568088701088477,
+          0.9508635150661013,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          85
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "89": {
+      "type": "leaf",
+      "in_degree": 1,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.011655753425805106,
+      "degree_centrality": 0.010869565217391304,
+      "cpd": {
+        "values": [
+          0.8997002090189362,
+          0.7615335403655534,
+          0.10029979098106363,
+          0.2384664596344466,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          84
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "90": {
+      "type": "leaf",
+      "in_degree": 2,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.03312629399585921,
+      "pagerank": 0.015292947452688657,
+      "degree_centrality": 0.021739130434782608,
+      "cpd": {
+        "values": [
+          0.6124341252329191,
+          0.4274979427897676,
+          0.5526646875992488,
+          0.8404883976592197,
+          0.38756587476708104,
+          0.5725020572102323,
+          0.44733531240075125,
+          0.15951160234078032
+        ],
+        "evidence": [
+          30,
+          84
+        ],
+        "evidence_card": [
+          2,
+          2
+        ],
+        "original_shape": [
+          2,
+          2,
+          2
+        ],
+        "num_parents": 2,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0,
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0,
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              0,
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              0,
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          },
+          {
+            "parent_config": [
+              1,
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 4
+          },
+          {
+            "parent_config": [
+              1,
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 5
+          },
+          {
+            "parent_config": [
+              1,
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 6
+          },
+          {
+            "parent_config": [
+              1,
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 7
+          }
+        ]
+      }
+    },
+    "91": {
+      "type": "leaf",
+      "in_degree": 1,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.011655753425805106,
+      "degree_centrality": 0.010869565217391304,
+      "cpd": {
+        "values": [
+          0.34260662154909194,
+          0.5776257773698741,
+          0.657393378450908,
+          0.422374222630126,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          83
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "92": {
+      "type": "leaf",
+      "in_degree": 1,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.018633540372670804,
+      "pagerank": 0.011655753425805106,
+      "degree_centrality": 0.010869565217391304,
+      "cpd": {
+        "values": [
+          0.18606859968380474,
+          0.6110540814243499,
+          0.8139314003161952,
+          0.3889459185756501,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evidence": [
+          83
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
         ]
       }
     }
   },
   "edges": [
-    [
-      0,
-      1
+    {
+      "source": 0,
+      "target": 1,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 1,
+      "target": 2,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 2,
+      "target": 3,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 2,
+      "target": 4,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 2,
+      "target": 5,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 3,
+      "target": 40,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 3,
+      "target": 41,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 3,
+      "target": 42,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 3,
+      "target": 43,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 3,
+      "target": 44,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 3,
+      "target": 14,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 4,
+      "target": 30,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 4,
+      "target": 62,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 5,
+      "target": 6,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 5,
+      "target": 7,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 5,
+      "target": 87,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 6,
+      "target": 13,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 6,
+      "target": 14,
+      "parent_index": 1,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 6,
+      "target": 15,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 6,
+      "target": 16,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 6,
+      "target": 17,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 6,
+      "target": 68,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 7,
+      "target": 8,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 7,
+      "target": 9,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 7,
+      "target": 67,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 8,
+      "target": 12,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 9,
+      "target": 10,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 9,
+      "target": 11,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 13,
+      "target": 29,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 14,
+      "target": 28,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 15,
+      "target": 24,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 15,
+      "target": 25,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 15,
+      "target": 26,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 15,
+      "target": 27,
+      "parent_index": 1,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 16,
+      "target": 19,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 16,
+      "target": 20,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 16,
+      "target": 21,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 16,
+      "target": 22,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 16,
+      "target": 23,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 17,
+      "target": 18,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 30,
+      "target": 31,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 30,
+      "target": 32,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 30,
+      "target": 90,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 31,
+      "target": 35,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 31,
+      "target": 36,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 31,
+      "target": 37,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 31,
+      "target": 38,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 31,
+      "target": 39,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 32,
+      "target": 33,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 32,
+      "target": 34,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 40,
+      "target": 83,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 40,
+      "target": 84,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 40,
+      "target": 85,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 41,
+      "target": 73,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 41,
+      "target": 74,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 41,
+      "target": 75,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 41,
+      "target": 47,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 42,
+      "target": 62,
+      "parent_index": 1,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 42,
+      "target": 63,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 43,
+      "target": 51,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 43,
+      "target": 52,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 43,
+      "target": 27,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 44,
+      "target": 45,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 44,
+      "target": 76,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 45,
+      "target": 46,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 45,
+      "target": 47,
+      "parent_index": 1,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 45,
+      "target": 48,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 45,
+      "target": 49,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 45,
+      "target": 50,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 51,
+      "target": 58,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 51,
+      "target": 59,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 51,
+      "target": 60,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 51,
+      "target": 61,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 52,
+      "target": 53,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 52,
+      "target": 54,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 52,
+      "target": 55,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 52,
+      "target": 56,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 52,
+      "target": 57,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 62,
+      "target": 68,
+      "parent_index": 1,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 62,
+      "target": 69,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 62,
+      "target": 70,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 62,
+      "target": 71,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 62,
+      "target": 72,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 63,
+      "target": 64,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 63,
+      "target": 65,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 63,
+      "target": 66,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 63,
+      "target": 67,
+      "parent_index": 1,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 73,
+      "target": 79,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 73,
+      "target": 80,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 73,
+      "target": 81,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 73,
+      "target": 82,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 74,
+      "target": 77,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 74,
+      "target": 78,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 75,
+      "target": 76,
+      "parent_index": 1,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 83,
+      "target": 91,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 83,
+      "target": 92,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 84,
+      "target": 89,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 84,
+      "target": 90,
+      "parent_index": 1,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 85,
+      "target": 86,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 85,
+      "target": 87,
+      "parent_index": 1,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": 85,
+      "target": 88,
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    }
+  ],
+  "node_types": {
+    "roots": [
+      0
     ],
-    [
-      0,
-      2
+    "leaves": [
+      10,
+      11,
+      12,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      46,
+      47,
+      48,
+      49,
+      50,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92
     ],
-    [
+    "intermediates": [
       1,
-      28
-    ],
-    [
-      1,
-      14
-    ],
-    [
       2,
-      3
-    ],
-    [
-      2,
-      4
-    ],
-    [
-      2,
-      5
-    ],
-    [
       3,
-      21
-    ],
-    [
-      3,
-      22
-    ],
-    [
-      3,
-      10
-    ],
-    [
       4,
-      12
-    ],
-    [
-      4,
-      13
-    ],
-    [
-      4,
-      14
-    ],
-    [
       5,
-      6
-    ],
-    [
-      5,
-      7
-    ],
-    [
-      5,
-      20
-    ],
-    [
       6,
-      11
-    ],
-    [
       7,
-      8
-    ],
-    [
-      7,
-      9
-    ],
-    [
-      7,
-      10
-    ],
-    [
-      12,
-      18
-    ],
-    [
-      12,
-      19
-    ],
-    [
-      12,
-      20
-    ],
-    [
+      8,
+      9,
       13,
-      16
-    ],
-    [
-      13,
-      17
-    ],
-    [
       14,
-      15
-    ],
-    [
-      21,
-      25
-    ],
-    [
-      21,
-      26
-    ],
-    [
-      21,
-      27
-    ],
-    [
-      22,
-      23
-    ],
-    [
-      22,
-      24
-    ],
-    [
-      28,
-      29
-    ],
-    [
-      28,
-      30
-    ],
-    [
-      28,
-      23
-    ],
-    [
-      29,
-      33
-    ],
-    [
-      29,
-      34
-    ],
-    [
-      29,
-      35
-    ],
-    [
-      29,
-      36
-    ],
-    [
+      15,
+      16,
+      17,
       30,
-      31
-    ],
-    [
-      30,
-      32
+      31,
+      32,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      51,
+      52,
+      62,
+      63,
+      73,
+      74,
+      75,
+      83,
+      84,
+      85
     ]
-  ]
+  },
+  "paths_info": {
+    "max_path_length": 6
+  },
+  "metadata": {
+    "global_max_cpd_length": 8,
+    "total_nodes": 93,
+    "total_edges": 101,
+    "has_cycles": false
+  }
 }

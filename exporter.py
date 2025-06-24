@@ -1,11 +1,10 @@
-# File: exporter.py
 import os
 import json
 import networkx as nx
 import pandas as pd
+import pickle
 import numpy as np
 import itertools
-import networkx as nx
 from networkx.readwrite import json_graph
 
 def save_graph(G, config, index):
@@ -48,38 +47,80 @@ def save_cpds_as_numpy_tables(model, filename):
     os.makedirs(os.path.dirname(filename), exist_ok=True)
     np.save(filename, cpd_tables)
 
-def get_max_cpd_length(model):
+# Computes maximum CPD vector length for one model
+def get_max_cpd_length(model):  
     max_len = 0
     for cpd in model.get_cpds():
         values = cpd.values.tolist()
         if isinstance(values[0], list):
             flat = [v for row in values for v in row]
         else:
-            flat = values  # Already flat
-        max_len = max(max_len, len(flat))
+            flat = values
+            max_len = max(max_len, len(flat))
+            return max_len
+
+# Computes global max across all models
+def compute_global_max_cpd_length(models): 
+    max_len = 0
+    for model in models:
+        for cpd in model.get_cpds():
+            flat = flatten(cpd.values.tolist())
+            max_len = max(max_len, len(flat))
     return max_len
 
-def save_graph_with_details(G, model, config, index):
+# Create mapping from flattened position to parent configuration
+def create_cpd_position_map(cpd_values_shape, evidence_card):
+    if not evidence_card:
+        return [{"parent_config": [], "child_state": i, "flattened_position": i} 
+                for i in range(cpd_values_shape[0])]
+    
+    parent_configs = list(itertools.product(*[range(card) for card in evidence_card]))
+    position_map = []
+    
+    pos = 0
+    # FIXED: Generate ALL positions, not just the first one
+    for parent_config in parent_configs:
+        for child_state in range(cpd_values_shape[0]):
+            position_map.append({
+                "parent_config": list(parent_config),
+                "child_state": child_state,
+                "flattened_position": pos
+            })
+            pos += 1
+    
+    return position_map
+
+def save_graph_with_details(G, model, config, index, global_max_cpd_len):
     betweenness = nx.betweenness_centrality(G)
     closeness = nx.closeness_centrality(G)
     pagerank = nx.pagerank(G)
     degree_centrality = nx.degree_centrality(G)
+    max_cpd_len = global_max_cpd_len
 
-    # Get max CPD length for current model
-    max_cpd_len = get_max_cpd_length(model)
-
-    # CPD data: flatten and pad
-    cpds = {
-        cpd.variable: {
+    cpds = {}
+    cpd_lookup = {} 
+    
+    for cpd in model.get_cpds():
+        evidence = cpd.get_evidence()
+        evidence_card = [int(model.get_cardinality()[ev]) for ev in evidence] if evidence else []
+        variable = cpd.variable
+        padded_values, validity_mask = pad_cpd_values_fixed(cpd.values.tolist(), target_len=max_cpd_len, 
+                                                           evidence_card=evidence_card, 
+                                                           variable_card=cpd.variable_card)
+        
+        cpd_data = {
             "values": pad_cpd_values(cpd.values.tolist(), target_len=max_cpd_len),
-            "evidence": cpd.get_evidence(),
-            "evidence_card": [
-                int(model.get_cardinality()[ev]) for ev in cpd.get_evidence()
-            ]
-        } for cpd in model.get_cpds()
-    }
+            "evidence": evidence,
+            "evidence_card": evidence_card,
+            "original_shape": list(cpd.values.shape),
+            "num_parents": len(evidence),
+            "variable_card": cpd.variable_card,
+            "position_map": create_cpd_position_map(cpd.values.shape, evidence_card)
+        }
+        
+        cpds[variable] = cpd_data
+        cpd_lookup[variable] = cpd_data
 
-    # Combine node info
     node_data = {}
     for node in G.nodes:
         node_data[str(node)] = {
@@ -93,24 +134,75 @@ def save_graph_with_details(G, model, config, index):
             "cpd": cpds.get(node, {})
         }
 
-    # Edges
-    edge_list = list(G.edges())
+    edge_list = []
+    for parent, child in G.edges():
+        # Get the child's CPD information
+        child_cpd = cpd_lookup.get(child, {})
+        parent_evidence = child_cpd.get("evidence", [])
+        parent_evidence_card = child_cpd.get("evidence_card", [])
+        
+        # Find this parent's index in the child's evidence list
+        parent_index = -1
+        parent_cardinality = 2  # default
+        if parent in parent_evidence:
+            parent_index = parent_evidence.index(parent)
+            if parent_index < len(parent_evidence_card):
+                parent_cardinality = parent_evidence_card[parent_index]
+        
+        edge_info = {
+            "source": parent,
+            "target": child,
+            "parent_index": parent_index,
+            "parent_cardinality": parent_cardinality,
+            "is_cpd_parent": parent in parent_evidence
+        }
+        edge_list.append(edge_info)
 
-    # Combine everything
+    # Get node type lists for query information
+    roots = [n for n in G.nodes() if G.nodes[n]['type'] == 'root']
+    leaves = [n for n in G.nodes() if G.nodes[n]['type'] == 'leaf']
+    intermediates = [n for n in G.nodes() if G.nodes[n]['type'] == 'intermediate']
+    
+    # Calculate maximum path length for inference queries
+    max_path_length = 0
+    if roots and leaves:
+        try:
+            path_lengths = []
+            for root in roots:
+                for leaf in leaves:
+                    if nx.has_path(G, root, leaf):
+                        path_lengths.append(len(nx.shortest_path(G, root, leaf)) - 1)
+            max_path_length = max(path_lengths) if path_lengths else 0
+        except:
+            max_path_length = 0
+
     full_graph_data = {
         "graph_index": index,
         "nodes": node_data,
-        "edges": edge_list
+        "edges": edge_list,
+        "node_types": {  
+        "roots": [n for n in G.nodes() if G.nodes[n]['type'] == 'root'],
+        "leaves": [n for n in G.nodes() if G.nodes[n]['type'] == 'leaf'],
+        "intermediates": [n for n in G.nodes() if G.nodes[n]['type'] == 'intermediate']
+    },
+    "paths_info": {  
+            "max_path_length": max_path_length
+        },
+        "metadata": {
+            "global_max_cpd_length": max_cpd_len,
+            "total_nodes": len(G.nodes()),
+            "total_edges": len(G.edges()),
+            "has_cycles": not nx.is_directed_acyclic_graph(G) if G.is_directed() else False
+        }
     }
 
-    # Save
     os.makedirs(config['output_dir'], exist_ok=True)
     out_path = os.path.join(config['output_dir'], f"detailed_graph_{index}.json")
     with open(out_path, 'w') as f:
         json.dump(full_graph_data, f, indent=2)
 
+# Flatten nested lists.
 def flatten(values):
-    """Recursively flattens a nested list of any depth."""
     if isinstance(values, list):
         result = []
         for v in values:
@@ -120,11 +212,40 @@ def flatten(values):
         return [values]
 
 def pad_cpd_values(values, target_len):
-    # Robust flatten
-    values = flatten(values)
-    # Pad or truncate
-    if len(values) < target_len:
-        values += [0.0] * (target_len - len(values))
+     values = flatten(values)
+     if len(values) < target_len:
+         values += [0.0] * (target_len - len(values))
+     else:
+         values = values[:target_len]
+     return values
+
+# New probability-preserving padding function
+def pad_cpd_values_fixed(values, target_len, evidence_card, variable_card):
+    """
+    Pad CPD values while preserving probability distributions.
+    Returns both padded values and a validity mask.
+    """
+    flat_values = flatten(values)
+    validity_mask = [1] * len(flat_values)  # Track which positions contain real probabilities
+    
+    if len(flat_values) < target_len:
+        # Calculate how many complete probability slices we have
+        if evidence_card:
+            # For conditional CPDs, pad with uniform distributions
+            num_parent_configs = np.prod(evidence_card)
+            prob_per_child_state = 1.0 / variable_card
+            
+            # Pad remaining positions with uniform probabilities
+            padding_needed = target_len - len(flat_values)
+            padded_values = flat_values + [prob_per_child_state] * padding_needed
+            validity_mask = validity_mask + [0] * padding_needed  # Mark padded positions as invalid
+        else:
+            # For root nodes, pad with zeros (they won't be used)
+            padded_values = flat_values + [0.0] * (target_len - len(flat_values))
+            validity_mask = validity_mask + [0] * (target_len - len(flat_values))
     else:
-        values = values[:target_len]
-    return values
+        # Truncate if necessary (shouldn't happen with proper global max calculation)
+        padded_values = flat_values[:target_len]
+        validity_mask = validity_mask[:target_len]
+    
+    return padded_values, validity_mask

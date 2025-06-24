@@ -14,8 +14,11 @@ def build_bn_from_tree(G, config):
             cpd = TabularCPD(variable=node, variable_card=card, values=[[0.5], [0.5]])
         else:
             parent_card = [card] * len(parents)
-            values = np.random.rand(card, card**len(parents))
-            values /= values.sum(axis=0)  # Normalize
+            alpha = np.ones(card)  # Dirichlet parameters
+            num_cols = card ** len(parents)
+            values = np.array([np.random.dirichlet(alpha) for _ in range(num_cols)]).T
+            #values = np.random.rand(card, card**len(parents))
+            #values /= values.sum(axis=0)  # Normalize
             cpd = TabularCPD(variable=node, variable_card=card,
                              values=values.tolist(), evidence=parents, evidence_card=parent_card)
         model.add_cpds(cpd)

@@ -1,6 +1,16 @@
 
-num_graphs: 10000               # Number of Bayesian networks to generate
-max_depth: 4                # Maximum depth of any graph
-min_children: 1              # Minimum number of children per node
-max_children: 4              # Maximum number of children per node
-output_dir : "./generated_graphs2"
+num_graphs: 10000                                       # Number of Bayesian networks to generate
+max_depth: 6                                            # Maximum depth of any graph
+min_children: 1                                         # Minimum number of children per node
+max_children: 5                                         # Maximum number of children per node
+output_dir : "./generated_graphs"                       # Directory to save generated graphs
+mode: conditional_probability                           # Mode of the dataset, can be 'conditional_probability' or 'regression'
+num_leaf_to_infer: 3                                    # Number of leaf nodes to condition on
+dataset_path: saved_datasets/bn_pyg_dataset.pt          # Path to save the generated dataset 
+global_cpd_len_path: saved_datasets/global_cpd_len.txt  # Path to save the global CPD length
+train_split: 0.8                                        # Proportion of data for training
+val_split: 0.1                                          # Proportion of data for validation 
+test_split: 0.1                                         # Proportion of data for testing
+random_seed: 42                                         # Random seed for reproducibility
+inference_output_dir: saved_inference_outputs           # Directory to save inference outputs
+debug: true                                         # Debug mode for additional logging
