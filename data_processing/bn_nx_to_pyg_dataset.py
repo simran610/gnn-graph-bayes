@@ -106,10 +106,10 @@ def load_bn_graphs(folder_path, global_cpd_len, use_edge_attr=False):
     print(f"\n Processed {file_count} graphs. {padding_count} nodes required CPD length correction.\n")
     return data_list
 if __name__ == "__main__":
-    with open("../saved_datasets/global_cpd_len.txt", "r") as f:
+    with open("../global_datasets/global_cpd_len.txt", "r") as f:
         global_cpd_len = int(f.read().strip())
 
-    folder = "../generated_graphs"  # Update to your folder path
+    folder = "../generated_graphs" 
     use_edge_attr = True
 
     dataset = load_bn_graphs(folder, global_cpd_len, use_edge_attr)

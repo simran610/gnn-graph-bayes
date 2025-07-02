@@ -34,8 +34,8 @@ if __name__ == "__main__":
     global_max_len = compute_global_max_cpd_length(all_models)
     print(f" Global max CPD length: {global_max_len}")
     # Save global_max_len to a text file
-    os.makedirs("saved_datasets", exist_ok=True)
-    with open("saved_datasets/global_cpd_len.txt", "w") as f:
+    os.makedirs("global_datasets", exist_ok=True)
+    with open("global_datasets/global_cpd_len.txt", "w") as f:
         f.write(str(global_max_len))
 
     # Export everything with uniform padding
@@ -47,7 +47,7 @@ if __name__ == "__main__":
     end_time = time.time()
     print(f" Total execution time: {end_time - start_time:.2f} seconds")
 
-    cpd_tables = np.load("./generated_graphs/cpds_numpy_table_0.npy", allow_pickle=True).item()
+    #cpd_tables = np.load("./generated_graphs/cpds_numpy_table_0.npy", allow_pickle=True).item()
     # print("\n CPD tables from first graph:")
     # for node, table in cpd_tables.items():
     #     print(f"\n Node {node} CPD:")

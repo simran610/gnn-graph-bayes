@@ -3,14 +3,24 @@ num_graphs: 10000                                       # Number of Bayesian net
 max_depth: 6                                            # Maximum depth of any graph
 min_children: 1                                         # Minimum number of children per node
 max_children: 5                                         # Maximum number of children per node
-output_dir : "./generated_graphs"                       # Directory to save generated graphs
-mode: conditional_probability                           # Mode of the dataset, can be 'conditional_probability' or 'regression'
-num_leaf_to_infer: 3                                    # Number of leaf nodes to condition on
-dataset_path: saved_datasets/bn_pyg_dataset.pt          # Path to save the generated dataset 
-global_cpd_len_path: saved_datasets/global_cpd_len.txt  # Path to save the global CPD length
+output_dir : "./generated_graphs"                      # Directory to save generated graphs
+mode: "root_probability"                                  # "distribution"/"root_probability"/"regression"
+mask_strategy: "root_only"                              # "root_only"/ "both"
+leaf_state: null                                        # null/0/1 to fix leaf states                       
+dropout: 0.2                                            # Dropout rate for the model
+learning_rate: 0.001                                   # Learning rate for the optimizer
+hidden_channels: 32                                     # Number of hidden channels in the model
+batch_size: 32                                          # Batch size for training
+weight_decay: 5e-4                                      # Weight decay for the optimizer
+patience: 10                                             # Patience for early stopping
+epochs: 100                                             # Batch size for training
+use_sigmoid: true                                       # Use sigmoid activation function
+num_leaf_to_infer: 2                                    # Number of leaf nodes to condition on
+dataset_path: data_processing/dataset.pt                # Path to save the generated dataset 
+global_cpd_len_path: global_datasets/global_cpd_len.txt # Path to save the global CPD length
 train_split: 0.8                                        # Proportion of data for training
 val_split: 0.1                                          # Proportion of data for validation 
 test_split: 0.1                                         # Proportion of data for testing
 random_seed: 42                                         # Random seed for reproducibility
 inference_output_dir: saved_inference_outputs           # Directory to save inference outputs
-debug: true                                         # Debug mode for additional logging
+verbose: false                                          # Verbosity of the output
