@@ -78,7 +78,7 @@ def create_cpd_position_map(cpd_values_shape, evidence_card):
     position_map = []
     
     pos = 0
-    # FIXED: Generate ALL positions, not just the first one
+   
     for parent_config in parent_configs:
         for child_state in range(cpd_values_shape[0]):
             position_map.append({
@@ -219,32 +219,28 @@ def pad_cpd_values(values, target_len):
          values = values[:target_len]
      return values
 
-# New probability-preserving padding function
+# Padding function
 def pad_cpd_values_fixed(values, target_len, evidence_card, variable_card):
-    """
-    Pad CPD values while preserving probability distributions.
-    Returns both padded values and a validity mask.
-    """
+   
     flat_values = flatten(values)
-    validity_mask = [1] * len(flat_values)  # Track which positions contain real probabilities
+    validity_mask = [1] * len(flat_values)  
     
     if len(flat_values) < target_len:
-        # Calculate how many complete probability slices we have
+        
         if evidence_card:
-            # For conditional CPDs, pad with uniform distributions
+            
             num_parent_configs = np.prod(evidence_card)
             prob_per_child_state = 1.0 / variable_card
             
-            # Pad remaining positions with uniform probabilities
             padding_needed = target_len - len(flat_values)
             padded_values = flat_values + [prob_per_child_state] * padding_needed
-            validity_mask = validity_mask + [0] * padding_needed  # Mark padded positions as invalid
+            validity_mask = validity_mask + [0] * padding_needed  
         else:
-            # For root nodes, pad with zeros (they won't be used)
+            
             padded_values = flat_values + [0.0] * (target_len - len(flat_values))
             validity_mask = validity_mask + [0] * (target_len - len(flat_values))
     else:
-        # Truncate if necessary (shouldn't happen with proper global max calculation)
+        
         padded_values = flat_values[:target_len]
         validity_mask = validity_mask[:target_len]
     

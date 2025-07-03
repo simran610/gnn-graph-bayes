@@ -62,7 +62,7 @@ def load_bn_graphs(folder_path, global_cpd_len, use_edge_attr=False):
                 num_parents = cpd_info.get("num_parents", 0)
                 cpd_values = cpd_info["values"]
 
-                # Sanity check and padding/truncation
+                # Verification and padding of CPD values
                 if len(cpd_values) != global_cpd_len:
                     print(f" CPD length mismatch in {filename}, node {node_id}: {len(cpd_values)} != {global_cpd_len}")
                     padding_count += 1

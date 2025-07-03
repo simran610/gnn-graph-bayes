@@ -107,7 +107,7 @@ class BayesianNetworkBuilder:
                     # Truncate
                     values = values[:expected_length]
             
-            # Reshape to (variable_card, expected_cols)
+            # Reshape values into matrix form
             try:
                 values_matrix = np.array(values).reshape(variable_card, expected_cols).tolist()
             except ValueError:
@@ -115,7 +115,7 @@ class BayesianNetworkBuilder:
                 uniform_val = 1.0 / variable_card
                 values_matrix = [[uniform_val] * expected_cols for _ in range(variable_card)]
         else:
-            # No evidence - single column
+            
             if len(values) < variable_card:
                 values.extend([1.0/variable_card] * (variable_card - len(values)))
             values_matrix = [[values[i]] for i in range(variable_card)]
@@ -231,7 +231,7 @@ class GraphPreprocessor:
             
             if self.mode == "distribution":
                 data.y = prob  # [P(0), P(1)]
-            else:  # root_probability
+            else:  # root_probability  [P(0)]
                 data.y = torch.tensor([prob[0].item()], dtype=torch.float)
                 
             # Store evidence information

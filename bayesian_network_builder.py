@@ -40,8 +40,8 @@ def build_bn_from_tree(G, config):
                 prob_true = np.clip(base_prob + noise, 0.1, 0.9)
 
 
-                values[0, col] = 1 - prob_true  # P(node=0|parents)
-                values[1, col] = prob_true      # P(node=1|parents)
+                values[0, col] = 1 - prob_true  
+                values[1, col] = prob_true      
             
             cpd = TabularCPD(variable=node, variable_card=card,
                            values=values.tolist(), evidence=parents, 

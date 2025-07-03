@@ -1,4 +1,4 @@
-# Fixed train_gcn.py with proper dimension handling
+# Train_graphsage.py
 
 import torch
 import torch.nn.functional as F
@@ -72,7 +72,7 @@ with open(config["global_cpd_len_path"], "r") as f:
 
 in_channels = train_set[0].x.shape[1]
 
-# Determine model output size and loss function
+# Determine model output size and loss fun ction
 if mode == "distribution":
     out_channels = 2
     loss_fn = lambda pred, true: F.kl_div(F.log_softmax(pred, dim=1), true, reduction='batchmean')
@@ -81,7 +81,8 @@ elif mode == "root_probability":
     out_channels = 1  # Single output
     #pos_weight = torch.tensor([894/106])  # Fix imbalance
     #loss_fn = torch.nn.BCEWithLogitsLoss(pos_weight=pos_weight.to(device))
-    loss_fn = torch.nn.BCEWithLogitsLoss()
+    #loss_fn = torch.nn.BCEWithLogitsLoss()
+    loss_fn = torch.nn.MSELoss()
 else:  # regression
     out_channels = global_cpd_len
     loss_fn = torch.nn.MSELoss()
@@ -121,9 +122,8 @@ def extract_targets_and_predictions(data, out, batch_idx=0):
         # Reshape to [batch_size, 2] 
         targets = data.y.view(batch_size, 2)
         targets = targets / targets.sum(dim=1, keepdim=True)
-        temperature = 2.0
-        targets = F.softmax(torch.log(targets + 1e-8) / temperature, dim=1)
-        
+        #temperature = 2.0
+        #targets = F.softmax(torch.log(targets + 1e-8) / temperature, dim=1)
         predictions = out
         
     elif mode == "root_probability":
@@ -172,8 +172,73 @@ def train():
         
     return total_loss / len(train_loader)
 
+#old: evaluate function
+# def evaluate(loader):
+#     """Evaluation with mode-specific metrics"""
+#     model.eval()
+#     total_loss = 0
+#     all_preds = []
+#     all_true = []
+    
+#     with torch.no_grad():
+#         for data in loader:
+#             data = data.to(device)
+#             out = model(data)
+            
+#             # Extract targets and predictions properly
+#             targets, predictions = extract_targets_and_predictions(data, out)
+            
+#             # Compute loss
+#             loss = loss_fn(predictions, targets)
+#             total_loss += loss.item()
+            
+#             # Store predictions and targets for metrics calculation
+#             if mode == "distribution":
+#                 all_preds.append(F.softmax(predictions, dim=1))
+#                 all_true.append(targets)
+#             elif mode == "root_probability":
+#                 all_preds.append(torch.sigmoid(predictions))
+#                 all_true.append(targets)
+           
+    
+#     # Calculate mode-specific metrics
+#     metrics = {"loss": total_loss / len(loader)}
+    
+#     if mode == "distribution" and all_preds:
+#         preds = torch.cat(all_preds)
+#         trues = torch.cat(all_true)
+#         # Calculate calibration error using the positive class probability
+#         pred_labels = preds.argmax(dim=1)
+#         true_labels = trues.argmax(dim=1)
+#         metrics["accuracy"] = (pred_labels == true_labels).float().mean().item()
+#         # metrics["calibration_error"] = (preds[:,1] - trues[:,1]).abs().mean().item()
+        
+#     elif mode == "root_probability" and all_preds:
+#         preds = torch.cat(all_preds)
+#         trues = torch.cat(all_true)
+        
+#         # Calculate accuracy
+#         # binary_preds = (preds > 0.5).float()
+#         # metrics["accuracy"] = (binary_preds == trues).float().mean().item()
+#         binary_preds = (preds > 0.5).float()
+#         binary_trues = (trues > 0.5).float()
+#         metrics["accuracy"] = (binary_preds == binary_trues).float().mean().item()
+        
+#         # Calculate AUC
+#     try:
+#         # Convert continuous targets to binary if needed
+#         trues_np = trues.cpu().numpy()
+#         if not np.all(np.isin(trues_np, [0, 1])):
+#             trues_np = (trues_np > 0.5).astype(int)
+#         metrics["auc"] = roc_auc_score(trues_np, preds.cpu().numpy())
+#     except Exception as e:
+#         print(f"Warning: Could not calculate AUC: {e}")
+#         metrics["auc"] = 0.5  # Fallback if AUC calculation fails
+    
+#     return metrics
+# NEw: Enhanced evaluation metrics
+
 def evaluate(loader):
-    """Evaluation with mode-specific metrics"""
     model.eval()
     total_loss = 0
     all_preds = []
@@ -183,58 +248,36 @@ def evaluate(loader):
         for data in loader:
             data = data.to(device)
             out = model(data)
-            
-            # Extract targets and predictions properly
             targets, predictions = extract_targets_and_predictions(data, out)
             
-            # Compute loss
             loss = loss_fn(predictions, targets)
             total_loss += loss.item()
             
-            # Store predictions and targets for metrics calculation
-            if mode == "distribution":
-                all_preds.append(F.softmax(predictions, dim=1))
-                all_true.append(targets)
-            elif mode == "root_probability":
-                all_preds.append(torch.sigmoid(predictions))
-                all_true.append(targets)
-            # For regression, we don't need to store predictions for additional metrics
+            all_preds.append(predictions.cpu())
+            all_true.append(targets.cpu())
     
-    # Calculate mode-specific metrics
-    metrics = {"loss": total_loss / len(loader)}
+    preds = torch.cat(all_preds).numpy()
+    trues = torch.cat(all_true).numpy()
+    metrics = {
+        "loss": total_loss / len(loader),
+        "mae": np.mean(np.abs(preds - trues)),
+        "rmse": np.sqrt(np.mean((preds - trues)**2))
+    }
     
-    if mode == "distribution" and all_preds:
-        preds = torch.cat(all_preds)
-        trues = torch.cat(all_true)
-        # Calculate calibration error using the positive class probability
-        pred_labels = preds.argmax(dim=1)
-        true_labels = trues.argmax(dim=1)
-        metrics["accuracy"] = (pred_labels == true_labels).float().mean().item()
-        # metrics["calibration_error"] = (preds[:,1] - trues[:,1]).abs().mean().item()
+    if mode == "distribution":
+        softmax_preds = F.softmax(torch.tensor(preds), dim=1).numpy()
+        pred_labels = np.argmax(softmax_preds, axis=1)
+        true_labels = np.argmax(trues, axis=1)
+        metrics["accuracy"] = np.mean(pred_labels == true_labels)
         
-    elif mode == "root_probability" and all_preds:
-        preds = torch.cat(all_preds)
-        trues = torch.cat(all_true)
-        
-        # Calculate accuracy
-        # binary_preds = (preds > 0.5).float()
-        # metrics["accuracy"] = (binary_preds == trues).float().mean().item()
-        binary_preds = (preds > 0.5).float()
-        binary_trues = (trues > 0.5).float()
-        metrics["accuracy"] = (binary_preds == binary_trues).float().mean().item()
-        
-        # Calculate AUC
-    try:
-        # Convert continuous targets to binary if needed
-        trues_np = trues.cpu().numpy()
-        if not np.all(np.isin(trues_np, [0, 1])):
-            trues_np = (trues_np > 0.5).astype(int)
-        metrics["auc"] = roc_auc_score(trues_np, preds.cpu().numpy())
-    except Exception as e:
-        print(f"Warning: Could not calculate AUC: {e}")
-        metrics["auc"] = 0.5  # Fallback if AUC calculation fails
+    elif mode == "root_probability":
+        binary_preds = (preds > 0.5).astype(int)
+        binary_trues = (trues > 0.5).astype(int)
+        metrics["accuracy"] = np.mean(binary_preds == binary_trues)
     
     return metrics
+
+
 
 def plot_results(loader):
     """Mode-specific plotting of results"""
@@ -285,37 +328,63 @@ def plot_distribution_results(loader):
     plt.grid(True)
     plt.show()
 
+#Old: plot_root_probability_results
+# def plot_root_probability_results(loader):
+#     """Plot confusion matrix for root_probability mode"""
+#     preds, trues = [], []
+#     with torch.no_grad():
+#         for data in loader:
+#             data = data.to(device)
+#             out = model(data)
+#             targets, predictions = extract_targets_and_predictions(data, out)
+            
+#             binary_preds = (torch.sigmoid(predictions) > 0.5).float()
+#             preds.append(binary_preds)
+#             trues.append(targets)
+    
+#     preds = torch.cat(preds).cpu().numpy().astype(int)  # Convert to integers
+#     trues = torch.cat(trues).cpu().numpy()
+    
+#     # Convert continuous targets to binary if needed
+#     if not np.all(np.isin(trues, [0, 1])):
+#         binary_trues = (trues > 0.5).astype(int)
+#     else:
+#         binary_trues = trues.astype(int)
+    
+#     cm = confusion_matrix(binary_trues, preds)
+#     plt.figure(figsize=(6,6))
+#     sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', 
+#                 xticklabels=['Class 0', 'Class 1'], 
+#                 yticklabels=['Class 0', 'Class 1'])
+#     plt.xlabel("Predicted")
+#     plt.ylabel("True")
+#     plt.title("Confusion Matrix")
+#     plt.show()
+
+# NEW: plot_root_probability_results
 def plot_root_probability_results(loader):
-    """Plot confusion matrix for root_probability mode"""
     preds, trues = [], []
     with torch.no_grad():
         for data in loader:
             data = data.to(device)
             out = model(data)
             targets, predictions = extract_targets_and_predictions(data, out)
-            
-            binary_preds = (torch.sigmoid(predictions) > 0.5).float()
-            preds.append(binary_preds)
-            trues.append(targets)
+            preds.append(predictions.cpu())
+            trues.append(targets.cpu())
     
-    preds = torch.cat(preds).cpu().numpy().astype(int)  # Convert to integers
-    trues = torch.cat(trues).cpu().numpy()
+    preds = torch.cat(preds).numpy()
+    trues = torch.cat(trues).numpy()
     
-    # Convert continuous targets to binary if needed
-    if not np.all(np.isin(trues, [0, 1])):
-        binary_trues = (trues > 0.5).astype(int)
-    else:
-        binary_trues = trues.astype(int)
-    
-    cm = confusion_matrix(binary_trues, preds)
-    plt.figure(figsize=(6,6))
-    sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', 
-                xticklabels=['Class 0', 'Class 1'], 
-                yticklabels=['Class 0', 'Class 1'])
-    plt.xlabel("Predicted")
-    plt.ylabel("True")
-    plt.title("Confusion Matrix")
+    plt.figure(figsize=(6, 6))
+    plt.scatter(trues, preds, alpha=0.5)
+    plt.plot([0, 1], [0, 1], 'r--')
+    plt.xlabel('True Probability')
+    plt.ylabel('Predicted Probability')
+    plt.title('True vs Predicted Values')
+    plt.grid(True)
+    plt.tight_layout()
     plt.show()
+
 
 def plot_regression_results(loader):
     """Scatter plot for regression mode"""
@@ -364,7 +433,8 @@ for epoch in range(1, params['epochs'] + 1):
         if mode == "distribution":
             print(f" | Calib Error: {metrics.get('calibration_error', 0):.4f}")
         elif mode == "root_probability":
-            print(f" | Acc: {metrics.get('accuracy', 0):.4f} | AUC: {metrics.get('auc', 0):.4f}")
+            #print(f" | Acc: {metrics.get('accuracy', 0):.4f} | AUC: {metrics.get('auc', 0):.4f}")
+            print()
         else:
             print()
         
@@ -382,11 +452,15 @@ for epoch in range(1, params['epochs'] + 1):
 print("\nFinal Test Results:")
 test_metrics = evaluate(test_loader)
 print(f"Loss: {test_metrics['loss']:.4f}")
+print(f"MAE: {test_metrics['mae']:.4f}")
+print(f"RMSE: {test_metrics['rmse']:.4f}")
 if mode == "distribution":
-    print(f"Calibration Error: {test_metrics.get('calibration_error', 0):.4f}")
-elif mode == "root_probability":
+    # print(f"Calibration Error: {test_metrics.get('calibration_error', 0):.4f}")
     print(f"Accuracy: {test_metrics.get('accuracy', 0):.4f}")
-    print(f"AUC: {test_metrics.get('auc', 0):.4f}")
+elif mode == "root_probability":
+    #print(f"Accuracy: {test_metrics.get('accuracy', 0):.4f}")
+    #print(f"AUC: {test_metrics.get('auc', 0):.4f}")
+    pass
 
 # Plotting
 plt.figure(figsize=(12, 4))
@@ -401,12 +475,14 @@ plt.title("Training Curve")
 plt.subplot(122)
 # Plot mode-specific additional metrics
 if mode == "root_probability":
-    plt.plot([m.get("accuracy", 0) for m in val_metrics], label="Accuracy")
-    plt.plot([m.get("auc", 0.5) for m in val_metrics], label="AUC")
+    # Remove or comment out these lines:
+    # plt.plot([m.get("accuracy", 0) for m in val_metrics], label="Accuracy")
+    # plt.plot([m.get("auc", 0.5) for m in val_metrics], label="AUC")
     plt.xlabel("Epoch")
     plt.ylabel("Metric")
     plt.legend()
     plt.title("Root_probability Metrics")
+    
 elif mode == "distribution":
     plt.plot([m.get("calibration_error", 0) for m in val_metrics], label="Calibration Error")
     plt.xlabel("Epoch")
@@ -425,6 +501,7 @@ os.makedirs("models", exist_ok=True)
 model_path = f"models/gcn_{mode}_{mask_strategy}.pt"
 torch.save(model.state_dict(), model_path)
 print(f"Model saved to {model_path}")
+
 # Debug: Check class imbalance
 print("\n=== CLASS IMBALANCE DEBUG ===")
 ys = torch.cat([data.y for data in train_set])
