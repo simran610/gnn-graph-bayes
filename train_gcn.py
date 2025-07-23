@@ -1,4 +1,4 @@
-# Train_gcn.py
+# Train_graphsage.py
 
 import torch
 import torch.nn.functional as F
@@ -7,10 +7,10 @@ import matplotlib.pyplot as plt
 import os
 import yaml
 import numpy as np
-from sklearn.metrics import confusion_matrix, roc_auc_score
-import seaborn as sns
+#from sklearn.metrics import confusion_matrix, roc_auc_score
 from early_stopping_pytorch import EarlyStopping
 from gcn_model import GCN
+import wandb
 
 # Load configuration
 with open("config.yaml", "r") as f:
@@ -31,6 +31,22 @@ params = {
     'patience': int(config.get("patience", 5)),
     'epochs': int(config.get("epochs", 100))
 }
+
+# Initialize wandb
+# wandb.init(
+#     project="graphsage_hyperparam_tuning",
+#     config={
+#         "lr": 0.001,
+#         "hidden_channels": 32,
+#         "dropout": 0.5,
+#         "batch_size": 32,
+#         "weight_decay": 5e-4,
+#         "patience": 5,
+#         "epochs": 100
+#     }
+# )
+# params = wandb.config
+
 
 # Load datasets
 try:
@@ -59,6 +75,12 @@ print(f"First 10 y shapes: {y_shapes}")
 train_loader = DataLoader(train_set, batch_size=params['batch_size'], shuffle=True)
 val_loader = DataLoader(val_set, batch_size=params['batch_size'])
 test_loader = DataLoader(test_set, batch_size=params['batch_size'])
+
+
+# --- OVERFIT TEST BLOCK: only use 10 samples ---
+# train_set = train_set[:10]
+# val_set = val_set[:10]
+
 
 # Debug: Check class imbalance
 print("\n=== CLASS IMBALANCE DEBUG ===")
@@ -130,8 +152,12 @@ def extract_targets_and_predictions(data, out, batch_idx=0):
         # Extract probability of class 1 (every second element starting from 1)
         #targets = data.y.view(batch_size, 2)[:, 1] 
         #predictions = out.squeeze(-1)
-        targets = data.y.view(-1)
-        predictions = out.view(-1)
+        #targets = data.y.view(-1)
+        #predictions = out.view(-1)
+        targets = data.y.squeeze()
+        predictions = out.squeeze()
+        assert targets.shape == predictions.shape, f"Target shape: {targets.shape}, Pred shape: {predictions.shape}"
+
        
     else:  # regression
         targets = data.y
@@ -149,6 +175,7 @@ def train():
         
         # Debug first batch
         if batch_idx == 0:
+            print("Input features sample:", data.x[:5])
             debug_batch(data, batch_idx)
         
         optimizer.zero_grad()
@@ -156,87 +183,30 @@ def train():
         
         # Debug model output
         if batch_idx == 0:
+            print("Model output sample:", out[:5])
             print(f"Model output shape: {out.shape}")
             print(f"Model output: {out}")
-            print(f"Model output (sigmoid probabilities): {torch.sigmoid(out)}")
+            #print(f"Model output (sigmoid probabilities): {torch.sigmoid(out)}")
+            print("Target y:", data.y[:10]) ###########
         
         # Extract targets and predictions properly
         targets, predictions = extract_targets_and_predictions(data, out, batch_idx)
         
         # Compute loss
         loss = loss_fn(predictions, targets)
-        
         loss.backward()
+
+        # Gradient check: print norm of gradients for conv layers
+        if batch_idx == 0:
+            for name, param in model.named_parameters():
+                if param.grad is not None:
+                    print(f"Grad norm for {name}: {param.grad.norm().item():.6f}")
+
+
         optimizer.step()
         total_loss += loss.item()
         
     return total_loss / len(train_loader)
-
-#old: evaluate function
-# def evaluate(loader):
-#     """Evaluation with mode-specific metrics"""
-#     model.eval()
-#     total_loss = 0
-#     all_preds = []
-#     all_true = []
-    
-#     with torch.no_grad():
-#         for data in loader:
-#             data = data.to(device)
-#             out = model(data)
-            
-#             # Extract targets and predictions properly
-#             targets, predictions = extract_targets_and_predictions(data, out)
-            
-#             # Compute loss
-#             loss = loss_fn(predictions, targets)
-#             total_loss += loss.item()
-            
-#             # Store predictions and targets for metrics calculation
-#             if mode == "distribution":
-#                 all_preds.append(F.softmax(predictions, dim=1))
-#                 all_true.append(targets)
-#             elif mode == "root_probability":
-#                 all_preds.append(torch.sigmoid(predictions))
-#                 all_true.append(targets)
-           
-    
-#     # Calculate mode-specific metrics
-#     metrics = {"loss": total_loss / len(loader)}
-    
-#     if mode == "distribution" and all_preds:
-#         preds = torch.cat(all_preds)
-#         trues = torch.cat(all_true)
-#         # Calculate calibration error using the positive class probability
-#         pred_labels = preds.argmax(dim=1)
-#         true_labels = trues.argmax(dim=1)
-#         metrics["accuracy"] = (pred_labels == true_labels).float().mean().item()
-#         # metrics["calibration_error"] = (preds[:,1] - trues[:,1]).abs().mean().item()
-        
-#     elif mode == "root_probability" and all_preds:
-#         preds = torch.cat(all_preds)
-#         trues = torch.cat(all_true)
-        
-#         # Calculate accuracy
-#         # binary_preds = (preds > 0.5).float()
-#         # metrics["accuracy"] = (binary_preds == trues).float().mean().item()
-#         binary_preds = (preds > 0.5).float()
-#         binary_trues = (trues > 0.5).float()
-#         metrics["accuracy"] = (binary_preds == binary_trues).float().mean().item()
-        
-#         # Calculate AUC
-#     try:
-#         # Convert continuous targets to binary if needed
-#         trues_np = trues.cpu().numpy()
-#         if not np.all(np.isin(trues_np, [0, 1])):
-#             trues_np = (trues_np > 0.5).astype(int)
-#         metrics["auc"] = roc_auc_score(trues_np, preds.cpu().numpy())
-#     except Exception as e:
-#         print(f"Warning: Could not calculate AUC: {e}")
-#         metrics["auc"] = 0.5  # Fallback if AUC calculation fails
-    
-#     return metrics
-# NEw: Enhanced evaluation metrics
 
 def evaluate(loader):
     model.eval()
@@ -253,15 +223,29 @@ def evaluate(loader):
             loss = loss_fn(predictions, targets)
             total_loss += loss.item()
             
-            all_preds.append(predictions.cpu())
-            all_true.append(targets.cpu())
+            # Handle scalar prediction case (0D tensor) by unsqueezing
+            if predictions.dim() == 0:
+                all_preds.append(predictions.cpu().unsqueeze(0))
+            else:
+                all_preds.append(predictions.cpu())
+            
+            if targets.dim() == 0:
+                all_true.append(targets.cpu().unsqueeze(0))
+            else:
+                all_true.append(targets.cpu())
+
+            # Old version (caused crash for 0D tensors)
+            # all_preds.append(predictions.cpu())
+            # all_true.append(targets.cpu())
     
-    preds = torch.cat(all_preds).numpy()
-    trues = torch.cat(all_true).numpy()
+    # Robust stack (can handle 1D or 2D safely)
+    preds = torch.cat(all_preds, dim=0).numpy()
+    trues = torch.cat(all_true, dim=0).numpy()
+
     metrics = {
         "loss": total_loss / len(loader),
         "mae": np.mean(np.abs(preds - trues)),
-        "rmse": np.sqrt(np.mean((preds - trues)**2))
+        "rmse": np.sqrt(np.mean((preds - trues) ** 2))
     }
     
     if mode == "distribution":
@@ -273,11 +257,9 @@ def evaluate(loader):
     elif mode == "root_probability":
         binary_preds = (preds > 0.5).astype(int)
         binary_trues = (trues > 0.5).astype(int)
-        metrics["binary_accuracy"] = np.mean(binary_preds == binary_trues)
+        metrics["accuracy"] = np.mean(binary_preds == binary_trues)
     
     return metrics
-
-
 
 def plot_results(loader):
     """Mode-specific plotting of results"""
@@ -328,53 +310,30 @@ def plot_distribution_results(loader):
     plt.grid(True)
     plt.show()
 
-#Old: plot_root_probability_results
-# def plot_root_probability_results(loader):
-#     """Plot confusion matrix for root_probability mode"""
-#     preds, trues = [], []
-#     with torch.no_grad():
-#         for data in loader:
-#             data = data.to(device)
-#             out = model(data)
-#             targets, predictions = extract_targets_and_predictions(data, out)
-            
-#             binary_preds = (torch.sigmoid(predictions) > 0.5).float()
-#             preds.append(binary_preds)
-#             trues.append(targets)
-    
-#     preds = torch.cat(preds).cpu().numpy().astype(int)  # Convert to integers
-#     trues = torch.cat(trues).cpu().numpy()
-    
-#     # Convert continuous targets to binary if needed
-#     if not np.all(np.isin(trues, [0, 1])):
-#         binary_trues = (trues > 0.5).astype(int)
-#     else:
-#         binary_trues = trues.astype(int)
-    
-#     cm = confusion_matrix(binary_trues, preds)
-#     plt.figure(figsize=(6,6))
-#     sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', 
-#                 xticklabels=['Class 0', 'Class 1'], 
-#                 yticklabels=['Class 0', 'Class 1'])
-#     plt.xlabel("Predicted")
-#     plt.ylabel("True")
-#     plt.title("Confusion Matrix")
-#     plt.show()
-
-# NEW: plot_root_probability_results
 def plot_root_probability_results(loader):
-    preds, trues = [], []
+    model.eval()
+    preds = []
+    trues = []
+
     with torch.no_grad():
         for data in loader:
             data = data.to(device)
             out = model(data)
-            targets, predictions = extract_targets_and_predictions(data, out)
-            preds.append(predictions.cpu())
-            trues.append(targets.cpu())
-    
+            target, prediction = extract_targets_and_predictions(data, out)
+
+            if prediction.dim() == 0:
+                preds.append(prediction.cpu().unsqueeze(0))
+            else:
+                preds.append(prediction.cpu())
+
+            if target.dim() == 0:
+                trues.append(target.cpu().unsqueeze(0))
+            else:
+                trues.append(target.cpu())
+
     preds = torch.cat(preds).numpy()
     trues = torch.cat(trues).numpy()
-    
+
     plt.figure(figsize=(6, 6))
     plt.scatter(trues, preds, alpha=0.5)
     plt.plot([0, 1], [0, 1], 'r--')
@@ -429,14 +388,27 @@ for epoch in range(1, params['epochs'] + 1):
         # Print epoch statistics
         print(f"Epoch {epoch:03d} | Train Loss: {train_loss:.4f} | "
               f"Val Loss: {metrics['loss']:.4f}", end="")
-        
+
+
         if mode == "distribution":
             print(f" | Calib Error: {metrics.get('calibration_error', 0):.4f}")
         elif mode == "root_probability":
-            print(f" | Acc: {metrics.get('accuracy', 0):.4f} | AUC: {metrics.get('auc', 0):.4f}")
+            #print(f" | Acc: {metrics.get('accuracy', 0):.4f} | AUC: {metrics.get('auc', 0):.4f}")
+            print()
         else:
             print()
         
+                
+        # WandB logging
+        # wandb.log({
+        #     "epoch": epoch,
+        #     "train_loss": train_loss,
+        #     "val_loss": metrics["loss"],
+        #     "val_mae": metrics["mae"],
+        #     "val_rmse": metrics["rmse"],
+        #     "val_accuracy": metrics.get("accuracy", 0)  # only for classification modes
+        # })
+
         # Early stopping check
         early_stopping(metrics["loss"], model)
         if early_stopping.early_stop:
@@ -457,8 +429,9 @@ if mode == "distribution":
     # print(f"Calibration Error: {test_metrics.get('calibration_error', 0):.4f}")
     print(f"Accuracy: {test_metrics.get('accuracy', 0):.4f}")
 elif mode == "root_probability":
-    print(f"Accuracy: {test_metrics.get('accuracy', 0):.4f}")
-    print(f"AUC: {test_metrics.get('auc', 0):.4f}")
+    #print(f"Accuracy: {test_metrics.get('accuracy', 0):.4f}")
+    #print(f"AUC: {test_metrics.get('auc', 0):.4f}")
+    pass
 
 # Plotting
 plt.figure(figsize=(12, 4))
@@ -473,12 +446,16 @@ plt.title("Training Curve")
 plt.subplot(122)
 # Plot mode-specific additional metrics
 if mode == "root_probability":
-    plt.plot([m.get("accuracy", 0) for m in val_metrics], label="Accuracy")
-    plt.plot([m.get("auc", 0.5) for m in val_metrics], label="AUC")
+    # Remove or comment out these lines:
+    # plt.plot([m.get("accuracy", 0) for m in val_metrics], label="Accuracy")
+    # plt.plot([m.get("auc", 0.5) for m in val_metrics], label="AUC")
+    plt.plot([m["mae"] for m in val_metrics], label="MAE")
+    plt.plot([m["rmse"] for m in val_metrics], label="RMSE")
     plt.xlabel("Epoch")
     plt.ylabel("Metric")
     plt.legend()
     plt.title("Root_probability Metrics")
+
 elif mode == "distribution":
     plt.plot([m.get("calibration_error", 0) for m in val_metrics], label="Calibration Error")
     plt.xlabel("Epoch")
@@ -494,7 +471,8 @@ plot_results(test_loader)
 
 # Save model with mode and strategy in filename
 os.makedirs("models", exist_ok=True)
-model_path = f"models/gcn_{mode}_{mask_strategy}.pt"
+evidence_type = "intermediate" if config.get("use_intermediate") else "leaf"
+model_path = f"models/gcn_{mode}_{mask_strategy}_{evidence_type}.pt"
 torch.save(model.state_dict(), model_path)
 print(f"Model saved to {model_path}")
 
@@ -505,3 +483,7 @@ print("Class 0:", (ys < 0.5).sum().item())
 print("Class 1:", (ys >= 0.5).sum().item())
 ys = torch.cat([data.y for data in train_set])
 print(ys.shape)  
+
+if __name__ == "__main__":
+    # wandb.finish()
+    print("Training complete. Model saved.")

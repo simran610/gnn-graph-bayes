@@ -1,13 +1,16 @@
+#bn_nx_to_pyg_dataset.py
 import os
 import json
 import torch
 import networkx as nx
 from torch_geometric.data import Data
 
-def from_networkx(G: nx.DiGraph, use_edge_attr=False):
+def from_networkx(G: nx.DiGraph, use_edge_attr=True):
     # Node feature matrix
-    x = torch.stack([G.nodes[n]["x"] for n in G.nodes()])
-    
+    #x = torch.stack([G.nodes[n]["x"] for n in G.nodes()])
+
+    sorted_nodes = sorted(G.nodes(), key=int)
+    x = torch.stack([G.nodes[n]["x"] for n in sorted_nodes])
     # Edge list
     edge_index = torch.tensor(list(G.edges())).t().contiguous()
 
@@ -24,18 +27,19 @@ def from_networkx(G: nx.DiGraph, use_edge_attr=False):
     
     return Data(x=x, edge_index=edge_index)
 
-def load_bn_graphs(folder_path, global_cpd_len, use_edge_attr=False):
+def load_bn_graphs(folder_path, global_cpd_len, use_edge_attr=True):
     data_list = []
     padding_count = 0
     file_count = 0
-
-    for filename in os.listdir(folder_path):
+    filenames = sorted(os.listdir(folder_path), key=lambda x: int(x.split('_')[-1].split('.')[0]) if 'detailed_graph_' in x else 0)
+    for filename in filenames:
+    #for filename in os.listdir(folder_path):
         if filename.endswith(".json") and "graph" in filename:
             file_count += 1
             with open(os.path.join(folder_path, filename)) as f:
                 graph_json = json.load(f)
             nx_graph = nx.DiGraph()
-
+            
             graph_metadata = graph_json.get("metadata", {})
             nodes = graph_json["nodes"]
             edges = graph_json["edges"]
@@ -77,7 +81,8 @@ def load_bn_graphs(folder_path, global_cpd_len, use_edge_attr=False):
                 # Add node with features
                 nx_graph.add_node(
                     node_id,
-                    x=torch.tensor(node_features, dtype=torch.float),
+                    #x=torch.tensor(node_features, dtype=torch.float),
+                    x=torch.tensor(node_features.copy(), dtype=torch.float),
                     evidence=cpd_info.get("evidence", []),
                     evidence_card=cpd_info.get("evidence_card", [])
                 )
@@ -106,10 +111,20 @@ def load_bn_graphs(folder_path, global_cpd_len, use_edge_attr=False):
     print(f"\n Processed {file_count} graphs. {padding_count} nodes required CPD length correction.\n")
     return data_list
 if __name__ == "__main__":
-    with open("../global_datasets/global_cpd_len.txt", "r") as f:
-        global_cpd_len = int(f.read().strip())
 
-    folder = "../generated_graphs" 
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    cpd_len_path = os.path.join(script_dir, "..", "global_datasets", "global_cpd_len.txt")
+
+    with open(cpd_len_path, "r") as f:
+        global_cpd_len = int(f.read().strip())   
+    #with open("../global_datasets/global_cpd_len.txt", "r") as f:
+     #   global_cpd_len = int(f.read().strip())
+
+    #folder = "../generated_graphs" 
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    folder = os.path.join(script_dir, "..", "generated_graphs")
+    folder = os.path.abspath(folder)  # Ensure absolute path
+
     use_edge_attr = True
 
     dataset = load_bn_graphs(folder, global_cpd_len, use_edge_attr)

@@ -10,6 +10,7 @@ class GCN(nn.Module):
         self.use_sigmoid = use_sigmoid
         self.conv1 = GCNConv(in_channels, hidden_channels)
         self.conv2 = GCNConv(hidden_channels, hidden_channels)
+        self.conv3 = GCNConv(hidden_channels, hidden_channels)
         self.fc_out = nn.Linear(hidden_channels, out_channels)
         self.dropout = dropout
     
@@ -19,11 +20,15 @@ class GCN(nn.Module):
       
         x = F.relu(self.conv1(x, edge_index))
         x = F.dropout(x, p=self.dropout, training=self.training)
+
         x = F.relu(self.conv2(x, edge_index))
+        x = F.dropout(x, p=self.dropout, training=self.training)
+
+        x = F.relu(self.conv3(x, edge_index))
         x = self.fc_out(x)
         
-        if self.use_sigmoid:
-            x = torch.sigmoid(x)
+        # if self.use_sigmoid:
+        #     x = torch.sigmoid(x)
         
         # Extract root node output
         node_types = data.x[:, 0]  
