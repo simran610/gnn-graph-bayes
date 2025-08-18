@@ -36,6 +36,7 @@ from tqdm import tqdm
 from pgmpy.models import DiscreteBayesianNetwork
 from pgmpy.factors.discrete import TabularCPD
 from pgmpy.inference import VariableElimination
+from pgmpy.models import BayesianNetwork
 
 
 class BayesianNetworkBuilder:
@@ -51,6 +52,7 @@ class BayesianNetworkBuilder:
             json_data = json.load(f)
 
         model = DiscreteBayesianNetwork()
+        #model = BayesianNetwork()
 
         # Add edges
         for edge in json_data["edges"]:
@@ -524,8 +526,8 @@ class DataPipeline:
         # Split dataset
         random.shuffle(processed)
         n = len(processed)
-        train_ratio = self.config.get("split_ratios", {}).get("train", 0.8)
-        val_ratio = self.config.get("split_ratios", {}).get("val", 0.1)
+        train_ratio = self.config.get("split_ratios", {}).get("train", 0.7)
+        val_ratio = self.config.get("split_ratios", {}).get("val", 0.2)
         
         train_end = int(train_ratio * n)
         val_end = int((train_ratio + val_ratio) * n)

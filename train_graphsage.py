@@ -11,7 +11,9 @@ import numpy as np
 from early_stopping_pytorch import EarlyStopping
 from graphsage_model import GraphSAGE
 import wandb
+from outlier_analysis import analyze_outliers, run_outlier_analysis_for_gnn
 
+   
 # Load configuration
 with open("config.yaml", "r") as f:
     config = yaml.safe_load(f)
@@ -29,7 +31,8 @@ params = {
     'batch_size': int(config.get("batch_size", 32)),
     'weight_decay': float(config.get("weight_decay", 5e-4)),
     'patience': int(config.get("patience", 5)),
-    'epochs': int(config.get("epochs", 100))
+    'epochs': int(config.get("epochs", 100)),
+    'enable_outlier_analysis': config.get("enable_outlier_analysis", True)
 }
 
 # Initialize wandb
@@ -88,11 +91,38 @@ ys = torch.cat([data.y for data in train_set])
 print("Class 0:", (ys < 0.5).sum().item())
 print("Class 1:", (ys >= 0.5).sum().item())
 
+
 # Load global CPD length
 with open(config["global_cpd_len_path"], "r") as f:
     global_cpd_len = int(f.read())
 
 in_channels = train_set[0].x.shape[1]
+
+def quantile_loss(preds, targets, tau=0.8):
+    """Quantile loss (also called pinball loss). tau ∈ (0, 1)"""
+    diff = targets - preds
+    return torch.mean(torch.max(tau * diff, (tau - 1) * diff))
+
+def smart_quantile_loss(preds, targets, tau=0.8):
+    """Only apply quantile loss where we're actually underestimating"""
+    diff = targets - preds
+    underestimate_mask = diff > 0  # Only where we predict too low
+    
+    # Normal MSE for good predictions, quantile for underestimates
+    normal_loss = F.mse_loss(preds[~underestimate_mask], targets[~underestimate_mask], reduction='none')
+    quantile_loss = torch.max(tau * diff[underestimate_mask], (tau - 1) * diff[underestimate_mask])
+    
+    return torch.cat([normal_loss, quantile_loss]).mean()
+
+def simple_asymmetric_loss(preds, targets, penalty=2.0):
+    """Simple asymmetric loss that penalizes underprediction more"""
+    diff = targets - preds  # positive = underprediction, negative = overprediction
+    
+    # Apply different penalties
+    loss = torch.where(diff > 0, 
+                      penalty * diff**2,  # Heavy penalty for underprediction
+                      diff**2)            # Normal penalty for overprediction
+    return loss.mean()
 
 # Determine model output size and loss fun ction
 if mode == "distribution":
@@ -104,7 +134,14 @@ elif mode == "root_probability":
     #pos_weight = torch.tensor([894/106])  # Fix imbalance
     #loss_fn = torch.nn.BCEWithLogitsLoss(pos_weight=pos_weight.to(device))
     #loss_fn = torch.nn.BCEWithLogitsLoss()
-    loss_fn = torch.nn.MSELoss()
+    #loss_fn = torch.nn.MSELoss()
+    #loss_fn = torch.nn.SmoothL1Loss()
+    loss_fn = lambda pred, true: simple_asymmetric_loss(pred, true, penalty=3.0)
+    #tau = float(config.get("quantile_tau", 0.75))  
+    #loss_fn = lambda pred, true: smart_quantile_loss(pred, true, tau=tau)
+    #loss_fn = lambda pred, true: quantile_loss(pred, true, tau=tau)
+    
+    
 else:  # regression
     out_channels = global_cpd_len
     loss_fn = torch.nn.MSELoss()
@@ -208,11 +245,12 @@ def train():
         
     return total_loss / len(train_loader)
 
-def evaluate(loader):
+def evaluate(model, loader, criterion):
     model.eval()
     total_loss = 0
     all_preds = []
     all_true = []
+    
     
     with torch.no_grad():
         for data in loader:
@@ -241,12 +279,15 @@ def evaluate(loader):
     # Robust stack (can handle 1D or 2D safely)
     preds = torch.cat(all_preds, dim=0).numpy()
     trues = torch.cat(all_true, dim=0).numpy()
-
     metrics = {
         "loss": total_loss / len(loader),
-        "mae": np.mean(np.abs(preds - trues)),
-        "rmse": np.sqrt(np.mean((preds - trues) ** 2))
     }
+    
+    # metrics = {
+    #     "loss": total_loss / len(loader),
+    #     "mae": np.mean(np.abs(preds - trues)),
+    #     "rmse": np.sqrt(np.mean((preds - trues) ** 2))
+    # }
     
     if mode == "distribution":
         softmax_preds = F.softmax(torch.tensor(preds), dim=1).numpy()
@@ -255,11 +296,37 @@ def evaluate(loader):
         metrics["accuracy"] = np.mean(pred_labels == true_labels)
         
     elif mode == "root_probability":
-        binary_preds = (preds > 0.5).astype(int)
-        binary_trues = (trues > 0.5).astype(int)
-        metrics["accuracy"] = np.mean(binary_preds == binary_trues)
+        try:
+            # Basic accuracy
+            binary_preds = (preds > 0.5).astype(int)
+            binary_trues = (trues > 0.5).astype(int)
+            metrics["accuracy"] = np.mean(binary_preds == binary_trues)
+            
+            # Underprediction analysis
+            diff = trues - preds
+            underpredict_mask = diff > 0
+            metrics["underpredict_rate"] = np.mean(underpredict_mask)
+            
+            if np.any(underpredict_mask):
+                metrics["avg_underpredict_error"] = np.mean(diff[underpredict_mask])
+            else:
+                metrics["avg_underpredict_error"] = 0.0
+                
+            # Only add MAE/RMSE if you really need them
+            metrics["mae"] = np.mean(np.abs(preds - trues))
+            metrics["rmse"] = np.sqrt(np.mean((preds - trues) ** 2))
+            
+        except Exception as e:
+            print(f"Error calculating metrics: {e}")
+            # Fallback to just basic metrics
+            pass
+    
+    else:  # regression
+        metrics["mae"] = np.mean(np.abs(preds - trues))
+        metrics["rmse"] = np.sqrt(np.mean((preds - trues) ** 2))
     
     return metrics
+
 
 def plot_results(loader):
     """Mode-specific plotting of results"""
@@ -372,7 +439,7 @@ def plot_regression_results(loader):
 # Training loop with metrics tracking
 train_losses = []
 val_metrics = []
-
+criterion = torch.nn.MSELoss()
 print("Starting training...")
 
 for epoch in range(1, params['epochs'] + 1):
@@ -382,22 +449,32 @@ for epoch in range(1, params['epochs'] + 1):
         train_losses.append(train_loss)
         
         # Validation phase
-        metrics = evaluate(val_loader)
+       # metrics = evaluate(val_loader)
+        metrics = evaluate(model, val_loader, criterion)
         val_metrics.append(metrics)
         
         # Print epoch statistics
         print(f"Epoch {epoch:03d} | Train Loss: {train_loss:.4f} | "
-              f"Val Loss: {metrics['loss']:.4f}", end="")
+            #   f"Val Loss: {metrics['loss']:.4f}", end="")
+            #f"Val Loss: {metrics['loss']:.4f} | "
+            f"Val Loss: {metrics.get('loss', float('nan')):.4f} | "
+            f"Underpredict Rate: {metrics.get('underpredict_rate', 0):.3f}")
 
 
         if mode == "distribution":
             print(f" | Calib Error: {metrics.get('calibration_error', 0):.4f}")
         elif mode == "root_probability":
-            #print(f" | Acc: {metrics.get('accuracy', 0):.4f} | AUC: {metrics.get('auc', 0):.4f}")
-            print()
+            print(f"Epoch {epoch:03d} | Train Loss: {train_loss:.4f} | "
+                  f"Val Loss: {metrics['loss']:.4f} | "
+                  f"Accuracy: {metrics.get('accuracy', 0):.4f} | "
+                  f"Underpredict Rate: {metrics.get('underpredict_rate', 0):.3f} | "
+                  f"Avg Under Error: {metrics.get('avg_underpredict_error', 0):.4f}")
         else:
-            print()
-        
+            print(f"Epoch {epoch:03d} | Train Loss: {train_loss:.4f} | "
+                  f"Val Loss: {metrics['loss']:.4f} | "
+                  f"MAE: {metrics.get('mae', 0):.4f}")
+            
+              
                 
         # WandB logging
         # wandb.log({
@@ -421,17 +498,42 @@ for epoch in range(1, params['epochs'] + 1):
 
 # Final evaluation on test set
 print("\nFinal Test Results:")
-test_metrics = evaluate(test_loader)
+#test_metrics = evaluate(test_loader)
+test_metrics = evaluate(model, test_loader, criterion)
 print(f"Loss: {test_metrics['loss']:.4f}")
-print(f"MAE: {test_metrics['mae']:.4f}")
-print(f"RMSE: {test_metrics['rmse']:.4f}")
+
+###########################################################################
+        # Outlier analysis after final test evaluation
+if params['enable_outlier_analysis']:
+    print("\n" + "="*50)
+    outlier_info = run_outlier_analysis_for_gnn(
+        model=model,
+        test_loader=test_loader,
+        device=device,
+        mode=mode
+        )
+            
+            # Print worst cases
+    print(f"\nWorst 5 outliers:")
+    for i in range(min(5, len(outlier_info['indices']))):
+        idx = outlier_info['indices'][i]
+        print(f"Sample {idx}: True={outlier_info['true_values'][i]:.3f}, "
+                    f"Pred={outlier_info['pred_values'][i]:.3f}, "
+                    f"Error={outlier_info['residuals'][i]:.3f}")
+        
+############################################################################
+
 if mode == "distribution":
-    # print(f"Calibration Error: {test_metrics.get('calibration_error', 0):.4f}")
     print(f"Accuracy: {test_metrics.get('accuracy', 0):.4f}")
 elif mode == "root_probability":
-    #print(f"Accuracy: {test_metrics.get('accuracy', 0):.4f}")
-    #print(f"AUC: {test_metrics.get('auc', 0):.4f}")
-    pass
+    print(f"Accuracy: {test_metrics.get('accuracy', 0):.4f}")
+    print(f"Underpredict Rate: {test_metrics.get('underpredict_rate', 0):.3f}")
+    print(f"Average Underprediction Error: {test_metrics.get('avg_underpredict_error', 0):.4f}")
+    print(f"MAE: {test_metrics.get('mae', 0):.4f}")
+    print(f"RMSE: {test_metrics.get('rmse', 0):.4f}")
+else:  # regression
+    print(f"MAE: {test_metrics.get('mae', 0):.4f}")
+    print(f"RMSE: {test_metrics.get('rmse', 0):.4f}")
 
 # Plotting
 plt.figure(figsize=(12, 4))
@@ -446,15 +548,13 @@ plt.title("Training Curve")
 plt.subplot(122)
 # Plot mode-specific additional metrics
 if mode == "root_probability":
-    # Remove or comment out these lines:
-    # plt.plot([m.get("accuracy", 0) for m in val_metrics], label="Accuracy")
-    # plt.plot([m.get("auc", 0.5) for m in val_metrics], label="AUC")
-    plt.plot([m["mae"] for m in val_metrics], label="MAE")
-    plt.plot([m["rmse"] for m in val_metrics], label="RMSE")
+    plt.plot([m.get("underpredict_rate", 0) for m in val_metrics], label="Underpredict Rate")
+    plt.plot([m.get("accuracy", 0) for m in val_metrics], label="Accuracy")
+    plt.axhline(y=0.2, color='r', linestyle='--', label='Target Under Rate (20%)')
     plt.xlabel("Epoch")
     plt.ylabel("Metric")
     plt.legend()
-    plt.title("Root_probability Metrics")
+    plt.title("Root Probability Metrics")
 
 elif mode == "distribution":
     plt.plot([m.get("calibration_error", 0) for m in val_metrics], label="Calibration Error")

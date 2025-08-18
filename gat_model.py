@@ -2,6 +2,8 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from torch_geometric.nn import GATConv
+from torch_geometric.nn import GATv2Conv
+
 
 class GAT(torch.nn.Module):
     def __init__(self, in_channels, hidden_channels, out_channels, dropout=0.2, heads=2, use_sigmoid=False):
@@ -9,23 +11,36 @@ class GAT(torch.nn.Module):
         self.use_sigmoid = use_sigmoid
         self.dropout = dropout
 
-        self.gat1 = GATConv(in_channels, hidden_channels, heads=heads, dropout=dropout)
-        self.gat2 = GATConv(hidden_channels * heads, hidden_channels, heads=heads, dropout=dropout)
-        self.gat3 = GATConv(hidden_channels * heads, hidden_channels, heads=1, concat=False, dropout=dropout)
+        self.gat1 = GATv2Conv(in_channels, hidden_channels, heads=heads, concat=False, dropout=dropout)
+        self.gat2 = GATv2Conv(hidden_channels, hidden_channels, heads=heads, concat=False, dropout=dropout)
+        self.gat3 = GATv2Conv(hidden_channels, hidden_channels, heads=heads, concat=False, dropout=dropout)
+
+
+        #self.gat1 = GATv2Conv(in_channels, hidden_channels, heads=heads, dropout=dropout)
+        #self.gat2 = GATv2Conv(hidden_channels * heads, hidden_channels, heads=heads, dropout=dropout)
+        #self.gat3 = GATv2Conv(hidden_channels * heads, hidden_channels, heads=heads, concat=False, dropout=dropout)
+        
         self.fc_out = nn.Linear(hidden_channels, out_channels)
 
     def forward(self, data):
         x, edge_index = data.x, data.edge_index
         batch = getattr(data, 'batch', None)
 
-        x = F.elu(self.gat1(x, edge_index))
+        #x = F.elu(self.gat1(x, edge_index))
+        x = F.relu(self.gat1(x, edge_index))
         x = F.dropout(x, p=self.dropout, training=self.training)
 
-        x = F.elu(self.gat2(x, edge_index))
+        #x = F.elu(self.gat2(x, edge_index))
+        x = F.relu(self.gat2(x, edge_index))
         x = F.dropout(x, p=self.dropout, training=self.training)
 
-        x = F.elu(self.gat3(x, edge_index))
+        #x = F.elu(self.gat3(x, edge_index))
+        x = F.relu(self.gat3(x, edge_index))
         x = self.fc_out(x)
+
+        if self.use_sigmoid:
+            x = torch.sigmoid(x)
+
 
         # Extract root node output
         node_types = data.x[:, 0]  
