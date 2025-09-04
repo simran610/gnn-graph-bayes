@@ -33,7 +33,7 @@ import torch
 import yaml
 import numpy as np
 from tqdm import tqdm
-from pgmpy.models import DiscreteBayesianNetwork
+#from pgmpy.models import DiscreteBayesianNetwork
 from pgmpy.factors.discrete import TabularCPD
 from pgmpy.inference import VariableElimination
 from pgmpy.models import BayesianNetwork
@@ -51,8 +51,8 @@ class BayesianNetworkBuilder:
         with open(filepath, "r") as f:
             json_data = json.load(f)
 
-        model = DiscreteBayesianNetwork()
-        #model = BayesianNetwork()
+        #model = DiscreteBayesianNetwork()
+        model = BayesianNetwork()
 
         # Add edges
         for edge in json_data["edges"]:

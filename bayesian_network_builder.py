@@ -1,10 +1,12 @@
 # bayesian_network_builder.py
-from pgmpy.models import DiscreteBayesianNetwork
+#from pgmpy.models import DiscreteBayesianNetwork
+from pgmpy.models import BayesianNetwork
 from pgmpy.factors.discrete import TabularCPD
 import numpy as np
 
 def build_bn_from_tree(G, config):
-    model = DiscreteBayesianNetwork()
+    #model = DiscreteBayesianNetwork()
+    model = BayesianNetwork()
     model.add_edges_from(G.edges())
     
     card = 2  # Default to binary variables

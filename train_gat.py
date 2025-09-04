@@ -136,7 +136,7 @@ elif mode == "root_probability":
     #loss_fn = torch.nn.BCEWithLogitsLoss()
     #loss_fn = torch.nn.MSELoss()
     #loss_fn = torch.nn.SmoothL1Loss()
-    loss_fn = lambda pred, true: simple_asymmetric_loss(pred, true, penalty=3.0)
+    loss_fn = lambda pred, true: simple_asymmetric_loss(pred, true, penalty=1.8)
     #tau = float(config.get("quantile_tau", 0.75))  
     #loss_fn = lambda pred, true: smart_quantile_loss(pred, true, tau=tau)
     #loss_fn = lambda pred, true: quantile_loss(pred, true, tau=tau)
@@ -155,7 +155,7 @@ model = GAT(
     hidden_channels=params['hidden_channels'],
     out_channels=out_channels,
     dropout=params['dropout'],
-    heads=4  
+    heads=8  
 ).to(device)
 
 optimizer = torch.optim.Adam(
@@ -411,7 +411,8 @@ def plot_root_probability_results(loader):
     plt.title('True vs Predicted Values')
     plt.grid(True)
     plt.tight_layout()
-    plt.show()
+    #plt.show()
+    plt.savefig('True vs Predicted Values.png')
 
 
 def plot_regression_results(loader):
@@ -566,15 +567,15 @@ elif mode == "distribution":
     plt.title("Calibration Error")
 
 plt.tight_layout()
-plt.show()
-
+#plt.show()
+plt.savefig('training_curve.png')  # Save figure to file for ssh remote access
 # Plot mode-specific results
 plot_results(test_loader)
 
 # Save model with mode and strategy in filename
 os.makedirs("models", exist_ok=True)
 evidence_type = "intermediate" if config.get("use_intermediate") else "leaf"
-model_path = f"models/graphsage_{mode}_{mask_strategy}_{evidence_type}.pt"
+model_path = f"models/gat_{mode}_{mask_strategy}_{evidence_type}.pt"
 torch.save(model.state_dict(), model_path)
 print(f"Model saved to {model_path}")
 

@@ -73,7 +73,8 @@ def analyze_outliers(y_true, y_pred, X_features, graph_data=None, feature_names=
     axes[1,1].set_title('Residual Distribution')
     
     plt.tight_layout()
-    plt.show()
+    #plt.show()
+    plt.savefig('outlier_analysis_plots.png')  # Save figure to file for ssh remote access
     
     # 4. FEATURE ANALYSIS
     if X_features is not None:
@@ -121,7 +122,8 @@ def analyze_outliers(y_true, y_pred, X_features, graph_data=None, feature_names=
                 
             plt.suptitle('Feature Distributions: Normal vs Outliers')
             plt.tight_layout()
-            plt.show()
+            #plt.show()
+            plt.savefig('outlier_analysis.png') # Save figure to file for ssh remote access
     
     # 5. PROBABILITY RANGE OUTLIERS
     print("\n=== PROBABILITY RANGE ANALYSIS ===")

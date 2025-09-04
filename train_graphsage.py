@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 import os
 import yaml
 import numpy as np
+import time
 #from sklearn.metrics import confusion_matrix, roc_auc_score
 from early_stopping_pytorch import EarlyStopping
 from graphsage_model import GraphSAGE
@@ -136,7 +137,7 @@ elif mode == "root_probability":
     #loss_fn = torch.nn.BCEWithLogitsLoss()
     #loss_fn = torch.nn.MSELoss()
     #loss_fn = torch.nn.SmoothL1Loss()
-    loss_fn = lambda pred, true: simple_asymmetric_loss(pred, true, penalty=3.0)
+    loss_fn = lambda pred, true: simple_asymmetric_loss(pred, true, penalty=1.8)
     #tau = float(config.get("quantile_tau", 0.75))  
     #loss_fn = lambda pred, true: smart_quantile_loss(pred, true, tau=tau)
     #loss_fn = lambda pred, true: quantile_loss(pred, true, tau=tau)
@@ -409,7 +410,8 @@ def plot_root_probability_results(loader):
     plt.title('True vs Predicted Values')
     plt.grid(True)
     plt.tight_layout()
-    plt.show()
+    #plt.show()
+    plt.savefig('True vs Predicted Values.png')
 
 
 def plot_regression_results(loader):
@@ -442,23 +444,27 @@ val_metrics = []
 criterion = torch.nn.MSELoss()
 print("Starting training...")
 
+epoch_times = []
 for epoch in range(1, params['epochs'] + 1):
     # Training phase
     try:
         train_loss = train()
         train_losses.append(train_loss)
-        
+        start_time = time.time()
         # Validation phase
        # metrics = evaluate(val_loader)
         metrics = evaluate(model, val_loader, criterion)
         val_metrics.append(metrics)
-        
+        epoch_time = time.time() - start_time
+        epoch_times.append(epoch_time)
+
         # Print epoch statistics
         print(f"Epoch {epoch:03d} | Train Loss: {train_loss:.4f} | "
             #   f"Val Loss: {metrics['loss']:.4f}", end="")
             #f"Val Loss: {metrics['loss']:.4f} | "
             f"Val Loss: {metrics.get('loss', float('nan')):.4f} | "
-            f"Underpredict Rate: {metrics.get('underpredict_rate', 0):.3f}")
+            f"Underpredict Rate: {metrics.get('underpredict_rate', 0):.3f}"
+            f"Time: {epoch_time:.2f}s")
 
 
         if mode == "distribution":
@@ -531,6 +537,8 @@ elif mode == "root_probability":
     print(f"Average Underprediction Error: {test_metrics.get('avg_underpredict_error', 0):.4f}")
     print(f"MAE: {test_metrics.get('mae', 0):.4f}")
     print(f"RMSE: {test_metrics.get('rmse', 0):.4f}")
+    print(f"Avg Time/Epoch: {np.mean(epoch_times):.2f}s")
+    print(f"Total Time: {np.sum(epoch_times):.2f}s")
 else:  # regression
     print(f"MAE: {test_metrics.get('mae', 0):.4f}")
     print(f"RMSE: {test_metrics.get('rmse', 0):.4f}")
@@ -564,7 +572,8 @@ elif mode == "distribution":
     plt.title("Calibration Error")
 
 plt.tight_layout()
-plt.show()
+#plt.show()
+plt.savefig('training_curve.png')  # Save figure to file for ssh remote access
 
 # Plot mode-specific results
 plot_results(test_loader)
