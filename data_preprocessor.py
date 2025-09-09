@@ -37,6 +37,9 @@ from tqdm import tqdm
 from pgmpy.factors.discrete import TabularCPD
 from pgmpy.inference import VariableElimination
 from pgmpy.models import BayesianNetwork
+from sklearn.model_selection import StratifiedKFold
+from sklearn.preprocessing import KBinsDiscretizer
+from tqdm import tqdm
 
 
 class BayesianNetworkBuilder:
@@ -389,7 +392,6 @@ class GraphPreprocessor:
         return data
     
 
-
 class DataPipeline:
     """Main pipeline orchestrator"""
     
@@ -400,6 +402,7 @@ class DataPipeline:
         # Set random seeds for reproducibility
         random.seed(self.config.get("random_seed", 42))
         torch.manual_seed(self.config.get("random_seed", 42))
+        
 
         # Initialize paths and settings
         self.json_folder = self.config.get("json_folder", self.config.get("output_dir", "generated_graphs"))
@@ -411,6 +414,10 @@ class DataPipeline:
         self.query_state = self.config.get("query_state")
         self.verbose = self.config.get("verbose", False)
         self.use_intermediate = self.config.get("use_intermediate", False)
+        self.use_kfold = self.config.get("use_kfold", False)
+        self.k_folds = self.config.get("k_folds", 5)
+        self.stratify_folds = self.config.get("stratify_folds", True)
+        self.fold_random_seed = self.config.get("fold_random_seed", 42)
         
         # Debug information
         if self.verbose:
@@ -438,6 +445,64 @@ class DataPipeline:
             use_intermediate=self.use_intermediate
         )
 
+    def create_stratified_kfold_splits(self, processed_data):
+        """Create stratified k-fold splits based on target probabilities"""
+        print(f"Creating {self.k_folds}-fold cross-validation splits...")
+        
+        # Extract targets for stratification
+        targets = []
+        for graph in processed_data:
+            if self.mode == "root_probability":
+                targets.append(graph.y.item())
+            elif self.mode == "distribution":
+                targets.append(graph.y[1].item())  # P(class=1)
+            else:  # regression
+                targets.append(graph.y.mean().item())
+        
+        targets = np.array(targets)
+        
+        if self.stratify_folds:
+            # Create probability bins for stratification
+            discretizer = KBinsDiscretizer(n_bins=5, encode='ordinal', strategy='uniform')
+            y_binned = discretizer.fit_transform(targets.reshape(-1, 1)).ravel()
+            print(f"Stratification bins: {np.bincount(y_binned.astype(int))}")
+        else:
+            y_binned = np.zeros(len(targets))  # No stratification
+        
+        # Create fold splits
+        skf = StratifiedKFold(
+            n_splits=self.k_folds, 
+            shuffle=True, 
+            random_state=self.fold_random_seed
+        )
+        
+        fold_splits = []
+        for fold_idx, (train_val_idx, test_idx) in enumerate(skf.split(np.arange(len(processed_data)), y_binned)):
+            # Further split train_val into train and val
+            train_val_targets = targets[train_val_idx]
+            train_val_binned = y_binned[train_val_idx] if self.stratify_folds else np.zeros(len(train_val_idx))
+            
+            # Use smaller split for validation within each fold
+            inner_skf = StratifiedKFold(n_splits=4, shuffle=True, random_state=self.fold_random_seed + fold_idx)
+            train_sub_idx, val_sub_idx = next(inner_skf.split(train_val_idx, train_val_binned))
+            
+            train_idx = train_val_idx[train_sub_idx]
+            val_idx = train_val_idx[val_sub_idx]
+            
+            fold_splits.append({
+                'fold': fold_idx,
+                'train_idx': train_idx,
+                'val_idx': val_idx, 
+                'test_idx': test_idx,
+                'train_data': [processed_data[i] for i in train_idx],
+                'val_data': [processed_data[i] for i in val_idx],
+                'test_data': [processed_data[i] for i in test_idx]
+            })
+            
+            print(f"Fold {fold_idx}: Train={len(train_idx)}, Val={len(val_idx)}, Test={len(test_idx)}")
+        
+        return fold_splits
+
     def validate_json_files(self):
         """Validate that JSON files exist"""
         if not os.path.exists(self.json_folder):
@@ -455,35 +520,27 @@ class DataPipeline:
         return detailed_files
   
     def run_preprocessing_and_split(self):
-        """Run preprocessing and dataset splitting"""
+        """Run preprocessing and perform K-Fold splits and dataset saving."""
+
         try:
             dataset = torch.load(self.dataset_path, weights_only=False)
             with open(self.global_cpd_len_path, "r") as f:
                 global_cpd_len = int(f.read().strip())
         except Exception as e:
             raise ValueError(f"Error loading data: {e}")
-        
-        print(f"Loaded dataset with {len(dataset)} graphs")
-        print(f"Global CPD length: {global_cpd_len}")
-        
-        # Validate JSON files for inference modes
-        if self.mode in ["distribution", "root_probability"]:
-            try:
-                json_files = self.validate_json_files()
-            except Exception as e:
-                print(f"JSON validation failed: {e}")
-                raise
-        
+
+        print(f"Loaded dataset with {len(dataset)} graphs.")
+
         processed = []
         failed_indices = []
         inference_results = []
 
+        # Preprocess all graphs
         for i, graph in enumerate(tqdm(dataset, desc="Processing graphs")):
             try:
-                processed_graph = self.preprocessor.preprocess_graph(
-                    graph, global_cpd_len, i)
+                processed_graph = self.preprocessor.preprocess_graph(graph, global_cpd_len, i)
                 processed.append(processed_graph)
-                
+
                 # Collect inference results for analysis
                 if self.mode in ["distribution", "root_probability"]:
                     inference_results.append({
@@ -498,7 +555,7 @@ class DataPipeline:
                         } if hasattr(processed_graph, "evidence_ids") else None,
                         "mask_strategy": self.mask_strategy
                     })
-                    
+
             except Exception as e:
                 if self.verbose:
                     print(f"Error processing graph {i}: {e}")
@@ -506,14 +563,11 @@ class DataPipeline:
 
         if not processed:
             raise RuntimeError("No graphs were successfully processed!")
-        
         print(f"Successfully processed {len(processed)}/{len(dataset)} graphs")
         if failed_indices:
             print(f"Failed to process {len(failed_indices)} graphs")
-            if self.verbose:
-                print(f"Failed indices: {failed_indices[:10]}...")
 
-        # Save inference results
+        # Save inference results if necessary
         if self.mode in ["distribution", "root_probability"]:
             inference_results_path = os.path.join(self.output_dir, "inference_results.json")
             try:
@@ -523,30 +577,85 @@ class DataPipeline:
             except Exception as e:
                 print(f"Failed to save inference results: {e}")
 
-        # Split dataset
-        random.shuffle(processed)
-        n = len(processed)
-        train_ratio = self.config.get("split_ratios", {}).get("train", 0.7)
-        val_ratio = self.config.get("split_ratios", {}).get("val", 0.2)
-        
-        train_end = int(train_ratio * n)
-        val_end = int((train_ratio + val_ratio) * n)
-        
-        train = processed[:train_end]
-        val = processed[train_end:val_end]
-        test = processed[val_end:]
+        # =========================
+        # K-FOLD SPLIT LOGIC BELOW
+        # =========================
+        use_kfold = self.config.get("use_kfold", True)
+        n_folds = self.config.get("k_folds", 5)
+        stratify = self.config.get("stratify_folds", True)
+        fold_random_seed = self.config.get("fold_random_seed", 42)
 
-        # Save splits
-        os.makedirs("datasets", exist_ok=True)
-        try:
+        if use_kfold:
+            print(f"Performing K-Fold split: k={n_folds}, stratify={stratify}")
+            n_total = len(processed)
+
+            # -------- Bin targets for stratification --------
+            if self.mode == "root_probability":
+                y_targets = np.array([float(g.y.item()) for g in processed])
+            elif self.mode == "distribution":
+                y_targets = np.array([float(g.y[1].item()) for g in processed])
+            else:
+                y_targets = np.zeros(n_total)
+
+            if stratify:
+                discretizer = KBinsDiscretizer(n_bins=5, encode='ordinal', strategy='uniform')
+                bins = discretizer.fit_transform(y_targets.reshape(-1, 1)).ravel()
+            else:
+                bins = np.zeros(n_total)
+
+            skf = StratifiedKFold(n_splits=n_folds, shuffle=True, random_state=fold_random_seed)
+            fold_data = []
+
+            for fold_idx, (train_val_idx, test_idx) in enumerate(skf.split(np.arange(n_total), bins)):
+                # Within fold: further split train_val into train and val
+                train_val_targets = y_targets[train_val_idx]
+                train_val_bins = bins[train_val_idx] if stratify else np.zeros(len(train_val_idx))
+                val_split = 0.2
+                val_count = int(len(train_val_idx) * val_split)
+
+                # Shuffle train_val indices for validation split
+                rng = np.random.RandomState(fold_random_seed + fold_idx)
+                permuted = rng.permutation(train_val_idx)
+                val_idx = permuted[:val_count]
+                train_idx = permuted[val_count:]
+                # Collect graph objects
+                train_graphs = [processed[i] for i in train_idx]
+                val_graphs = [processed[i] for i in val_idx]
+                test_graphs = [processed[i] for i in test_idx]
+
+                fold_data.append((train_graphs, val_graphs, test_graphs))
+                # Save to disk
+                os.makedirs("datasets/folds", exist_ok=True)
+                torch.save(train_graphs, f"datasets/folds/fold_{fold_idx}_train.pt")
+                torch.save(val_graphs,   f"datasets/folds/fold_{fold_idx}_val.pt")
+                torch.save(test_graphs,  f"datasets/folds/fold_{fold_idx}_test.pt")
+                print(f"Fold {fold_idx+1}: Saved train/val/test graphs [{len(train_graphs)}, {len(val_graphs)}, {len(test_graphs)}]")
+
+            # Save fold metadata
+            fold_metadata = {
+                "k_folds": n_folds,
+                "stratified": stratify,
+                "fold_sizes": [(len(tr), len(val), len(te)) for tr, val, te in fold_data]
+            }
+            with open("datasets/folds/fold_metadata.json", "w") as f:
+                json.dump(fold_metadata, f, indent=2)
+            print("\nAll K-Fold splits generated and saved.")
+        else:
+            # === Classic single split ===
+            random.shuffle(processed)
+            n = len(processed)
+            train_ratio = self.config.get("train_split", 0.7)
+            val_ratio = self.config.get("val_split", 0.2)
+            train_end = int(train_ratio * n)
+            val_end = int((train_ratio + val_ratio) * n)
+            train = processed[:train_end]
+            val = processed[train_end:val_end]
+            test = processed[val_end:]
+            os.makedirs("datasets", exist_ok=True)
             torch.save(train, "datasets/train.pt")
             torch.save(val, "datasets/val.pt")
             torch.save(test, "datasets/test.pt")
-            print("Datasets saved successfully")
-        except Exception as e:
-            raise RuntimeError(f"Error saving datasets: {e}")
-
-        print(f"Dataset split - Train: {len(train)}, Val: {len(val)}, Test: {len(test)}")
+            print(f"Classic split - Train: {len(train)}, Val: {len(val)}, Test: {len(test)}")
 
     def run_pipeline(self):
         """Run the complete pipeline"""

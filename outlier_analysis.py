@@ -8,6 +8,58 @@ import torch.nn.functional as F
 import warnings
 warnings.filterwarnings('ignore')
 
+
+def pick_specific_prediction_outliers(y_true, y_pred, X_features, feature_names, n_each=2):
+    """
+    Pick specific over-predictions and under-predictions far from diagonal
+    """
+    residuals = y_pred - y_true  # Signed residuals
+    abs_residuals = np.abs(residuals)
+    
+    # Over-predictions (predicted > true, far from diagonal)
+    over_pred_mask = residuals > 0
+    over_pred_distances = abs_residuals[over_pred_mask]
+    over_pred_indices = np.where(over_pred_mask)[0]
+    
+    # Under-predictions (predicted < true, far from diagonal) 
+    under_pred_mask = residuals < 0
+    under_pred_distances = abs_residuals[under_pred_mask]
+    under_pred_indices = np.where(under_pred_mask)[0]
+    
+    # Pick worst cases
+    worst_over = over_pred_indices[np.argsort(over_pred_distances)[-n_each:]]
+    worst_under = under_pred_indices[np.argsort(under_pred_distances)[-n_each:]]
+    
+    print("=== SPECIFIC OUTLIER ANALYSIS ===")
+    
+    # Analyze over-predictions
+    print(f"\n{n_each} Worst OVER-predictions:")
+    for i, idx in enumerate(worst_over):
+        print(f"Sample {idx}: True={y_true[idx]:.3f}, Pred={y_pred[idx]:.3f}, Error={residuals[idx]:.3f}")
+        
+        # Show key features
+        features = X_features[idx]
+        print(f"  Evidence nodes: {int(features[9])}, Num parents: {int(features[8])}")
+        print(f"  In/Out degree: {int(features[1])}/{int(features[2])}")
+        print(f"  Betweenness: {features[3]:.3f}, PageRank: {features[5]:.3f}")
+    
+    # Analyze under-predictions  
+    print(f"\n{n_each} Worst UNDER-predictions:")
+    for i, idx in enumerate(worst_under):
+        print(f"Sample {idx}: True={y_true[idx]:.3f}, Pred={y_pred[idx]:.3f}, Error={residuals[idx]:.3f}")
+        
+        features = X_features[idx]
+        print(f"  Evidence nodes: {int(features[9])}, Num parents: {int(features[8])}")
+        print(f"  In/Out degree: {int(features[1])}/{int(features[2])}")
+        print(f"  Betweenness: {features[3]:.3f}, PageRank: {features[5]:.3f}")
+    
+    return {
+        'over_predictions': worst_over,
+        'under_predictions': worst_under,
+        'over_errors': residuals[worst_over],
+        'under_errors': residuals[worst_under]
+    }
+
 def analyze_outliers(y_true, y_pred, X_features, graph_data=None, feature_names=None, outlier_percentile=95):
     """
     Comprehensive outlier analysis for GNN predictions

@@ -1,5 +1,6 @@
 # Train_graphsage.py
 
+
 import torch
 import torch.nn.functional as F
 from torch_geometric.loader import DataLoader
@@ -12,7 +13,8 @@ import time
 from early_stopping_pytorch import EarlyStopping
 from graphsage_model import GraphSAGE
 import wandb
-from outlier_analysis import analyze_outliers, run_outlier_analysis_for_gnn
+from outlier_analysis import analyze_outliers, run_outlier_analysis_for_gnn, pick_specific_prediction_outliers
+from temperature_scaling import TemperatureScaling
 
    
 # Load configuration
@@ -526,8 +528,40 @@ if params['enable_outlier_analysis']:
         print(f"Sample {idx}: True={outlier_info['true_values'][i]:.3f}, "
                     f"Pred={outlier_info['pred_values'][i]:.3f}, "
                     f"Error={outlier_info['residuals'][i]:.3f}")
+
+
+    # Feature names based on your table
+    feature_names = [
+        'node_type',           # 0 - Node type: 0=root, 1=intermediate, 2=leaf
+        'in_degree',           # 1 - Incoming edges count
+        'out_degree',          # 2 - Outgoing edges count
+        'betweenness',         # 3 - Betweenness centrality
+        'closeness',           # 4 - Closeness centrality
+        'pagerank',            # 5 - PageRank score
+        'degree_centrality',   # 6 - Degree centrality
+        'variable_card',       # 7 - Cardinality of the node variable
+        'num_parents',         # 8 - Number of parent nodes in BN
+        'evidence_flag',       # 9 - Evidence flag (0 or 1)
+        'cpd_0',              # 10 - CPD value 0
+        'cpd_1',              # 11 - CPD value 1
+        'cpd_2',              # 12 - CPD value 2
+        'cpd_3',              # 13 - CPD value 3
+        'cpd_4',              # 14 - CPD value 4
+        'cpd_5',              # 15 - CPD value 5
+        'cpd_6',              # 16 - CPD value 6
+        'cpd_7'               # 17 - CPD value 7
+    ]
+
+    specific_outliers = pick_specific_prediction_outliers(
+        y_true=outlier_info['true_values'],
+        y_pred=outlier_info['pred_values'], 
+        X_features=outlier_info['features'],
+        feature_names=feature_names,
+        n_each=2
+    )
         
 ############################################################################
+
 
 if mode == "distribution":
     print(f"Accuracy: {test_metrics.get('accuracy', 0):.4f}")

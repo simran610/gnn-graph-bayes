@@ -28,3 +28,14 @@ inference_output_dir: saved_inference_outputs           # Directory to save infe
 verbose: false                                          # Verbosity of the output
 use_intermediate: true   # or false                     # Use intermediate nodes for inference
 enable_outlier_analysis:  true  # set to False to skip
+
+# NEW K-Fold Cross-Validation Parameters
+use_kfold: true                    # Enable k-fold cross-validation
+k_folds: 5                         # Number of folds
+stratify_folds: true               # Stratify based on probability ranges
+fold_random_seed: 42               # Separate seed for fold splitting
+
+# NEW Temperature Scaling Parameters  
+use_temperature_scaling: true       # Enable temperature scaling
+temperature_calibration_split: 0.15 # Portion of train data for temperature calibration
+save_temperature: true             # Save learned temperature parameter
