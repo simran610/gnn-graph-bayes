@@ -9,7 +9,9 @@ class TemperatureScaling(nn.Module):
         super().__init__()
         self.temperature = nn.Parameter(torch.ones(1) * init_temp)
     def forward(self, logits):
-        return logits / self.temperature
+            # Move self.temperature to the same device as logits
+        temperature = self.temperature.to(logits.device)
+        return logits / temperature
 
     def calibrate(self, model, loader, device, mode="root_probability"):
         model.eval()

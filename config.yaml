@@ -1,19 +1,18 @@
-
 num_graphs: 40000                                       # Number of Bayesian networks to generate
-max_depth: 6                                            # Maximum depth of any graph
-min_children: 1                                         # Minimum number of children per node
+max_depth: 4                                            # Maximum depth of any graph
+min_children: 2                                         # Minimum number of children per node
 max_children: 5                                         # Maximum number of children per node
 output_dir : "./generated_graphs"                      # Directory to save generated graphs
 mode: "root_probability"                                  # "distribution"/"root_probability"/"regression"
 mask_strategy: "evidence_only"                              # "root_only"/ "both"/ "none / "evidence_only"
-query_state: 0                                        # null/0/1 to fix leaf states                       
+query_state: 0                                       # null/0/1 to fix leaf states                       
 dropout: 0.1                                       # Dropout rate for the model
 quantile_tau: 0.75                                       # Tau value for quantile loss                                           
 learning_rate: 0.001                                  # Learning rate for the optimizer
 hidden_channels: 512                                 # Number of hidden channels in the model
-batch_size: 64                                          # Batch size for training
+batch_size: 128                                          # Batch size for training
 weight_decay: 1e-4                                      # 5e-4  Weight decay for the optimizer
-patience: 100                                             # Patience for early stopping
+patience: 30                                             # Patience for early stopping
 epochs: 100                                             # Batch size for training
 use_sigmoid: false                                       # Use sigmoid activation function
 num_leaf_to_infer: 4                                    # Number of leaf nodes to condition on
@@ -27,15 +26,17 @@ random_seed: 42                                         # Random seed for reprod
 inference_output_dir: saved_inference_outputs           # Directory to save inference outputs
 verbose: false                                          # Verbosity of the output
 use_intermediate: true   # or false                     # Use intermediate nodes for inference
-enable_outlier_analysis:  true  # set to False to skip
+enable_outlier_analysis:  true                          # set to False to skip
+debug_attention: true                                   # Enable attention debugging for GAT model
+
 
 # NEW K-Fold Cross-Validation Parameters
-use_kfold: true                    # Enable k-fold cross-validation
-k_folds: 5                         # Number of folds
-stratify_folds: true               # Stratify based on probability ranges
+use_kfold: false                    # Enable k-fold cross-validation
+k_folds: 10                         # Number of folds
+stratify_folds: false               # Stratify based on probability ranges
 fold_random_seed: 42               # Separate seed for fold splitting
 
 # NEW Temperature Scaling Parameters  
-use_temperature_scaling: true       # Enable temperature scaling
+use_temperature_scaling: false       # Enable temperature scaling
 temperature_calibration_split: 0.15 # Portion of train data for temperature calibration
-save_temperature: true             # Save learned temperature parameter
+save_temperature: false             # Save learned temperature parameter

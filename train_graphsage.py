@@ -13,7 +13,7 @@ import time
 from early_stopping_pytorch import EarlyStopping
 from graphsage_model import GraphSAGE
 import wandb
-from outlier_analysis import analyze_outliers, run_outlier_analysis_for_gnn, pick_specific_prediction_outliers
+from outlier_analysis import analyze_outliers, run_outlier_analysis_for_gnn, analyze_graph_structure_outliers
 from temperature_scaling import TemperatureScaling
 
    
@@ -552,12 +552,11 @@ if params['enable_outlier_analysis']:
         'cpd_7'               # 17 - CPD value 7
     ]
 
-    specific_outliers = pick_specific_prediction_outliers(
-        y_true=outlier_info['true_values'],
-        y_pred=outlier_info['pred_values'], 
-        X_features=outlier_info['features'],
-        feature_names=feature_names,
-        n_each=2
+    structural_analysis = analyze_graph_structure_outliers(
+        model=model,
+        test_loader=test_loader,
+        device=device,
+        mode=mode
     )
         
 ############################################################################

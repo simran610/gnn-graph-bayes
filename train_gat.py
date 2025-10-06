@@ -1,4 +1,15 @@
-# Train_graphsage.py
+# Train_gat.py
+
+
+# Initialize model with proper device placement
+# model = GAT(
+#     in_channels=in_channels,
+#     hidden_channels=params['hidden_channels'],
+#     out_channels=out_channels,
+#     dropout=params['dropout'],
+#     heads=8  
+# ).to(device)
+
 
 import torch
 import torch.nn.functional as F
@@ -7,11 +18,13 @@ import matplotlib.pyplot as plt
 import os
 import yaml
 import numpy as np
+import time
 #from sklearn.metrics import confusion_matrix, roc_auc_score
 from early_stopping_pytorch import EarlyStopping
 from gat_model import GAT
 import wandb
-from outlier_analysis import analyze_outliers, run_outlier_analysis_for_gnn
+from outlier_analysis import analyze_outliers, run_outlier_analysis_for_gnn, analyze_graph_structure_outliers
+from temperature_scaling import TemperatureScaling
 
    
 # Load configuration
@@ -32,6 +45,7 @@ params = {
     'weight_decay': float(config.get("weight_decay", 5e-4)),
     'patience': int(config.get("patience", 5)),
     'epochs': int(config.get("epochs", 100)),
+    'debug_attention': config.get("debug_attention", True),
     'enable_outlier_analysis': config.get("enable_outlier_analysis", True)
 }
 
@@ -80,6 +94,7 @@ val_loader = DataLoader(val_set, batch_size=params['batch_size'])
 test_loader = DataLoader(test_set, batch_size=params['batch_size'])
 
 
+
 # --- OVERFIT TEST BLOCK: only use 10 samples ---
 # train_set = train_set[:10]
 # val_set = val_set[:10]
@@ -96,6 +111,7 @@ print("Class 1:", (ys >= 0.5).sum().item())
 with open(config["global_cpd_len_path"], "r") as f:
     global_cpd_len = int(f.read())
 
+DEBUG_ATTENTION = params['debug_attention']
 in_channels = train_set[0].x.shape[1]
 
 def quantile_loss(preds, targets, tau=0.8):
@@ -147,7 +163,6 @@ else:  # regression
     loss_fn = torch.nn.MSELoss()
 
 print(f"Model config - Input: {in_channels}, Output: {out_channels}")
-
 
 # Initialize model with proper device placement
 model = GAT(
@@ -218,7 +233,15 @@ def train():
             debug_batch(data, batch_idx)
         
         optimizer.zero_grad()
-        out = model(data)
+        if DEBUG_ATTENTION and batch_idx == 0:
+            out_tuple = model(data, debug_attention=True)
+            out = out_tuple[0]  
+            attn_dict = out_tuple[1]
+            for layer_name, attn in attn_dict.items():
+                print(f"Attention weights - {layer_name} (batch {batch_idx}):")
+                print(attn)
+        else:
+            out = model(data)
         
         # Debug model output
         if batch_idx == 0:
@@ -229,6 +252,10 @@ def train():
             print("Target y:", data.y[:10]) ###########
         
         # Extract targets and predictions properly
+        if isinstance(out, tuple):
+            out = out[0]
+        # else:
+        #     outputs = out
         targets, predictions = extract_targets_and_predictions(data, out, batch_idx)
         
         # Compute loss
@@ -255,9 +282,22 @@ def evaluate(model, loader, criterion):
     
     
     with torch.no_grad():
-        for data in loader:
+        for batch_idx, data in enumerate(loader): 
             data = data.to(device)
-            out = model(data)
+            if DEBUG_ATTENTION and batch_idx == 0:
+                out_tuple = model(data, debug_attention=True)
+                out = out_tuple[0]  
+                attn_dict = out_tuple[1]
+
+                for layer_name, attn in attn_dict.items():
+                    print(f"Attention weights - {layer_name} (eval batch {batch_idx}):")
+                    print(attn)
+            else:
+                out = model(data)
+            if isinstance(out, tuple):
+                out = out[0]
+            # else:
+            #     out = out
             targets, predictions = extract_targets_and_predictions(data, out)
             
             loss = loss_fn(predictions, targets)
@@ -388,6 +428,8 @@ def plot_root_probability_results(loader):
         for data in loader:
             data = data.to(device)
             out = model(data)
+            if isinstance(out, tuple): 
+                out = out[0]
             target, prediction = extract_targets_and_predictions(data, out)
 
             if prediction.dim() == 0:
@@ -445,23 +487,27 @@ val_metrics = []
 criterion = torch.nn.MSELoss()
 print("Starting training...")
 
+epoch_times = []
 for epoch in range(1, params['epochs'] + 1):
     # Training phase
     try:
         train_loss = train()
         train_losses.append(train_loss)
-        
+        start_time = time.time()
         # Validation phase
        # metrics = evaluate(val_loader)
         metrics = evaluate(model, val_loader, criterion)
         val_metrics.append(metrics)
-        
+        epoch_time = time.time() - start_time
+        epoch_times.append(epoch_time)
+
         # Print epoch statistics
         print(f"Epoch {epoch:03d} | Train Loss: {train_loss:.4f} | "
             #   f"Val Loss: {metrics['loss']:.4f}", end="")
             #f"Val Loss: {metrics['loss']:.4f} | "
             f"Val Loss: {metrics.get('loss', float('nan')):.4f} | "
-            f"Underpredict Rate: {metrics.get('underpredict_rate', 0):.3f}")
+            f"Underpredict Rate: {metrics.get('underpredict_rate', 0):.3f}"
+            f"Time: {epoch_time:.2f}s")
 
 
         if mode == "distribution":
@@ -523,8 +569,39 @@ if params['enable_outlier_analysis']:
         print(f"Sample {idx}: True={outlier_info['true_values'][i]:.3f}, "
                     f"Pred={outlier_info['pred_values'][i]:.3f}, "
                     f"Error={outlier_info['residuals'][i]:.3f}")
+
+
+    # Feature names based on your table
+    feature_names = [
+        'node_type',           # 0 - Node type: 0=root, 1=intermediate, 2=leaf
+        'in_degree',           # 1 - Incoming edges count
+        'out_degree',          # 2 - Outgoing edges count
+        'betweenness',         # 3 - Betweenness centrality
+        'closeness',           # 4 - Closeness centrality
+        'pagerank',            # 5 - PageRank score
+        'degree_centrality',   # 6 - Degree centrality
+        'variable_card',       # 7 - Cardinality of the node variable
+        'num_parents',         # 8 - Number of parent nodes in BN
+        'evidence_flag',       # 9 - Evidence flag (0 or 1)
+        'cpd_0',              # 10 - CPD value 0
+        'cpd_1',              # 11 - CPD value 1
+        'cpd_2',              # 12 - CPD value 2
+        'cpd_3',              # 13 - CPD value 3
+        'cpd_4',              # 14 - CPD value 4
+        'cpd_5',              # 15 - CPD value 5
+        'cpd_6',              # 16 - CPD value 6
+        'cpd_7'               # 17 - CPD value 7
+    ]
+
+    structural_analysis = analyze_graph_structure_outliers(
+        model=model,
+        test_loader=test_loader,
+        device=device,
+        mode=mode
+    )
         
 ############################################################################
+
 
 if mode == "distribution":
     print(f"Accuracy: {test_metrics.get('accuracy', 0):.4f}")
@@ -534,6 +611,8 @@ elif mode == "root_probability":
     print(f"Average Underprediction Error: {test_metrics.get('avg_underpredict_error', 0):.4f}")
     print(f"MAE: {test_metrics.get('mae', 0):.4f}")
     print(f"RMSE: {test_metrics.get('rmse', 0):.4f}")
+    print(f"Avg Time/Epoch: {np.mean(epoch_times):.2f}s")
+    print(f"Total Time: {np.sum(epoch_times):.2f}s")
 else:  # regression
     print(f"MAE: {test_metrics.get('mae', 0):.4f}")
     print(f"RMSE: {test_metrics.get('rmse', 0):.4f}")
@@ -569,13 +648,14 @@ elif mode == "distribution":
 plt.tight_layout()
 #plt.show()
 plt.savefig('training_curve.png')  # Save figure to file for ssh remote access
+
 # Plot mode-specific results
 plot_results(test_loader)
 
 # Save model with mode and strategy in filename
 os.makedirs("models", exist_ok=True)
 evidence_type = "intermediate" if config.get("use_intermediate") else "leaf"
-model_path = f"models/gat_{mode}_{mask_strategy}_{evidence_type}.pt"
+model_path = f"models/graphsage_{mode}_{mask_strategy}_{evidence_type}.pt"
 torch.save(model.state_dict(), model_path)
 print(f"Model saved to {model_path}")
 
@@ -590,3 +670,5 @@ print(ys.shape)
 if __name__ == "__main__":
     # wandb.finish()
     print("Training complete. Model saved.")
+
+

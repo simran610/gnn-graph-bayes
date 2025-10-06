@@ -10,6 +10,7 @@ class GraphSAGE(torch.nn.Module):
         self.sage1 = SAGEConv(in_channels, hidden_channels)
         self.sage2 = SAGEConv(hidden_channels, hidden_channels)
         self.sage3 = SAGEConv(hidden_channels, hidden_channels)
+        self.sage4 = SAGEConv(hidden_channels, hidden_channels)
         self.fc_out = nn.Linear(hidden_channels, out_channels)
         self.dropout = dropout
 
@@ -23,22 +24,26 @@ class GraphSAGE(torch.nn.Module):
         x = F.relu(self.sage1(x, edge_index))
         x = F.dropout(x, p=self.dropout, training=self.training)
         
-        print("After conv1:", x[:5])
+        #print("After conv1:", x[:5])
 
         # 2nd layer
         x = F.relu(self.sage2(x, edge_index))
         x = F.dropout(x, p=self.dropout, training=self.training)
 
-        print("After conv2:", x[:5])
+        #print("After conv2:", x[:5])
         
         # 3rd layer
         x = F.relu(self.sage3(x, edge_index))
+        x = F.dropout(x, p=self.dropout, training=self.training)
+
+        # 4th layer 
+        x = F.relu(self.sage4(x, edge_index))
         x = self.fc_out(x)
 
-        print("After conv3:", x[:5])
+        #print("After conv3:", x[:5])
         
-        #if self.use_sigmoid:
-            #x = torch.sigmoid(x)
+        if self.use_sigmoid:
+            x = torch.sigmoid(x)
         
         # Extract root node output
         node_types = data.x[:, 0]  
