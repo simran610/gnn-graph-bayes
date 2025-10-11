@@ -176,15 +176,72 @@ class BayesianNetworkBuilder:
 
 
 class InferenceEngine:
-    """Handles probabilistic inference"""
+    """Handles probabilistic inference with separate leaf/intermediate evidence tracking"""
 
-    def __init__(self, num_evidence_to_infer=2, query_state=None, verbose=False):
-        self.num_evidence_to_infer = num_evidence_to_infer
-        self.query_state = query_state  # None for random, or specify 0/1
+    def __init__(self, num_leaf_to_infer=2, num_intermediate_to_infer=2, 
+                 query_state=None, verbose=False):
+        self.num_leaf_to_infer = num_leaf_to_infer
+        self.num_intermediate_to_infer = num_intermediate_to_infer
+        self.query_state = query_state
         self.verbose = verbose
+        if self.verbose:
+            print(f"InferenceEngine initialized: num_leaf_to_infer={self.num_leaf_to_infer}, "
+                  f"num_intermediate_to_infer={self.num_intermediate_to_infer}, "
+                  f"query_state={self.query_state}")
+
+    def infer_root_given_mixed_evidence(self, model, json_data, use_intermediate=True):
+        """
+        Select evidence from BOTH intermediate AND leaf nodes.
+        This combines evidence from multiple node types for richer inference.
+        """
+        infer = VariableElimination(model)
+        root_node = str(json_data["node_types"]["roots"][0])
+        
+        evidence = {}
+        selected_nodes = []
+        
+        # === SELECT INTERMEDIATE NODES ===
+        if use_intermediate:
+            intermediate_nodes = json_data["node_types"].get("intermediates", [])
+            if intermediate_nodes:
+                num_to_select = min(len(intermediate_nodes), self.num_intermediate_to_infer)
+                conditioned_intermediate = random.sample(intermediate_nodes, num_to_select)
+                selected_nodes.extend(conditioned_intermediate)
+                
+                for node in conditioned_intermediate:
+                    state = self.query_state if self.query_state is not None else random.randint(0, 1)
+                    evidence[str(node)] = state
+                
+                if self.verbose:
+                    print(f"Selected {len(conditioned_intermediate)} intermediate nodes: {conditioned_intermediate}")
+        
+        # === SELECT LEAF NODES ===
+        leaf_nodes = json_data["node_types"]["leaves"]
+        if leaf_nodes:
+            num_to_select = min(len(leaf_nodes), self.num_leaf_to_infer)
+            conditioned_leaves = random.sample(leaf_nodes, num_to_select)
+            selected_nodes.extend(conditioned_leaves)
+            
+            for leaf in conditioned_leaves:
+                state = self.query_state if self.query_state is not None else random.randint(0, 1)
+                evidence[str(leaf)] = state
+            
+            if self.verbose:
+                print(f"Selected {len(conditioned_leaves)} leaf nodes: {conditioned_leaves}")
+        
+        if self.verbose:
+            print(f"Total evidence nodes selected: {len(selected_nodes)} from both intermediate and leaf")
+        
+        try:
+            q = infer.query(variables=[root_node], evidence=evidence, show_progress=False)
+            return torch.tensor(q.values, dtype=torch.float), evidence
+        except Exception as e:
+            if self.verbose:
+                print(f"Inference failed (mixed evidence): {e}")
+            return torch.tensor([0.5, 0.5], dtype=torch.float), evidence
 
     def infer_root_given_intermediate(self, model, json_data):
-        """Perform inference from intermediate to root nodes"""
+        """Perform inference from intermediate to root nodes (LEAF ONLY - deprecated)"""
         infer = VariableElimination(model)
         root_node = str(json_data["node_types"]["roots"][0])
         intermediate_nodes = json_data["node_types"].get("intermediates", [])
@@ -194,17 +251,16 @@ class InferenceEngine:
                 print("No intermediate nodes found, falling back to leaf-based inference")
             return self.infer_root_given_leaf(model, json_data)
 
-        # Select random intermediate nodes as evidence
         conditioned = random.sample(
-            intermediate_nodes, min(len(intermediate_nodes), self.num_evidence_to_infer)
+            intermediate_nodes, min(len(intermediate_nodes), self.num_intermediate_to_infer)
         )
+
+        if self.verbose:
+            print(f"Selected conditioned intermediate nodes (count={len(conditioned)}): {conditioned}")
 
         evidence = {}
         for node in conditioned:
-            if self.query_state is not None:
-                state = self.query_state
-            else:
-                state = random.randint(0, 1)
+            state = self.query_state if self.query_state is not None else random.randint(0, 1)
             evidence[str(node)] = state
 
         try:
@@ -221,17 +277,16 @@ class InferenceEngine:
         root_node = str(json_data["node_types"]["roots"][0])
         leaf_nodes = json_data["node_types"]["leaves"]
 
-        # Select random leaf nodes as evidence
         conditioned_leaves = random.sample(
-            leaf_nodes, min(len(leaf_nodes), self.num_evidence_to_infer)
+            leaf_nodes, min(len(leaf_nodes), self.num_leaf_to_infer)
         )
+
+        if self.verbose:
+            print(f"Selected conditioned leaf nodes (count={len(conditioned_leaves)}): {conditioned_leaves}")
 
         evidence = {}
         for leaf in conditioned_leaves:
-            if self.query_state is not None:
-                state = self.query_state
-            else:
-                state = random.randint(0, 1)
+            state = self.query_state if self.query_state is not None else random.randint(0, 1)
             evidence[str(leaf)] = state
 
         try:
@@ -239,23 +294,34 @@ class InferenceEngine:
             return torch.tensor(q.values, dtype=torch.float), evidence
         except Exception as e:
             if self.verbose:
-                print(f"Inference failed: {e}")
+                print(f"Inference failed (leaf): {e}")
             return torch.tensor([0.5, 0.5], dtype=torch.float), evidence
-
 
 class GraphPreprocessor:
     """Handles graph preprocessing with different masking strategies"""
 
     def __init__(self, mode="distribution", json_folder="graphs",
-                 mask_strategy="root_only", query_state=None, verbose=False, use_intermediate=False):
+                 mask_strategy="root_only", query_state=None, verbose=False, 
+                 use_intermediate=False, num_leaf_to_infer=2, num_intermediate_to_infer=2):
         self.mode = mode.lower()
         self.mask_strategy = mask_strategy.lower()
         self.json_folder = json_folder
         self.query_state = query_state
         self.verbose = verbose
         self.bn_builder = BayesianNetworkBuilder(verbose=verbose)
-        self.inference_engine = InferenceEngine(query_state=query_state, verbose=verbose)
         self.use_intermediate = use_intermediate
+
+        # UPDATED: Use separate leaf and intermediate counts
+        self.num_leaf_to_infer = int(num_leaf_to_infer)
+        self.num_intermediate_to_infer = int(num_intermediate_to_infer)
+
+        # Pass both to InferenceEngine
+        self.inference_engine = InferenceEngine(
+            num_leaf_to_infer=self.num_leaf_to_infer,
+            num_intermediate_to_infer=self.num_intermediate_to_infer,
+            query_state=query_state,
+            verbose=verbose
+        )
 
     def preprocess_graph(self, data, global_cpd_len, graph_idx=None):
         """Preprocess a single graph with consistent indexing"""
@@ -265,15 +331,14 @@ class GraphPreprocessor:
         node_type_idx = 0
         num_parents_idx = 8
         evidence_flag_idx = 9
-        cpd_start_idx = 10  # CPD values start at index 10
+        cpd_start_idx = 10
 
         # Insert evidence flag column at index 9 if missing
-        if x.shape[1] == 9 + global_cpd_len:  # 9 features before CPDs (without evidence_flag)
-
+        if x.shape[1] == 9 + global_cpd_len:
             x = torch.cat([
-                x[:, :9],                 # Columns 0 to 8
-                torch.zeros(x.size(0), 1),   # New evidence_flag column
-                x[:, 9:]                 # CPDs
+                x[:, :9],
+                torch.zeros(x.size(0), 1),
+                x[:, 9:]
             ], dim=1)
             if self.verbose:
                 print(f"Graph {graph_idx}: Added evidence_flag column at index {evidence_flag_idx}")
@@ -297,28 +362,30 @@ class GraphPreprocessor:
 
             model, json_data = self.bn_builder.build_from_json(json_path)
 
-            # Choose inference strategy
-            if self.use_intermediate and len(intermediate_nodes) > 0:
-                prob, evidence = self.inference_engine.infer_root_given_intermediate(model, json_data)
+            # UPDATED: Always use mixed evidence selection when use_intermediate=True
+            if self.use_intermediate:
+                prob, evidence = self.inference_engine.infer_root_given_mixed_evidence(
+                    model, json_data, use_intermediate=True
+                )
             else:
+                # Use leaf-only inference
                 prob, evidence = self.inference_engine.infer_root_given_leaf(model, json_data)
 
             # Set target based on mode
             if self.mode == "distribution":
-                data.y = prob  # [P(0), P(1)]
+                data.y = prob
             else:  # root_probability
                 data.y = torch.tensor([prob[0].item()], dtype=torch.float)
 
-            # Store evidence information for model to use
+            # Store evidence information
             data.evidence_ids = torch.tensor([int(k) for k in evidence.keys()])
             data.evidence_vals = torch.tensor([v for v in evidence.values()])
 
-            # IMPORTANT: Mark evidence nodes in feature vector
+            # Mark evidence nodes in feature vector
             for eid in data.evidence_ids:
                 x[eid, evidence_flag_idx] = 1.0
 
         elif self.mode == "regression":
-            # For regression, predict the CPD values directly
             data.y = x[root_node, cpd_start_idx:cpd_start_idx + global_cpd_len].clone()
         else:
             raise ValueError(f"Unknown mode: {self.mode}")
@@ -330,7 +397,6 @@ class GraphPreprocessor:
         # New Feature Computation: CPD Entropy, Evidence Strength, Distance to Evidence
         # ===============================================
 
-        # 1. CPD Entropy computation
         entropies = []
         for i in range(x.size(0)):
             cpd_vals = x[i, cpd_start_idx:cpd_start_idx + global_cpd_len].cpu().numpy()
@@ -341,12 +407,10 @@ class GraphPreprocessor:
                 p = np.ones_like(cpd_vals) / len(cpd_vals)
             entropy = 0 if np.allclose(p, 0) else scipy.stats.entropy(p)
             entropies.append(entropy)
-        cpd_entropy = torch.tensor(entropies, dtype=torch.float).unsqueeze(1)  # shape [num_nodes, 1]
+        cpd_entropy = torch.tensor(entropies, dtype=torch.float).unsqueeze(1)
 
-        # 2. Evidence strength (copy of evidence_flag)
-        evidence_strength = x[:, evidence_flag_idx].unsqueeze(1).clone()  # shape [num_nodes, 1]
+        evidence_strength = x[:, evidence_flag_idx].unsqueeze(1).clone()
 
-        # 3. Distance to nearest evidence (using NetworkX for graph traversal)
         edge_list = data.edge_index.t().cpu().numpy().tolist()
         G = nx.Graph()
         G.add_edges_from(edge_list)
@@ -365,14 +429,11 @@ class GraphPreprocessor:
                 distance_list.append(d)
         distance_to_evidence = torch.tensor(distance_list, dtype=torch.float).unsqueeze(1)
 
-        # Concatenate new features to node features tensor
         x = torch.cat([x, cpd_entropy, evidence_strength, distance_to_evidence], dim=1)
-
-        # Update data.x with new features
         data.x = x
 
         # ===============================================
-        # Masking strategy applied to original CPD features after adding new features
+        # Masking strategy
         # ===============================================
 
         if self.mask_strategy == "root_only":
@@ -399,23 +460,9 @@ class GraphPreprocessor:
             print(f"Graph {graph_idx} - After masking (strategy: {self.mask_strategy})")
             print(f"  Root CPD: {x[root_node, cpd_start_idx:cpd_start_idx + global_cpd_len]}")
             print(f"  Evidence flags: {x[:, evidence_flag_idx].nonzero().flatten()}")
+            print(f"  Evidence count: {(x[:, evidence_flag_idx] == 1).sum().item()}")
             print(f"  Target: {data.y}")
 
-        # Verify JSON comparison for debugging
-        if self.verbose and self.mode in ["distribution", "root_probability"]:
-            try:
-                json_path = os.path.join(self.json_folder, f"detailed_graph_{graph_idx}.json")
-                with open(json_path, "r") as f:
-                    json_data = json.load(f)
-                root_id = str(int(root_node))
-                if root_id in json_data["nodes"]:
-                    root_json = json_data["nodes"][root_id]
-                    print(f"  JSON root CPD: {root_json['cpd']['values']}")
-                    print(f"  Tensor root CPD: {x[root_node, cpd_start_idx:cpd_start_idx + global_cpd_len].tolist()}")
-            except Exception as e:
-                print(f"  JSON comparison failed: {e}")
-
-        # Final assignments after all processing
         data.root_node = root_node
         data.leaf_nodes = leaf_nodes
         data.intermediate_nodes = intermediate_nodes
@@ -432,7 +479,7 @@ class DataPipeline:
         with open(config_path, "r") as f:
             self.config = yaml.safe_load(f)
 
-        # Set random seeds for reproducibility
+        # Set random seeds
         random.seed(self.config.get("random_seed", 42))
         torch.manual_seed(self.config.get("random_seed", 42))
 
@@ -446,26 +493,31 @@ class DataPipeline:
         self.query_state = self.config.get("query_state")
         self.verbose = self.config.get("verbose", False)
         self.use_intermediate = self.config.get("use_intermediate", False)
+        
+        # UPDATED: Separate leaf and intermediate counts
+        self.num_leaf_to_infer = self.config.get("num_leaf_to_infer", 2)
+        self.num_intermediate_to_infer = self.config.get("num_intermediate_to_infer", 2)
+
         self.use_kfold = self.config.get("use_kfold", False)
         self.k_folds = self.config.get("k_folds", 5)
         self.stratify_folds = self.config.get("stratify_folds", True)
         self.fold_random_seed = self.config.get("fold_random_seed", 42)
 
-        # Debug information
         if self.verbose:
             print(f"Pipeline Configuration:")
             print(f"  JSON folder: {self.json_folder}")
             print(f"  Mode: {self.mode}")
             print(f"  Mask strategy: {self.mask_strategy}")
             print(f"  Use intermediate: {self.use_intermediate}")
+            print(f"  Num leaf to infer: {self.num_leaf_to_infer}")
+            print(f"  Num intermediate to infer: {self.num_intermediate_to_infer}")
 
-        # Create output directory
         os.makedirs(self.output_dir, exist_ok=True)
 
-        # Initialize processors
         self.bn_builder = BayesianNetworkBuilder(verbose=self.verbose)
         self.inference_engine = InferenceEngine(
-            self.config.get("num_evidence_to_infer", 2),
+            num_leaf_to_infer=self.num_leaf_to_infer,
+            num_intermediate_to_infer=self.num_intermediate_to_infer,
             verbose=self.verbose
         )
         self.preprocessor = GraphPreprocessor(
@@ -474,9 +526,11 @@ class DataPipeline:
             json_folder=self.json_folder,
             query_state=self.query_state,
             verbose=self.verbose,
-            use_intermediate=self.use_intermediate
+            use_intermediate=self.use_intermediate,
+            num_leaf_to_infer=self.num_leaf_to_infer,
+            num_intermediate_to_infer=self.num_intermediate_to_infer
         )
-
+        
     def create_stratified_kfold_splits(self, processed_data):
         """Create stratified k-fold splits based on target probabilities"""
         print(f"Creating {self.k_folds}-fold cross-validation splits...")

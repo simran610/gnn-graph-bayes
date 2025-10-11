@@ -16,7 +16,8 @@ patience: 30                                             # Patience for early st
 epochs: 100                                             # Batch size for training
 use_sigmoid: false                                       # Use sigmoid activation function
 num_leaf_to_infer: 4                                    # Number of leaf nodes to condition on
-num_evidence_to_infer: 4                                # Number of evidence nodes to condition on
+#num_evidence_to_infer: 4                                # Number of evidence nodes to condition on
+num_intermediate_to_infer: 4                            # Number of intermediate nodes to condition on               
 dataset_path: data_processing/dataset.pt                # Path to save the generated dataset 
 global_cpd_len_path: global_datasets/global_cpd_len.txt # Path to save the global CPD length
 train_split: 0.7                                        # Proportion of data for training
@@ -24,7 +25,7 @@ val_split: 0.2                                          # Proportion of data for
 test_split: 0.1                                         # Proportion of data for testing
 random_seed: 42                                         # Random seed for reproducibility
 inference_output_dir: saved_inference_outputs           # Directory to save inference outputs
-verbose: false                                          # Verbosity of the output
+verbose: true                                          # Verbosity of the output
 use_intermediate: true   # or false                     # Use intermediate nodes for inference
 enable_outlier_analysis:  true                          # set to False to skip
 debug_attention: true                                   # Enable attention debugging for GAT model
