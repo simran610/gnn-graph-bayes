@@ -15,6 +15,7 @@ from exporter import (
     flatten
 )
 from graph_visualization import draw_graph
+from bayesian_network_generator import generate_varied_bn
 
 if __name__ == "__main__":
     start_time = time.time()
@@ -24,9 +25,16 @@ if __name__ == "__main__":
     all_models = []
     graph_model_pairs = []
 
+    # old code with bn build nad generated_graphs
+    # for i in range(config['num_graphs']):
+    #     tree = generate_tree(config)
+    #     model = build_bn_from_tree(tree, config)
+    #     all_models.append(model)
+    #     graph_model_pairs.append((tree, model))
+
+    # New code with varied BN generator
     for i in range(config['num_graphs']):
-        tree = generate_tree(config)
-        model = build_bn_from_tree(tree, config)
+        tree, model = generate_varied_bn(config)  
         all_models.append(model)
         graph_model_pairs.append((tree, model))
 

@@ -1,32 +1,33 @@
 """
 Node Feature Indexing (consistent across BN→NX→PyG conversion and preprocessing):
 
-Index | Feature             | Description
+Index | Feature               | Description
 -----------------------------------------------------------
-0     | node_type           | Node type: 0=root, 1=intermediate, 2=leaf
-1     | in_degree           | Incoming edges count
-2     | out_degree          | Outgoing edges count
-3     | betweenness         | Betweenness centrality
-4     | closeness           | Closeness centrality
-5     | pagerank            | PageRank score
-6     | degree_centrality   | Degree centrality
-7     | variable_card       | Cardinality of the node variable
-8     | num_parents         | Number of parent nodes in BN
-9     | evidence_flag       | Evidence flag (added during preprocessing; 0 or 1)
-10+    | CPD values         | Flattened Conditional Probability Table values
-
-Added features appended at end of node features vector:
-- CPD Entropy
-- Evidence Strength (copy of evidence flag)
-- Distance to Nearest Evidence
+0     | node_type             | Node type: 0=root, 1=intermediate, 2=leaf
+1     | in_degree             | Incoming edges count
+2     | out_degree            | Outgoing edges count
+3     | betweenness           | Betweenness centrality
+4     | closeness             | Closeness centrality
+5     | pagerank              | PageRank score
+6     | degree_centrality     | Degree centrality
+7     | variable_card         | Cardinality of the node variable
+8     | num_parents           | Number of parent nodes in BN
+9     | evidence_flag         | Evidence flag (added during preprocessing; 0 or 1)
+10-19 | CPD summary features  | Ten summary statistics derived from node CPD values:
+                              | mean, std, min, max, entropy, argmax, count_nonzero, median, percentile_25, percentile_75
+20    | evidence_strength     | Copy of evidence flag (per-node)
+21    | distance_to_evidence  | Shortest path length to nearest evidence node
 
 Important:
-- Evidence flag is inserted at index 9 during preprocessing shifting CPD start to index 10.
+- Evidence flag is inserted at index 9 during preprocessing, shifting CPD summary start to index 10.
 - Normalization applies to indices 2-6.
-- Masking applies to CPD feature columns starting at index 10.
-- New features added after original features.
+- Masking applies to CPD summary feature columns (10-19).
+- New features added after CPD summaries (20-21).
 
-Note: Comments created using chatGPT-4, based on the provided context and code structure.
+Note:
+- CPD flattening was replaced by fixed-length summary statistics (10 features) to prevent truncation and ensure consistency.
+- Comments created using chatGPT-4, based on updated preprocessing logic.
+
 """
 
 import os
@@ -323,27 +324,170 @@ class GraphPreprocessor:
             verbose=verbose
         )
 
+    # def preprocess_graph(self, data, global_cpd_len, graph_idx=None):
+    #     """Preprocess a single graph with consistent indexing"""
+    #     x = data.x.clone()
+
+    #     # Updated feature indices
+    #     node_type_idx = 0
+    #     num_parents_idx = 8
+    #     evidence_flag_idx = 9
+    #     cpd_start_idx = 10
+
+    #     # Insert evidence flag column at index 9 if missing
+    #     if x.shape[1] == 9 + global_cpd_len:
+    #         x = torch.cat([
+    #             x[:, :9],
+    #             torch.zeros(x.size(0), 1),
+    #             x[:, 9:]
+    #         ], dim=1)
+    #         if self.verbose:
+    #             print(f"Graph {graph_idx}: Added evidence_flag column at index {evidence_flag_idx}")
+
+    #     # Identify node types
+    #     node_types = x[:, node_type_idx]
+    #     root_nodes = (node_types == 0).nonzero(as_tuple=True)[0]
+    #     leaf_nodes = (node_types == 2).nonzero(as_tuple=True)[0]
+    #     intermediate_nodes = (node_types == 1).nonzero(as_tuple=True)[0]
+
+    #     if len(root_nodes) == 0:
+    #         raise ValueError("No root node found in graph")
+    #     root_node = root_nodes[0].item()
+    #     variable_card = int(x[root_node, 7].item())
+
+    #     # Generate targets based on mode
+    #     if self.mode in ["distribution", "root_probability"]:
+    #         json_path = os.path.join(self.json_folder, f"detailed_graph_{graph_idx}.json")
+    #         if not os.path.exists(json_path):
+    #             raise FileNotFoundError(f"JSON file not found: {json_path}")
+
+    #         model, json_data = self.bn_builder.build_from_json(json_path)
+
+    #         # UPDATED: Always use mixed evidence selection when use_intermediate=True
+    #         if self.use_intermediate:
+    #             prob, evidence = self.inference_engine.infer_root_given_mixed_evidence(
+    #                 model, json_data, use_intermediate=True
+    #             )
+    #         else:
+    #             # Use leaf-only inference
+    #             prob, evidence = self.inference_engine.infer_root_given_leaf(model, json_data)
+
+    #         # Set target based on mode
+    #         if self.mode == "distribution":
+    #             data.y = prob
+    #         else:  # root_probability
+    #             data.y = torch.tensor([prob[0].item()], dtype=torch.float)
+
+    #         # Store evidence information
+    #         data.evidence_ids = torch.tensor([int(k) for k in evidence.keys()])
+    #         data.evidence_vals = torch.tensor([v for v in evidence.values()])
+
+    #         # Mark evidence nodes in feature vector
+    #         for eid in data.evidence_ids:
+    #             x[eid, evidence_flag_idx] = 1.0
+
+    #     elif self.mode == "regression":
+    #         data.y = x[root_node, cpd_start_idx:cpd_start_idx + global_cpd_len].clone()
+    #     else:
+    #         raise ValueError(f"Unknown mode: {self.mode}")
+
+    #     if self.verbose:
+    #         print(f"Graph {graph_idx} - Before masking root CPD: {x[root_node, cpd_start_idx:cpd_start_idx + global_cpd_len]}")
+
+    #     # ===============================================
+    #     # New Feature Computation: CPD Entropy, Evidence Strength, Distance to Evidence
+    #     # ===============================================
+
+    #     entropies = []
+    #     for i in range(x.size(0)):
+    #         cpd_vals = x[i, cpd_start_idx:cpd_start_idx + global_cpd_len].cpu().numpy()
+    #         cpd_sum = np.sum(cpd_vals)
+    #         if cpd_sum > 0:
+    #             p = cpd_vals / cpd_sum
+    #         else:
+    #             p = np.ones_like(cpd_vals) / len(cpd_vals)
+    #         entropy = 0 if np.allclose(p, 0) else scipy.stats.entropy(p)
+    #         entropies.append(entropy)
+    #     cpd_entropy = torch.tensor(entropies, dtype=torch.float).unsqueeze(1)
+
+    #     evidence_strength = x[:, evidence_flag_idx].unsqueeze(1).clone()
+
+    #     edge_list = data.edge_index.t().cpu().numpy().tolist()
+    #     G = nx.Graph()
+    #     G.add_edges_from(edge_list)
+    #     evidence_nodes = (x[:, evidence_flag_idx] == 1).nonzero(as_tuple=True)[0].tolist()
+    #     num_nodes = x.size(0)
+    #     if len(evidence_nodes) == 0:
+    #         distance_list = [num_nodes] * num_nodes
+    #     else:
+    #         distance_list = []
+    #         for i in range(num_nodes):
+    #             try:
+    #                 dist_values = [nx.shortest_path_length(G, i, int(e)) for e in evidence_nodes if nx.has_path(G, i, int(e))]
+    #                 d = min(dist_values) if len(dist_values) > 0 else num_nodes
+    #             except Exception:
+    #                 d = num_nodes
+    #             distance_list.append(d)
+    #     distance_to_evidence = torch.tensor(distance_list, dtype=torch.float).unsqueeze(1)
+
+    #     x = torch.cat([x, cpd_entropy, evidence_strength, distance_to_evidence], dim=1)
+    #     data.x = x
+
+    #     # ===============================================
+    #     # Masking strategy
+    #     # ===============================================
+
+    #     if self.mask_strategy == "root_only":
+    #         x[root_node, cpd_start_idx:cpd_start_idx + global_cpd_len] = 1.0 / variable_card
+
+    #     elif self.mask_strategy == "evidence_only":
+    #         if hasattr(data, 'evidence_ids'):
+    #             for eid in data.evidence_ids:
+    #                 x[eid, cpd_start_idx:cpd_start_idx + global_cpd_len] = 1.0 / variable_card
+
+    #     elif self.mask_strategy == "both":
+    #         x[root_node, cpd_start_idx:cpd_start_idx + global_cpd_len] = 1.0 / variable_card
+    #         if hasattr(data, 'evidence_ids'):
+    #             for eid in data.evidence_ids:
+    #                 x[eid, cpd_start_idx:cpd_start_idx + global_cpd_len] = 1.0 / variable_card
+
+    #     elif self.mask_strategy == "none":
+    #         pass
+
+    #     else:
+    #         raise ValueError(f"Unknown mask strategy: {self.mask_strategy}")
+
+    #     if self.verbose:
+    #         print(f"Graph {graph_idx} - After masking (strategy: {self.mask_strategy})")
+    #         print(f"  Root CPD: {x[root_node, cpd_start_idx:cpd_start_idx + global_cpd_len]}")
+    #         print(f"  Evidence flags: {x[:, evidence_flag_idx].nonzero().flatten()}")
+    #         print(f"  Evidence count: {(x[:, evidence_flag_idx] == 1).sum().item()}")
+    #         print(f"  Target: {data.y}")
+
+    #     data.root_node = root_node
+    #     data.leaf_nodes = leaf_nodes
+    #     data.intermediate_nodes = intermediate_nodes
+    #     data.mode = self.mode
+    #     data.mask_strategy = self.mask_strategy
+
+    #     return data
     def preprocess_graph(self, data, global_cpd_len, graph_idx=None):
-        """Preprocess a single graph with consistent indexing"""
+        """Preprocess a single graph with consistent indexing and CPD summary features (no duplicate entropy)."""
         x = data.x.clone()
 
-        # Updated feature indices
+        # Define feature index positions
         node_type_idx = 0
         num_parents_idx = 8
         evidence_flag_idx = 9
         cpd_start_idx = 10
 
-        # Insert evidence flag column at index 9 if missing
+        # --- Step 1: Ensure evidence flag column exists ---
         if x.shape[1] == 9 + global_cpd_len:
-            x = torch.cat([
-                x[:, :9],
-                torch.zeros(x.size(0), 1),
-                x[:, 9:]
-            ], dim=1)
+            x = torch.cat([x[:, :9], torch.zeros(x.size(0), 1), x[:, 9:]], dim=1)
             if self.verbose:
                 print(f"Graph {graph_idx}: Added evidence_flag column at index {evidence_flag_idx}")
 
-        # Identify node types
+        # Identify node categories
         node_types = x[:, node_type_idx]
         root_nodes = (node_types == 0).nonzero(as_tuple=True)[0]
         leaf_nodes = (node_types == 2).nonzero(as_tuple=True)[0]
@@ -351,37 +495,26 @@ class GraphPreprocessor:
 
         if len(root_nodes) == 0:
             raise ValueError("No root node found in graph")
+
         root_node = root_nodes[0].item()
         variable_card = int(x[root_node, 7].item())
 
-        # Generate targets based on mode
+        # --- Step 2: Generate targets via inference ---
         if self.mode in ["distribution", "root_probability"]:
             json_path = os.path.join(self.json_folder, f"detailed_graph_{graph_idx}.json")
             if not os.path.exists(json_path):
                 raise FileNotFoundError(f"JSON file not found: {json_path}")
 
             model, json_data = self.bn_builder.build_from_json(json_path)
-
-            # UPDATED: Always use mixed evidence selection when use_intermediate=True
             if self.use_intermediate:
-                prob, evidence = self.inference_engine.infer_root_given_mixed_evidence(
-                    model, json_data, use_intermediate=True
-                )
+                prob, evidence = self.inference_engine.infer_root_given_mixed_evidence(model, json_data, use_intermediate=True)
             else:
-                # Use leaf-only inference
                 prob, evidence = self.inference_engine.infer_root_given_leaf(model, json_data)
 
-            # Set target based on mode
-            if self.mode == "distribution":
-                data.y = prob
-            else:  # root_probability
-                data.y = torch.tensor([prob[0].item()], dtype=torch.float)
+            data.y = prob if self.mode == "distribution" else torch.tensor([prob[0].item()], dtype=torch.float)
 
-            # Store evidence information
             data.evidence_ids = torch.tensor([int(k) for k in evidence.keys()])
             data.evidence_vals = torch.tensor([v for v in evidence.values()])
-
-            # Mark evidence nodes in feature vector
             for eid in data.evidence_ids:
                 x[eid, evidence_flag_idx] = 1.0
 
@@ -393,73 +526,66 @@ class GraphPreprocessor:
         if self.verbose:
             print(f"Graph {graph_idx} - Before masking root CPD: {x[root_node, cpd_start_idx:cpd_start_idx + global_cpd_len]}")
 
-        # ===============================================
-        # New Feature Computation: CPD Entropy, Evidence Strength, Distance to Evidence
-        # ===============================================
-
-        entropies = []
+        # --- Step 3: Compute 10-value CPD summary features ---
+        cpd_summaries = []
         for i in range(x.size(0)):
             cpd_vals = x[i, cpd_start_idx:cpd_start_idx + global_cpd_len].cpu().numpy()
-            cpd_sum = np.sum(cpd_vals)
-            if cpd_sum > 0:
-                p = cpd_vals / cpd_sum
-            else:
-                p = np.ones_like(cpd_vals) / len(cpd_vals)
-            entropy = 0 if np.allclose(p, 0) else scipy.stats.entropy(p)
-            entropies.append(entropy)
-        cpd_entropy = torch.tensor(entropies, dtype=torch.float).unsqueeze(1)
+            p = cpd_vals / np.sum(cpd_vals) if np.sum(cpd_vals) > 0 else np.ones_like(cpd_vals) / len(cpd_vals)
 
-        evidence_strength = x[:, evidence_flag_idx].unsqueeze(1).clone()
+            stats = [
+                np.mean(p), np.std(p), np.min(p), np.max(p),
+                scipy.stats.entropy(p), np.argmax(p), np.count_nonzero(p),
+                np.median(p), np.percentile(p, 25), np.percentile(p, 75)
+            ]
+            cpd_summaries.append(torch.tensor(stats, dtype=torch.float))
 
+        cpd_summary_tensor = torch.stack(cpd_summaries, dim=0)
+        x = torch.cat([x[:, :cpd_start_idx], cpd_summary_tensor, x[:, cpd_start_idx + global_cpd_len:]], dim=1)
+
+        # --- Step 4: Compute graph-level auxiliary features (no redundant entropy) ---
+        evidence_strength = x[:, evidence_flag_idx].unsqueeze(1)
+
+        # Compute node distances to nearest evidence nodes
         edge_list = data.edge_index.t().cpu().numpy().tolist()
         G = nx.Graph()
         G.add_edges_from(edge_list)
-        evidence_nodes = (x[:, evidence_flag_idx] == 1).nonzero(as_tuple=True)[0].tolist()
         num_nodes = x.size(0)
-        if len(evidence_nodes) == 0:
-            distance_list = [num_nodes] * num_nodes
-        else:
-            distance_list = []
-            for i in range(num_nodes):
-                try:
-                    dist_values = [nx.shortest_path_length(G, i, int(e)) for e in evidence_nodes if nx.has_path(G, i, int(e))]
-                    d = min(dist_values) if len(dist_values) > 0 else num_nodes
-                except Exception:
-                    d = num_nodes
-                distance_list.append(d)
+        evidence_nodes = (x[:, evidence_flag_idx] == 1).nonzero(as_tuple=True)[0].tolist()
+
+        distance_list = []
+        for i in range(num_nodes):
+            try:
+                if evidence_nodes:
+                    distances = [nx.shortest_path_length(G, i, e) for e in evidence_nodes if nx.has_path(G, i, e)]
+                    distance_list.append(min(distances) if distances else num_nodes)
+                else:
+                    distance_list.append(num_nodes)
+            except Exception:
+                distance_list.append(num_nodes)
+
         distance_to_evidence = torch.tensor(distance_list, dtype=torch.float).unsqueeze(1)
 
-        x = torch.cat([x, cpd_entropy, evidence_strength, distance_to_evidence], dim=1)
+        # Append only evidence-related and distance features (entropy already in CPD summaries)
+        x = torch.cat([x, evidence_strength, distance_to_evidence], dim=1)
         data.x = x
 
-        # ===============================================
-        # Masking strategy
-        # ===============================================
-
+        # --- Step 5: Apply masking strategy ---
         if self.mask_strategy == "root_only":
-            x[root_node, cpd_start_idx:cpd_start_idx + global_cpd_len] = 1.0 / variable_card
-
-        elif self.mask_strategy == "evidence_only":
-            if hasattr(data, 'evidence_ids'):
-                for eid in data.evidence_ids:
-                    x[eid, cpd_start_idx:cpd_start_idx + global_cpd_len] = 1.0 / variable_card
-
-        elif self.mask_strategy == "both":
-            x[root_node, cpd_start_idx:cpd_start_idx + global_cpd_len] = 1.0 / variable_card
-            if hasattr(data, 'evidence_ids'):
-                for eid in data.evidence_ids:
-                    x[eid, cpd_start_idx:cpd_start_idx + global_cpd_len] = 1.0 / variable_card
-
-        elif self.mask_strategy == "none":
-            pass
-
-        else:
+            x[root_node, cpd_start_idx:cpd_start_idx + 10] = 1.0 / variable_card
+        elif self.mask_strategy == "evidence_only" and hasattr(data, "evidence_ids"):
+            for eid in data.evidence_ids:
+                x[eid, cpd_start_idx:cpd_start_idx + 10] = 1.0 / variable_card
+        elif self.mask_strategy == "both" and hasattr(data, "evidence_ids"):
+            x[root_node, cpd_start_idx:cpd_start_idx + 10] = 1.0 / variable_card
+            for eid in data.evidence_ids:
+                x[eid, cpd_start_idx:cpd_start_idx + 10] = 1.0 / variable_card
+        elif self.mask_strategy != "none":
             raise ValueError(f"Unknown mask strategy: {self.mask_strategy}")
 
+        # --- Step 6: Verbose diagnostics ---
         if self.verbose:
             print(f"Graph {graph_idx} - After masking (strategy: {self.mask_strategy})")
-            print(f"  Root CPD: {x[root_node, cpd_start_idx:cpd_start_idx + global_cpd_len]}")
-            print(f"  Evidence flags: {x[:, evidence_flag_idx].nonzero().flatten()}")
+            print(f"  Root CPD summary: {x[root_node, cpd_start_idx:cpd_start_idx + 10]}")
             print(f"  Evidence count: {(x[:, evidence_flag_idx] == 1).sum().item()}")
             print(f"  Target: {data.y}")
 
@@ -470,6 +596,7 @@ class GraphPreprocessor:
         data.mask_strategy = self.mask_strategy
 
         return data
+
 
 
 class DataPipeline:
@@ -486,7 +613,7 @@ class DataPipeline:
         # Initialize paths and settings
         self.json_folder = self.config.get("json_folder", self.config.get("output_dir", "generated_graphs"))
         self.output_dir = self.config.get("inference_output_dir", "inference_results")
-        self.dataset_path = self.config.get("dataset_path")
+        self.bn_nx_pyg_dataset_path = self.config.get("bn_nx_pyg_dataset_path")
         self.global_cpd_len_path = self.config.get("global_cpd_len_path")
         self.mode = self.config.get("mode", "regression")
         self.mask_strategy = self.config.get("mask_strategy", "root_only")
@@ -609,7 +736,7 @@ class DataPipeline:
         """Run preprocessing and perform K-Fold splits and dataset saving."""
 
         try:
-            dataset = torch.load(self.dataset_path, weights_only=False)
+            dataset = torch.load(self.bn_nx_pyg_dataset_path, weights_only=False)
             with open(self.global_cpd_len_path, "r") as f:
                 global_cpd_len = int(f.read().strip())
         except Exception as e:
