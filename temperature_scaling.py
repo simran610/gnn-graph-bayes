@@ -1,5 +1,3 @@
-## temperature_scaling.py
-
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -8,22 +6,27 @@ class TemperatureScaling(nn.Module):
     def __init__(self, init_temp=1.5):
         super().__init__()
         self.temperature = nn.Parameter(torch.ones(1) * init_temp)
+
     def forward(self, logits):
-            # Move self.temperature to the same device as logits
+        ##### SAFETY: ensure same device #####
         temperature = self.temperature.to(logits.device)
+        ##################################################
         return logits / temperature
 
     def calibrate(self, model, loader, device, mode="root_probability"):
         model.eval()
         logits_list, targets_list = [], []
 
+        print("Collecting logits and targets for temperature calibration...")
         with torch.no_grad():
             for batch in loader:
                 batch = batch.to(device)
                 out = model(batch)
+
+                ##### HANDLE DIFFERENT MODES SAFELY #####
                 if mode == "root_probability":
-                    prob = out.squeeze().clamp(1e-6, 1-1e-6)
-                    logits = torch.stack([torch.log(1-prob), torch.log(prob)], dim=1)
+                    prob = out.squeeze().clamp(1e-6, 1 - 1e-6)
+                    logits = torch.stack([torch.log(1 - prob), torch.log(prob)], dim=1)
                     target = (batch.y.squeeze() > 0.5).long()
                 elif mode == "distribution":
                     logits = out
@@ -32,8 +35,10 @@ class TemperatureScaling(nn.Module):
                     continue
                 logits_list.append(logits.cpu())
                 targets_list.append(target.cpu())
+
         logits = torch.cat(logits_list).to(device)
         targets = torch.cat(targets_list).to(device)
+        print(f"Collected {len(logits)} logits for calibration.")
 
         criterion = nn.CrossEntropyLoss()
         optimizer = torch.optim.LBFGS([self.temperature], lr=0.01, max_iter=50)
@@ -43,31 +48,40 @@ class TemperatureScaling(nn.Module):
             loss = criterion(self.forward(logits), targets)
             loss.backward()
             return loss
+
         optimizer.step(closure)
+        print(f"Calibrated temperature: {self.temperature.item():.4f}")
         return self.temperature.item()
 
     def apply(self, model, loader, device, mode="root_probability"):
         preds, targets = [], []
         model.eval(); self.eval()
+
+        print("Applying temperature scaling to predictions...")
         with torch.no_grad():
             for batch in loader:
                 batch = batch.to(device)
                 out = model(batch)
+
                 if mode == "root_probability":
                     prob = out.squeeze().clamp(1e-6, 1-1e-6)
                     logits = torch.stack([torch.log(1-prob), torch.log(prob)], dim=1)
                     scaled_logits = self.forward(logits)
-                    prob_calib = F.softmax(scaled_logits, dim=1)[:,1]
+                    prob_calib = F.softmax(scaled_logits, dim=1)[:, 1]
                     preds.append(prob_calib.cpu())
                     targets.append(batch.y.squeeze().cpu())
+
                 elif mode == "distribution":
                     scaled_logits = self.forward(out)
                     prob_calib = F.softmax(scaled_logits, dim=1)
                     preds.append(prob_calib.cpu())
                     targets.append(batch.y.cpu())
+
         if preds:
             preds = torch.cat(preds)
             targets = torch.cat(targets)
         else:
             preds, targets = None, None
+
+        print("Temperature scaling applied successfully.")
         return preds, targets

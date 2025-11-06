@@ -1,38 +1,53 @@
-num_graphs: 5000                                       # Number of Bayesian networks to generate
-min_depth: 10                                            # Minimum depth for generated graphs (e.g., 5 or more)
-max_depth: 15                                           # Maximum depth for generated graphs (can be > 5)
-max_nodes: 1000                                          # Optional: maximum total number of nodes in graph, to
-min_children: 3                                         # Minimum number of children per node
+#graph generation settings
+num_graphs: 5000                                        # Number of Bayesian networks to generate
+min_depth: 5                                            # Minimum depth for generated graphs (e.g., 5 or more)
+max_depth: 10                                           # Maximum depth for generated graphs (can be > 5)
+min_children: 1                                         # Minimum number of children per node
 max_children: 5                                         # Maximum number of children per node
+min_nodes: 5                                            # Minimum number of nodes in the generated graphs
+max_nodes: 500                                          # Maximum number of nodes in the generated graphs
+max_extra_edges_ratio: 0.2                              # Maximum ratio of extra edges to add to the graphs
+max_cardinality: 7                                      # Maximum cardinality for discrete variables
+use_structure_learning: false                           # Whether to use structure learning for graph generation
 output_dir : "./generated_graphs"                       # Directory to save generated graphs
+
+
+# graphs preprocessing settings
 mode: "root_probability"                                # "distribution"/"root_probability"/"regression"
 mask_strategy: "evidence_only"                          # "root_only"/ "both"/ "none / "evidence_only"
-query_state: 0                                          # null/0/1 to fix leaf states                       
-dropout: 0.1                                            # Dropout rate for the model
-quantile_tau: 0.75                                      # Tau value for quantile loss                                           
-learning_rate: 0.001                                    # Learning rate for the optimizer
-hidden_channels: 128                                    # Number of hidden channels in the model
-batch_size: 128                                         # Batch size for training
-weight_decay: 1e-4                                      # 5e-4  Weight decay for the optimizer
-patience: 50                                            # Patience for early stopping
-epochs: 100                                             # Batch size for training
-use_sigmoid: true                                       # Use sigmoid activation function
+query_state: 0                                          # null/0/1 to fix leaf states 
+
+# Inference settings
 num_leaf_to_infer: 1                                    # Number of leaf nodes to condition on
 #num_evidence_to_infer: 2                               # Number of evidence nodes to condition on                             
-num_intermediate_to_infer: 1                            # Number of intermediate nodes to condition on               
-bn_nx_pyg_dataset_path: data_processing/dataset.pt      # Path to save the generated dataset from Bayesian networks to pyg 
-dataset_path: datasets                                  # Path to save the processed dataset with train/val/test splits
-global_cpd_len_path: global_datasets/global_cpd_len.txt # Path to save the global CPD length
+num_intermediate_to_infer: 1                            # Number of intermediate nodes to condition on
+inference_output_dir: saved_inference_outputs           # Directory to save inference outputs 
 train_split: 0.7                                        # Proportion of data for training
 val_split: 0.2                                          # Proportion of data for validation 
 test_split: 0.1                                         # Proportion of data for testing
 random_seed: 42                                         # Random seed for reproducibility
-inference_output_dir: saved_inference_outputs           # Directory to save inference outputs
+
+# model training settings
+dropout: 0.1                                            # Dropout rate for the model
+quantile_tau: 0.75                                      # Tau value for quantile loss                                           
+learning_rate: 0.001                                   # Learning rate for the optimizer
+hidden_channels: 128                                     # Number of hidden channels in the model
+batch_size: 128                                         # Batch size for training
+weight_decay: 5e-4                                      # 5e-4  Weight decay for the optimizer
+patience: 10                                            # Patience for early stopping
+epochs: 100                                             # Batch size for training
+use_sigmoid: false                                       # Use sigmoid activation function, false for temperature scaling
+debug_attention: false                                  # Enable attention debugging for GAT model
+
+# paths to save datasets              
+bn_nx_pyg_dataset_path: data_processing/dataset.pt      # Path to save the generated dataset from Bayesian networks to pyg 
+dataset_path: datasets                                  # Path to save the processed dataset with train/val/test splits
+global_cpd_len_path: global_datasets/global_cpd_len.txt # Path to save the global CPD length
+
+# other settings
 verbose: true                                           # Verbosity of the output
 use_intermediate: true   # or false                     # Use intermediate nodes for inference
 enable_outlier_analysis:  true                          # set to False to skip
-debug_attention: true                                   # Enable attention debugging for GAT model
-
 
 # NEW K-Fold Cross-Validation Parameters
 use_kfold: false                    # Enable k-fold cross-validation
@@ -41,6 +56,6 @@ stratify_folds: false               # Stratify based on probability ranges
 fold_random_seed: 42               # Separate seed for fold splitting
 
 # NEW Temperature Scaling Parameters  
-use_temperature_scaling: false       # Enable temperature scaling
-temperature_calibration_split: 0.15 # Portion of train data for temperature calibration
+use_temperature_scaling: true       # Enable temperature scaling
+temperature_calibration_split: 0.2 # Portion of train data for temperature calibration
 save_temperature: false             # Save learned temperature parameter

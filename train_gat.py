@@ -655,7 +655,7 @@ plot_results(test_loader)
 # Save model with mode and strategy in filename
 os.makedirs("models", exist_ok=True)
 evidence_type = "intermediate" if config.get("use_intermediate") else "leaf"
-model_path = f"models/graphsage_{mode}_{mask_strategy}_{evidence_type}.pt"
+model_path = f"models/gat{mode}_{mask_strategy}_{evidence_type}.pt"
 torch.save(model.state_dict(), model_path)
 print(f"Model saved to {model_path}")
 

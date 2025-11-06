@@ -561,6 +561,7 @@ from pathlib import Path
 import glob
 import torch.nn.functional as F
 from graphsage_model import GraphSAGE  # Import your GraphSAGE implementation here
+from gat_model import GAT  # Import your GAT implementation here
 
 
 class BenchmarkDatasetProcessor:
@@ -780,6 +781,14 @@ class ModelBenchmark:
             dropout=self.config.get("dropout", 0.5)
         ).to(self.device)
 
+        # self.model = GAT(
+        #     in_channels=in_channels,
+        #     hidden_channels=self.config.get("hidden_channels", 32),
+        #     out_channels=out_channels,
+        #     dropout=self.config.get("dropout", 0.2),
+        #     heads=8  
+        # ).to(device)
+
         # Load trained weights
         self.model.load_state_dict(torch.load(model_path, map_location=self.device))
         self.model.eval()
@@ -790,18 +799,38 @@ class ModelBenchmark:
         print(f"  Input features: {in_channels}")
         print(f"  Output channels: {out_channels}")
 
+    # def predict_single_graph(self, data: Data) -> float:
+    #     data = data.to(self.device)
+    #     data.batch = torch.zeros(data.x.size(0), dtype=torch.long).to(self.device)
+    #     with torch.no_grad():
+    #         out = self.model(data)
+    #         if self.mode == "root_probability":
+    #             pred = torch.sigmoid(out).squeeze().item()
+    #         elif self.mode == "distribution":
+    #             pred = F.softmax(out, dim=1)[0, 0].item()
+    #         else:
+    #             pred = out[0].item()
+    #     return pred
     def predict_single_graph(self, data: Data) -> float:
+        # Move graph and model to same device
         data = data.to(self.device)
-        data.batch = torch.zeros(data.x.size(0), dtype=torch.long).to(self.device)
+        self.model.to(self.device)
+        data.batch = torch.zeros(data.x.size(0), dtype=torch.long, device=self.device)
+
         with torch.no_grad():
             out = self.model(data)
+            if isinstance(out, tuple):  # GAT returns (x, att_weights)
+                out = out[0]
+
             if self.mode == "root_probability":
                 pred = torch.sigmoid(out).squeeze().item()
             elif self.mode == "distribution":
                 pred = F.softmax(out, dim=1)[0, 0].item()
             else:
-                pred = out[0].item()
+                pred = out.squeeze().item()
+
         return pred
+
 
     def evaluate_dataset(self, graphs, metadata_list):
         predictions, ground_truths, errors, network_results = [], [], [], []
@@ -892,10 +921,12 @@ class ModelBenchmark:
 def main():
     print("=" * 70)
     print("GRAPHSAGE MODEL BENCHMARKING ON BNLEARN NETWORKS")
+    # print("GAT MODEL BENCHMARKING ON BNLEARN NETWORKS")
     print("=" * 70)
 
     config_path = "config.yaml"
     model_path = "models/graphsage_root_probability_evidence_only_intermediate.pt"
+    # model_path = "models/gatroot_probability_evidence_only_intermediate.pt"
     bif_directory = "dataset_bif_files"
     output_dir = "benchmark_results"
 
