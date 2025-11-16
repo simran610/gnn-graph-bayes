@@ -80,13 +80,13 @@ from exporter import (
     flatten
 )
 from graph_visualization import draw_graph
-from bayesian_network_generator import generate_varied_bn_fixed_cycle_check
+from bayesian_network_generator import generate_varied_bn
 
 
 def generate_single_graph(args):
     """Worker function for multiprocessing"""
     i, config = args
-    tree, model = generate_varied_bn_fixed_cycle_check(config)
+    tree, model = generate_varied_bn(config)
     if i % 100 == 0:
         print(f"Generated graph {i}")
     return (tree, model)
@@ -124,7 +124,7 @@ if __name__ == "__main__":
     # Export everything with uniform padding
     print("Saving graphs...")
     for i, (tree, model) in enumerate(graph_model_pairs):
-        save_cpds_as_numpy_tables(model, os.path.join("generated_graphs", f"cpds_numpy_table_{i}.npy"))
+        # save_cpds_as_numpy_tables(model, os.path.join("generated_graphs", f"cpds_numpy_table_{i}.npy"))
         save_graph_with_details(tree, model, config, i, global_max_len)
         if (i + 1) % 100 == 0:
             print(f"Saved {i+1} graphs")

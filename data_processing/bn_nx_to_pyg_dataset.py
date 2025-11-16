@@ -1,4 +1,4 @@
-#bn_nx_to_pyg_dataset.py
+# bn_nx_to_pyg_dataset.py
 import os
 import json
 import torch
