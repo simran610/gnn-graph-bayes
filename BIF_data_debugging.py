@@ -608,10 +608,16 @@ class BenchmarkDatasetProcessor:
         key_string = f"logprob_{self.use_log_prob}_norm_{self.norm_stats is not None}_filter_{MAX_NODES_FILTER}"
         return hashlib.md5(key_string.encode()).hexdigest()
 
+    # def _load_normalization_stats(self):
+    #     """Load normalization statistics"""
+    #     norm_paths = [
+    #         "datasets/folds/fold_0_norm_stats.pt",
+    #         "datasets/norm_stats.pt"
+    #     ]
     def _load_normalization_stats(self):
-        """Load normalization statistics"""
         norm_paths = [
-            "datasets/folds/fold_0_norm_stats.pt",
+            "bnlearn_norm_stats.pt",                 # BNLearn stats FIRST!
+            "datasets/folds/fold_0_norm_stats.pt",   # Fallback
             "datasets/norm_stats.pt"
         ]
         
@@ -1174,7 +1180,8 @@ def main():
     print("=" * 70)
 
     config_path = "config.yaml"
-    model_path = "training_results/models/graphsage_root_probability_evidence_only_intermediate_logprob_fold_4.pt"
+    # model_path = "training_results/models/graphsage_root_probability_evidence_only_intermediate_logprob_fold_4.pt"
+    model_path = "model_finetuned_bnlearn.pt"
     bif_directory = "dataset_bif_files"
     output_dir = "benchmark_results"
     cache_dir = "cached_graphs"

@@ -70,7 +70,10 @@ class GraphSAGE(torch.nn.Module):
             if self.use_log_prob:
                 # For log-prob: force output to be negative
                 # -softplus ensures output is in range (-∞, 0]
-                x = -F.softplus(x)
+                # x = -F.softplus(x)
+                # Clamp output to reasonable log-prob range
+                # log(0.0001) ≈ -9.21, log(0.9999) ≈ -0.0001
+                x = torch.clamp(x, min=-9.0, max=-0.0001)
             else:
                 # For raw prob: force output to be in [0, 1]
                 x = torch.sigmoid(x)
