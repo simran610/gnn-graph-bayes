@@ -30,7 +30,8 @@ random_seed: 42                                         # Random seed for reprod
 # model training settings
 dropout: 0.1                                            # Dropout rate for the model
 quantile_tau: 0.75                                      # Tau value for quantile loss                                           
-learning_rate: 0.0005                                    # Learning rate for the optimizer
+learning_rate: 0.0003                                    # Learning rate for the optimizer
+heads: 2                                                # Number of attention heads (for GAT model)
 hidden_channels: 128                                    # Number of hidden channels in the model
 batch_size: 128                                         # Batch size for training
 weight_decay: 1e-4                                      # 5e-4  Weight decay for the optimizer

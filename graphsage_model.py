@@ -1,4 +1,3 @@
-
 # graphsage_model.py
 # GraphSAGE with BatchNorm and without global pooling
 # Supports both raw probability and log-probability modes
