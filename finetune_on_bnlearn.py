@@ -18,12 +18,12 @@ from sklearn.metrics import r2_score
 
 def finetune_on_bnlearn(
     # pretrained_model_path="training_results_gat/models/gat_root_probability_evidence_only_intermediate_logprob_fold_4.pt",
-    # pretrained_model_path="training_results/models/graphsage_root_probability_evidence_only_intermediate_logprob_fold_4.pt",
-    pretrained_model_path="training_results_gcn/models/gcn_root_probability_evidence_only_intermediate_logprob_fold_4.pt",
+    pretrained_model_path="training_results_graphsage/models/graphsage_root_probability_evidence_only_intermediate_logprob_fold_4.pt",
+    # pretrained_model_path="training_results_gcn/models/gcn_root_probability_evidence_only_intermediate_logprob_fold_4.pt",
     bif_directory="dataset_bif_files",
     # output_path="model_finetuned_bnlearn_gat.pt",
-    # output_path="model_finetuned_bnlearn_graphsage.pt",
-    output_path="model_finetuned_bnlearn_gcn.pt",
+    output_path="model_finetuned_bnlearn_graphsage.pt",
+    # output_path="model_finetuned_bnlearn_gcn.pt",
     epochs=50,
     lr=0.00005,  # Very small LR!
     batch_size=8,
@@ -36,13 +36,13 @@ def finetune_on_bnlearn(
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     
     # Load pretrained model
-    # model = GraphSAGE(
-    #     in_channels=25,
-    #     hidden_channels=128,
-    #     out_channels=1,
-    #     mode='root_probability',
-    #     use_log_prob=True
-    # )
+    model = GraphSAGE(
+        in_channels=25,
+        hidden_channels=128,
+        out_channels=1,
+        mode='root_probability',
+        use_log_prob=True
+    )
     # model = GAT(
     #     in_channels=25,
     #     hidden_channels=128,
@@ -51,13 +51,13 @@ def finetune_on_bnlearn(
     #     use_log_prob=True,
     #     heads=2
     # )
-    model = GCN(
-        in_channels=25,
-        hidden_channels=128,
-        out_channels=1,
-        mode='root_probability',
-        use_log_prob=True
-    )
+    # model = GCN(
+    #     in_channels=25,
+    #     hidden_channels=128,
+    #     out_channels=1,
+    #     mode='root_probability',
+    #     use_log_prob=True
+    # )
     
     model.load_state_dict(torch.load(pretrained_model_path, weights_only=False))
     model = model.to(device)

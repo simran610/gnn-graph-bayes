@@ -1926,16 +1926,7 @@ class ModelBenchmark:
 
         in_channels = 25
 
-        # self.model = GraphSAGE(
-        #     in_channels=in_channels,
-        #     hidden_channels=self.config.get("hidden_channels", 128),
-        #     out_channels=out_channels,
-        #     dropout=self.config.get("dropout", 0.1),
-        #     mode=self.mode,
-        #     use_log_prob=self.use_log_prob
-        # ).to(self.device)
-
-        self.model = GCN(
+        self.model = GraphSAGE(
             in_channels=in_channels,
             hidden_channels=self.config.get("hidden_channels", 128),
             out_channels=out_channels,
@@ -1943,6 +1934,15 @@ class ModelBenchmark:
             mode=self.mode,
             use_log_prob=self.use_log_prob
         ).to(self.device)
+
+        # self.model = GCN(
+        #     in_channels=in_channels,
+        #     hidden_channels=self.config.get("hidden_channels", 128),
+        #     out_channels=out_channels,
+        #     dropout=self.config.get("dropout", 0.1),
+        #     mode=self.mode,
+        #     use_log_prob=self.use_log_prob
+        # ).to(self.device)
 
         # self.model = GAT(
         #     in_channels=in_channels,
@@ -2196,10 +2196,12 @@ def main():
 
     config_path = "config.yaml"
     # model_path = "model_finetuned_bnlearn_gat.pt"
-    # model_path = "model_finetuned_bnlearn_graphsage.pt"
-    model_path = "model_finetuned_bnlearn_gcn.pt"
+    model_path = "model_finetuned_bnlearn_graphsage.pt"
+    # model_path = "model_finetuned_bnlearn_gcn.pt"
     bif_directory = "dataset_bif_files"
-    output_dir = "benchmark_results"
+    # output_dir = "benchmark_results_gcn"
+    output_dir = "benchmark_results_graphsage"
+    # output_dir = "benchmark_results_gat"
     cache_dir = "cached_graphs"
 
     if not os.path.exists(model_path):
@@ -2276,7 +2278,9 @@ def main():
     os.makedirs(output_dir, exist_ok=True)
     
     # Save results in format compatible with unified benchmark
-    output_file = "gnn_results.json"
+    # output_file = "gcn_results.json"
+    output_file = "graphsage_results.json"
+    # output_file = "gat_results.json"
     with open(output_file, "w") as f:
         json.dump(results, f, indent=2)
     

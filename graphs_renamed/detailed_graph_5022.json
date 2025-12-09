@@ -1,0 +1,650 @@
+{
+  "graph_index": 0,
+  "network_name": "asia",
+  "cpd_mode": "summary",
+  "nodes": {
+    "asia": {
+      "type": "root",
+      "in_degree": 0,
+      "out_degree": 1,
+      "betweenness": 0.0,
+      "closeness": 0.0,
+      "pagerank": 0.059132312447697254,
+      "degree_centrality": 0.14285714285714285,
+      "cpd": {
+        "mode": "summary",
+        "representation": {
+          "mean": 0.5,
+          "std": 0.49,
+          "min": 0.01,
+          "max": 0.99,
+          "entropy": 0.056001534354847345,
+          "argmax": 1,
+          "nonzero_count": 2,
+          "median": 0.5,
+          "p25": 0.255,
+          "p75": 0.745
+        },
+        "evidence": [],
+        "evidence_card": [],
+        "original_shape": [
+          2
+        ],
+        "num_parents": 0,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [],
+            "child_state": 1,
+            "flattened_position": 1
+          }
+        ]
+      }
+    },
+    "tub": {
+      "type": "intermediate",
+      "in_degree": 1,
+      "out_degree": 1,
+      "betweenness": 0.07142857142857142,
+      "closeness": 0.14285714285714285,
+      "pagerank": 0.10939516242126908,
+      "degree_centrality": 0.2857142857142857,
+      "cpd": {
+        "mode": "summary",
+        "representation": {
+          "mean": 0.25,
+          "std": 0.2352126697267815,
+          "min": 0.005,
+          "max": 0.495,
+          "entropy": 0.8204055694103052,
+          "argmax": 3,
+          "nonzero_count": 4,
+          "median": 0.25,
+          "p25": 0.02,
+          "p75": 0.48
+        },
+        "evidence": [
+          "asia"
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "smoke": {
+      "type": "root",
+      "in_degree": 0,
+      "out_degree": 2,
+      "betweenness": 0.0,
+      "closeness": 0.0,
+      "pagerank": 0.059132312447697254,
+      "degree_centrality": 0.2857142857142857,
+      "cpd": {
+        "mode": "summary",
+        "representation": {
+          "mean": 0.5,
+          "std": 0.0,
+          "min": 0.5,
+          "max": 0.5,
+          "entropy": 0.6931471805599453,
+          "argmax": 0,
+          "nonzero_count": 2,
+          "median": 0.5,
+          "p25": 0.5,
+          "p75": 0.5
+        },
+        "evidence": [],
+        "evidence_card": [],
+        "original_shape": [
+          2
+        ],
+        "num_parents": 0,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [],
+            "child_state": 1,
+            "flattened_position": 1
+          }
+        ]
+      }
+    },
+    "lung": {
+      "type": "intermediate",
+      "in_degree": 1,
+      "out_degree": 1,
+      "betweenness": 0.047619047619047616,
+      "closeness": 0.14285714285714285,
+      "pagerank": 0.08426373743448316,
+      "degree_centrality": 0.2857142857142857,
+      "cpd": {
+        "mode": "summary",
+        "representation": {
+          "mean": 0.25,
+          "std": 0.22363474685298795,
+          "min": 0.005,
+          "max": 0.495,
+          "entropy": 0.883689434433093,
+          "argmax": 3,
+          "nonzero_count": 4,
+          "median": 0.25,
+          "p25": 0.03875,
+          "p75": 0.46125
+        },
+        "evidence": [
+          "smoke"
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "bronc": {
+      "type": "intermediate",
+      "in_degree": 1,
+      "out_degree": 1,
+      "betweenness": 0.023809523809523808,
+      "closeness": 0.14285714285714285,
+      "pagerank": 0.08426373743448316,
+      "degree_centrality": 0.2857142857142857,
+      "cpd": {
+        "mode": "summary",
+        "representation": {
+          "mean": 0.25000000000000006,
+          "std": 0.07905694150420949,
+          "min": 0.15000000000000002,
+          "max": 0.35000000000000003,
+          "entropy": 1.3350851650920204,
+          "argmax": 3,
+          "nonzero_count": 4,
+          "median": 0.25000000000000006,
+          "p25": 0.18750000000000003,
+          "p75": 0.31250000000000006
+        },
+        "evidence": [
+          "smoke"
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "either": {
+      "type": "intermediate",
+      "in_degree": 2,
+      "out_degree": 2,
+      "betweenness": 0.16666666666666666,
+      "closeness": 0.38095238095238093,
+      "pagerank": 0.22374309264312242,
+      "degree_centrality": 0.5714285714285714,
+      "cpd": {
+        "mode": "summary",
+        "representation": {
+          "mean": 0.125,
+          "std": 0.125,
+          "min": 0.0,
+          "max": 0.25,
+          "entropy": 1.3862943611198906,
+          "argmax": 0,
+          "nonzero_count": 4,
+          "median": 0.125,
+          "p25": 0.0,
+          "p75": 0.25
+        },
+        "evidence": [
+          "tub",
+          "lung"
+        ],
+        "evidence_card": [
+          2,
+          2
+        ],
+        "original_shape": [
+          2,
+          2,
+          2
+        ],
+        "num_parents": 2,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0,
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0,
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              0,
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              0,
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          },
+          {
+            "parent_config": [
+              1,
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 4
+          },
+          {
+            "parent_config": [
+              1,
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 5
+          },
+          {
+            "parent_config": [
+              1,
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 6
+          },
+          {
+            "parent_config": [
+              1,
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 7
+          }
+        ]
+      }
+    },
+    "xray": {
+      "type": "leaf",
+      "in_degree": 1,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.3246753246753247,
+      "pagerank": 0.15422255089079095,
+      "degree_centrality": 0.14285714285714285,
+      "cpd": {
+        "mode": "summary",
+        "representation": {
+          "mean": 0.25,
+          "std": 0.23262093628906233,
+          "min": 0.01,
+          "max": 0.49,
+          "entropy": 0.8414243588727475,
+          "argmax": 0,
+          "nonzero_count": 4,
+          "median": 0.25,
+          "p25": 0.02125,
+          "p75": 0.47875
+        },
+        "evidence": [
+          "either"
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "dysp": {
+      "type": "leaf",
+      "in_degree": 2,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.46753246753246747,
+      "pagerank": 0.22584709428045663,
+      "degree_centrality": 0.2857142857142857,
+      "cpd": {
+        "mode": "summary",
+        "representation": {
+          "mean": 0.125,
+          "std": 0.08385254915624211,
+          "min": 0.025,
+          "max": 0.225,
+          "entropy": 1.826652529213885,
+          "argmax": 0,
+          "nonzero_count": 8,
+          "median": 0.125,
+          "p25": 0.043750000000000004,
+          "p75": 0.20625000000000002
+        },
+        "evidence": [
+          "either",
+          "bronc"
+        ],
+        "evidence_card": [
+          2,
+          2
+        ],
+        "original_shape": [
+          2,
+          2,
+          2
+        ],
+        "num_parents": 2,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0,
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0,
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              0,
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              0,
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          },
+          {
+            "parent_config": [
+              1,
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 4
+          },
+          {
+            "parent_config": [
+              1,
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 5
+          },
+          {
+            "parent_config": [
+              1,
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 6
+          },
+          {
+            "parent_config": [
+              1,
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 7
+          }
+        ]
+      }
+    }
+  },
+  "edges": [
+    {
+      "source": "asia",
+      "target": "tub",
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": "tub",
+      "target": "either",
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": "smoke",
+      "target": "lung",
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": "smoke",
+      "target": "bronc",
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": "lung",
+      "target": "either",
+      "parent_index": 1,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": "bronc",
+      "target": "dysp",
+      "parent_index": 1,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": "either",
+      "target": "xray",
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": "either",
+      "target": "dysp",
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    }
+  ],
+  "node_types": {
+    "roots": [
+      "asia",
+      "smoke"
+    ],
+    "leaves": [
+      "xray",
+      "dysp"
+    ],
+    "intermediates": [
+      "tub",
+      "lung",
+      "bronc",
+      "either"
+    ]
+  },
+  "paths_info": {
+    "max_path_length": 3
+  },
+  "metadata": {
+    "global_max_cpd_length": 10,
+    "total_nodes": 8,
+    "total_edges": 8,
+    "has_cycles": false
+  }
+}

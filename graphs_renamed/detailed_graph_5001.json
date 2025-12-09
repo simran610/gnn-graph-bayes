@@ -1,0 +1,571 @@
+{
+  "graph_index": 0,
+  "network_name": "survey",
+  "cpd_mode": "summary",
+  "nodes": {
+    "A": {
+      "type": "root",
+      "in_degree": 0,
+      "out_degree": 1,
+      "betweenness": 0.0,
+      "closeness": 0.0,
+      "pagerank": 0.0732830509137252,
+      "degree_centrality": 0.2,
+      "cpd": {
+        "mode": "summary",
+        "representation": {
+          "mean": 0.3333333333333333,
+          "std": 0.1247219128924647,
+          "min": 0.2,
+          "max": 0.5,
+          "entropy": 1.0296530140645737,
+          "argmax": 1,
+          "nonzero_count": 3,
+          "median": 0.3,
+          "p25": 0.25,
+          "p75": 0.4
+        },
+        "evidence": [],
+        "evidence_card": [],
+        "original_shape": [
+          3
+        ],
+        "num_parents": 0,
+        "variable_card": 3,
+        "position_map": [
+          {
+            "parent_config": [],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [],
+            "child_state": 2,
+            "flattened_position": 2
+          }
+        ]
+      }
+    },
+    "S": {
+      "type": "root",
+      "in_degree": 0,
+      "out_degree": 1,
+      "betweenness": 0.0,
+      "closeness": 0.0,
+      "pagerank": 0.0732830509137252,
+      "degree_centrality": 0.2,
+      "cpd": {
+        "mode": "summary",
+        "representation": {
+          "mean": 0.5,
+          "std": 0.09999999999999998,
+          "min": 0.4,
+          "max": 0.6,
+          "entropy": 0.6730116670092565,
+          "argmax": 0,
+          "nonzero_count": 2,
+          "median": 0.5,
+          "p25": 0.45,
+          "p75": 0.55
+        },
+        "evidence": [],
+        "evidence_card": [],
+        "original_shape": [
+          2
+        ],
+        "num_parents": 0,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [],
+            "child_state": 1,
+            "flattened_position": 1
+          }
+        ]
+      }
+    },
+    "E": {
+      "type": "intermediate",
+      "in_degree": 2,
+      "out_degree": 2,
+      "betweenness": 0.30000000000000004,
+      "closeness": 0.4,
+      "pagerank": 0.19786355748091206,
+      "degree_centrality": 0.8,
+      "cpd": {
+        "mode": "summary",
+        "representation": {
+          "mean": 0.08333333333333333,
+          "std": 0.04688934965545066,
+          "min": 0.016666666666666666,
+          "max": 0.15,
+          "entropy": 2.3103559564912275,
+          "argmax": 5,
+          "nonzero_count": 12,
+          "median": 0.08333333333333334,
+          "p25": 0.04541666666666667,
+          "p75": 0.12125
+        },
+        "evidence": [
+          "S",
+          "A"
+        ],
+        "evidence_card": [
+          2,
+          3
+        ],
+        "original_shape": [
+          2,
+          3,
+          2
+        ],
+        "num_parents": 2,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0,
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0,
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              0,
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              0,
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          },
+          {
+            "parent_config": [
+              0,
+              2
+            ],
+            "child_state": 0,
+            "flattened_position": 4
+          },
+          {
+            "parent_config": [
+              0,
+              2
+            ],
+            "child_state": 1,
+            "flattened_position": 5
+          },
+          {
+            "parent_config": [
+              1,
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 6
+          },
+          {
+            "parent_config": [
+              1,
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 7
+          },
+          {
+            "parent_config": [
+              1,
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 8
+          },
+          {
+            "parent_config": [
+              1,
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 9
+          },
+          {
+            "parent_config": [
+              1,
+              2
+            ],
+            "child_state": 0,
+            "flattened_position": 10
+          },
+          {
+            "parent_config": [
+              1,
+              2
+            ],
+            "child_state": 1,
+            "flattened_position": 11
+          }
+        ]
+      }
+    },
+    "O": {
+      "type": "intermediate",
+      "in_degree": 1,
+      "out_degree": 1,
+      "betweenness": 0.07500000000000001,
+      "closeness": 0.36,
+      "pagerank": 0.15737534556880803,
+      "degree_centrality": 0.4,
+      "cpd": {
+        "mode": "summary",
+        "representation": {
+          "mean": 0.25,
+          "std": 0.2202271554554524,
+          "min": 0.02,
+          "max": 0.48,
+          "entropy": 0.9165039403113254,
+          "argmax": 0,
+          "nonzero_count": 4,
+          "median": 0.25,
+          "p25": 0.035,
+          "p75": 0.465
+        },
+        "evidence": [
+          "E"
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "R": {
+      "type": "intermediate",
+      "in_degree": 1,
+      "out_degree": 1,
+      "betweenness": 0.07500000000000001,
+      "closeness": 0.36,
+      "pagerank": 0.15737534556880803,
+      "degree_centrality": 0.4,
+      "cpd": {
+        "mode": "summary",
+        "representation": {
+          "mean": 0.25,
+          "std": 0.13806701271484076,
+          "min": 0.1,
+          "max": 0.4,
+          "entropy": 1.2245159646384434,
+          "argmax": 3,
+          "nonzero_count": 4,
+          "median": 0.25,
+          "p25": 0.11875,
+          "p75": 0.38125
+        },
+        "evidence": [
+          "E"
+        ],
+        "evidence_card": [
+          2
+        ],
+        "original_shape": [
+          2,
+          2
+        ],
+        "num_parents": 1,
+        "variable_card": 2,
+        "position_map": [
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 3
+          }
+        ]
+      }
+    },
+    "T": {
+      "type": "leaf",
+      "in_degree": 2,
+      "out_degree": 0,
+      "betweenness": 0.0,
+      "closeness": 0.5,
+      "pagerank": 0.3408196495540212,
+      "degree_centrality": 0.4,
+      "cpd": {
+        "mode": "summary",
+        "representation": {
+          "mean": 0.08333333333333331,
+          "std": 0.0511160172766054,
+          "min": 0.019999999999999997,
+          "max": 0.17499999999999996,
+          "entropy": 2.286969872772245,
+          "argmax": 3,
+          "nonzero_count": 12,
+          "median": 0.07499999999999998,
+          "p25": 0.039999999999999994,
+          "p75": 0.12499999999999997
+        },
+        "evidence": [
+          "R",
+          "O"
+        ],
+        "evidence_card": [
+          2,
+          2
+        ],
+        "original_shape": [
+          3,
+          2,
+          2
+        ],
+        "num_parents": 2,
+        "variable_card": 3,
+        "position_map": [
+          {
+            "parent_config": [
+              0,
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 0
+          },
+          {
+            "parent_config": [
+              0,
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 1
+          },
+          {
+            "parent_config": [
+              0,
+              0
+            ],
+            "child_state": 2,
+            "flattened_position": 2
+          },
+          {
+            "parent_config": [
+              0,
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 3
+          },
+          {
+            "parent_config": [
+              0,
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 4
+          },
+          {
+            "parent_config": [
+              0,
+              1
+            ],
+            "child_state": 2,
+            "flattened_position": 5
+          },
+          {
+            "parent_config": [
+              1,
+              0
+            ],
+            "child_state": 0,
+            "flattened_position": 6
+          },
+          {
+            "parent_config": [
+              1,
+              0
+            ],
+            "child_state": 1,
+            "flattened_position": 7
+          },
+          {
+            "parent_config": [
+              1,
+              0
+            ],
+            "child_state": 2,
+            "flattened_position": 8
+          },
+          {
+            "parent_config": [
+              1,
+              1
+            ],
+            "child_state": 0,
+            "flattened_position": 9
+          },
+          {
+            "parent_config": [
+              1,
+              1
+            ],
+            "child_state": 1,
+            "flattened_position": 10
+          },
+          {
+            "parent_config": [
+              1,
+              1
+            ],
+            "child_state": 2,
+            "flattened_position": 11
+          }
+        ]
+      }
+    }
+  },
+  "edges": [
+    {
+      "source": "A",
+      "target": "E",
+      "parent_index": 1,
+      "parent_cardinality": 3,
+      "is_cpd_parent": true
+    },
+    {
+      "source": "S",
+      "target": "E",
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": "E",
+      "target": "O",
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": "E",
+      "target": "R",
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": "O",
+      "target": "T",
+      "parent_index": 1,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    },
+    {
+      "source": "R",
+      "target": "T",
+      "parent_index": 0,
+      "parent_cardinality": 2,
+      "is_cpd_parent": true
+    }
+  ],
+  "node_types": {
+    "roots": [
+      "A",
+      "S"
+    ],
+    "leaves": [
+      "T"
+    ],
+    "intermediates": [
+      "E",
+      "O",
+      "R"
+    ]
+  },
+  "paths_info": {
+    "max_path_length": 3
+  },
+  "metadata": {
+    "global_max_cpd_length": 10,
+    "total_nodes": 6,
+    "total_edges": 6,
+    "has_cycles": false
+  }
+}

@@ -1,0 +1,62 @@
+================================================================================
+GNN MODEL COMPARISON REPORT
+GraphSAGE vs GCN vs GAT for Bayesian Network Inference
+================================================================================
+
+SUMMARY STATISTICS
+--------------------------------------------------------------------------------
+
+GRAPHSAGE:
+  Core Metrics:
+    MAE:  1.4463 ± 0.0956
+    RMSE: 3.6447 ± 0.2287
+    R²:   0.6013 ± 0.0509
+
+  Safety Metrics:
+    Underpredict Rate: 27.83%
+    High-Risk MAE: 0.0449
+    High-Risk Underpredict: 48.58%
+
+GCN:
+  Core Metrics:
+    MAE:  1.4892 ± 0.0313
+    RMSE: 3.7155 ± 0.0220
+    R²:   0.5872 ± 0.0049
+
+  Safety Metrics:
+    Underpredict Rate: 26.69%
+    High-Risk MAE: 0.0543
+    High-Risk Underpredict: 44.79%
+
+GAT:
+  Core Metrics:
+    MAE:  1.4882 ± 0.0339
+    RMSE: 3.7653 ± 0.0723
+    R²:   0.5759 ± 0.0164
+
+  Safety Metrics:
+    Underpredict Rate: 28.09%
+    High-Risk MAE: 0.0533
+    High-Risk Underpredict: 45.56%
+
+
+================================================================================
+INTERPRETATION & RECOMMENDATIONS
+================================================================================
+
+Best Performing Model per Metric:
+--------------------------------------------------------------------------------
+  mae: GRAPHSAGE (1.4463)
+  rmse: GRAPHSAGE (3.6447)
+  r2_score: GRAPHSAGE (0.6013)
+  accuracy_within_10pct: GAT (0.7416)
+  underpredict_rate: GCN (0.2669)
+  high_risk_mae: GRAPHSAGE (0.0449)
+
+
+Generated visualizations:
+  - metric_comparison.png: Bar charts comparing all metrics
+  - radar_comparison.png: Multi-dimensional performance view
+  - error_distribution.png: Error distribution analysis
+  - accuracy_comparison.png: Accuracy at different tolerances
+  - safety_metrics.png: Safety-critical metrics comparison

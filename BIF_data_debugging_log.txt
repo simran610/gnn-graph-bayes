@@ -1,0 +1,98 @@
+======================================================================
+GNN BENCHMARK WITH PROPER WARMUP
+======================================================================
+
+[1/4] Initializing processor...
+✓ Loaded normalization stats from bnlearn_norm_stats.pt
+Using fixed CPD summary length: 10
+Cache directory: cached_graphs
+Log-probability mode: True
+Normalization: Enabled
+Size filter: Disabled
+Cache key: 28f7d9f3...
+
+[2/4] Found 24 BIF files
+
+[3/4] Processing graphs...
+  [1/24] alarm... ✓ Cache (37N, 46E, GT:log(p)=-1.6094)
+  [2/24] andes... ✓ Cache (223N, 338E, GT:log(p)=-3.9120)
+  [3/24] asia... ✓ Cache (8N, 8E, GT:log(p)=-4.6052)
+  [4/24] barley... ✓ Cache (48N, 84E, GT:log(p)=-2.1972)
+  [5/24] cancer... ✓ Cache (5N, 4E, GT:log(p)=-0.2868)
+  [6/24] child... ✓ Cache (20N, 25E, GT:log(p)=-2.2500)
+  [7/24] diabetes... ✓ Cache (413N, 602E, GT:log(p)=-4.6052)
+  [8/24] earthquake... ✓ Cache (5N, 4E, GT:log(p)=-0.5388)
+  [9/24] hailfinder... ✓ Cache (56N, 66E, GT:log(p)=-1.3863)
+  [10/24] hepar2... ✓ Cache (70N, 123E, GT:log(p)=-1.9958)
+  [11/24] insurance... ✓ Cache (27N, 52E, GT:log(p)=-1.8184)
+  [12/24] link... ✓ Cache (724N, 1125E, GT:log(p)=-0.6931)
+  [13/24] mildew... ✓ Cache (35N, 46E, GT:log(p)=-1.7390)
+  [14/24] munin... ✓ Cache (1041N, 1397E, GT:log(p)=-0.1109)
+  [15/24] munin1... ✓ Cache (186N, 273E, GT:log(p)=0.0000)
+  [16/24] munin2... ✓ Cache (1003N, 1244E, GT:log(p)=0.0000)
+  [17/24] munin3... ✓ Cache (1041N, 1306E, GT:log(p)=0.0000)
+  [18/24] munin4... ✓ Cache (1038N, 1388E, GT:log(p)=0.0000)
+  [19/24] pathfinder... ✓ Cache (109N, 195E, GT:log(p)=-3.8677)
+  [20/24] pigs... ✓ Cache (441N, 592E, GT:log(p)=-1.3863)
+  [21/24] sachs... ✓ Cache (11N, 17E, GT:log(p)=-0.9932)
+  [22/24] survey... ✓ Cache (6N, 6E, GT:log(p)=-1.2583)
+  [23/24] water... ✓ Cache (32N, 66E, GT:log(p)=-0.4413)
+  [24/24] win95pts... ✓ Cache (76N, 112E, GT:log(p)=-0.0000)
+
+✓ Loaded 24/24 networks
+
+[4/4] Running benchmark with warmup...
+GraphSAGE initialized: mode=root_probability, use_log_prob=True
+  Running warmup... Done!
+✓ Loaded model from model_finetuned_bnlearn_graphsage.pt
+  Mode: root_probability, Log-prob: True, Device: cuda
+  Input features: 25
+  Evaluating networks...
+    Processed 5/24 networks...
+    Processed 10/24 networks...
+    Processed 15/24 networks...
+    Processed 20/24 networks...
+
+======================================================================
+RESULTS
+======================================================================
+
+Core Metrics (Probability Space):
+  MAE:  0.1759
+  RMSE: 0.2609
+  R²:   0.5014
+
+Timing Metrics (After Warmup):
+  Average: 0.68ms
+  Median:  0.58ms
+  Min:     0.54ms
+  Max:     2.86ms
+  Std Dev: 0.46ms
+
+✓ Timing is consistent across all networks!
+
+Log-Space Metrics (for reference):
+  MAE:  0.6970
+  RMSE: 1.0765
+
+Tolerance Accuracy:
+  Within  5%: 0.2917
+  Within 10%: 0.5000
+  Within 15%: 0.6667
+✓ Saved visualizations to benchmark_results_graphsage/
+
+Timing Analysis:
+
+Fastest 3 networks:
+  earthquake: 0.54ms (5 nodes)
+  munin3: 0.56ms (1041 nodes)
+  survey: 0.56ms (6 nodes)
+
+Slowest 3 networks:
+  diabetes: 0.64ms (413 nodes)
+  munin: 0.72ms (1041 nodes)
+  andes: 2.86ms (223 nodes)
+
+✓ Saved to benchmark_results_graphsage/
+✓ Saved GNN results to: graphsage_results.json (for unified benchmark)
+======================================================================
