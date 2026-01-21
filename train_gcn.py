@@ -1,3 +1,24 @@
+"""
+GCN Model Training Script
+
+Trains a Graph Convolutional Network (GCN) on Bayesian network inference tasks.
+Includes k-fold cross-validation, early stopping, temperature scaling calibration,
+and comprehensive evaluation metrics.
+
+Features:
+    - Multi-fold cross-validation for robust evaluation
+    - Early stopping to prevent overfitting
+    - Temperature scaling for probability calibration
+    - Outlier detection and analysis
+    - Weights & Biases experiment tracking
+    - GPU acceleration support
+
+Output:
+    - Trained model checkpoints
+    - Training/validation curves
+    - Evaluation metrics and logs
+"""
+
 import torch
 import torch.nn.functional as F
 from torch_geometric.loader import DataLoader

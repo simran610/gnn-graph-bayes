@@ -1,3 +1,21 @@
+"""
+GraphSAGE Model Module
+
+GraphSAGE (Graph Sage) implementation for Bayesian network inference.
+Uses inductive learning via neighborhood sampling and aggregation.
+Supports both raw probability and log-probability output modes.
+
+Architecture:
+    - 4 GraphSAGE (SAGEConv) layers with batch normalization
+    - Output layer: Linear projection to target dimension
+    - Activation: ReLU between layers, configurable output activation
+
+Modes:
+    - root_probability: Predict single root node probability
+    - distribution: Predict full probability distribution
+    - regression: Regression task on continuous targets
+"""
+
 # graphsage_model.py
 # GraphSAGE with BatchNorm and without global pooling
 # Supports both raw probability and log-probability modes

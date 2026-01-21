@@ -1,3 +1,19 @@
+"""
+Data Exporter Module
+
+Handles saving and loading Bayesian network data including graph structures,
+CPDs (Conditional Probability Distributions), and formatted output tables.
+Supports JSON graphs and NumPy data formats for compatibility with ML pipelines.
+
+Main Functions:
+    - save_graph: Save graph to JSON format
+    - save_cpds_as_numpy_tables: Export CPDs as structured pandas DataFrames
+    - get_max_cpd_length: Compute maximum CPD table length
+    - compute_global_max_cpd_length: Global CPD length across all models
+    - pad_cpd_values: Pad CPD arrays to uniform size
+    - flatten: Flatten nested data structures
+"""
+
 import os
 import json
 import networkx as nx

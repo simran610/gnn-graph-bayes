@@ -1,3 +1,15 @@
+"""
+Bayesian Network to PyG Dataset Converter
+
+Converts Bayesian network structures (NetworkX graphs) to PyTorch Geometric
+Data objects for GNN training. Handles node features, edge indices, and
+edge attributes with optional padding for CPD alignment.
+
+Main Functions:
+    - from_networkx: Convert NetworkX DiGraph to PyG Data format
+    - load_bn_graphs: Load and convert all BN graphs from a directory
+"""
+
 # bn_nx_to_pyg_dataset.py
 import os
 import json

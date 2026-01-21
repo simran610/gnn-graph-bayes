@@ -1,3 +1,21 @@
+"""
+GCN Model Module
+
+Graph Convolutional Network (GCN) implementation for Bayesian network inference.
+Uses spectral convolution operations with batch normalization for stable training.
+Supports both raw probability and log-probability output modes.
+
+Architecture:
+    - 4 GCN layers with batch normalization
+    - Output layer: Linear projection to target dimension
+    - Activation: ReLU between layers, configurable output activation
+
+Modes:
+    - root_probability: Predict single root node probability
+    - distribution: Predict full probability distribution
+    - regression: Regression task on continuous targets
+"""
+
 # gcn_model.py
 # GCN with 4 layers matching GraphSAGE structure
 # Supports both raw probability and log-probability modes

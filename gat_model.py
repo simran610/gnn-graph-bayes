@@ -1,6 +1,20 @@
-# gat_model.py
-# GAT with 4 layers matching GraphSAGE structure
-# Supports both raw probability and log-probability modes
+"""
+GAT Model Module
+
+Graph Attention Network (GAT) implementation for Bayesian network inference.
+Uses multi-head attention mechanisms to learn which graph edges are most important
+for predictions. Supports both raw probability and log-probability output modes.
+
+Architecture:
+    - 4 GAT layers with multi-head attention (GATv2)
+    - Output layer: Linear projection to target dimension
+    - Activation: ReLU between layers, configurable output activation
+
+Modes:
+    - root_probability: Predict single root node probability
+    - distribution: Predict full probability distribution
+    - regression: Regression task on continuous targets
+"""
 
 import torch
 import torch.nn as nn

@@ -1,3 +1,14 @@
+"""
+Bayesian Network Builder Module
+
+Constructs Bayesian Networks from graph structures with conditional probability
+distributions (CPDs). Handles parent-child relationships and generates realistic
+probability values based on network topology.
+
+Main Functions:
+    - build_bn_from_tree: Creates a Bayesian network from a directed acyclic graph
+"""
+
 # bayesian_network_builder.py
 #from pgmpy.models import DiscreteBayesianNetwork
 from pgmpy.models import BayesianNetwork

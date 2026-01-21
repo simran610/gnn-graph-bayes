@@ -1,3 +1,13 @@
+"""
+Configuration Loader Module
+
+Utility for loading and managing configuration from YAML files.
+Provides a centralized way to access all hyperparameters and settings.
+
+Main Functions:
+    - load_config: Load configuration from YAML file in script directory
+"""
+
 import yaml
 import os
 

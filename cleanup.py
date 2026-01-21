@@ -1,3 +1,10 @@
+"""
+Cleanup Utility
+
+Simple utility to remove files from generated graph directories.
+Used for cleaning up intermediate output during development.
+"""
+
 import os
 import glob
 

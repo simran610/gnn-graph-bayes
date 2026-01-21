@@ -1,3 +1,16 @@
+"""
+Graph Visualization Module
+
+Utilities for visualizing Bayesian network structures with color-coded node types.
+Supports saving to file or interactive display.
+
+Main Functions:
+    - draw_graph: Visualize directed graph with node type coloring
+        - Green: Root nodes
+        - Blue: Intermediate nodes
+        - Red: Leaf nodes
+"""
+
 import matplotlib.pyplot as plt
 import networkx as nx
 

@@ -1,3 +1,14 @@
+"""
+Graph Generator Module
+
+Generates random directed acyclic graphs (DAGs) representing Bayesian network
+structures. Creates tree-like topologies with configurable depth, branching factors,
+and optional skip edges between non-adjacent levels.
+
+Main Functions:
+    - generate_tree: Creates a randomized DAG with specified depth and branching constraints
+"""
+
 # File: graph_generator.py
 import random
 import networkx as nx

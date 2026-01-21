@@ -1,3 +1,17 @@
+"""
+Temperature Scaling Module
+
+Post-hoc probability calibration technique that rescales model predictions to improve
+calibration without retraining. Learns an optimal temperature parameter during
+calibration on a held-out dataset.
+
+Main Class:
+    - TemperatureScaling: Temperature scaling layer and calibration procedure
+
+Reference:
+    Guo et al., "On Calibration of Modern Neural Networks" (ICML 2017)
+"""
+
 import torch
 import torch.nn as nn
 import torch.nn.functional as F

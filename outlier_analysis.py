@@ -1,3 +1,16 @@
+"""
+Outlier Analysis Module
+
+Detects and analyzes anomalous predictions from GNN models. Identifies problematic
+predictions, graphs, and features. Provides statistical insights into outlier
+characteristics and visualization tools.
+
+Main Functions:
+    - analyze_outliers: Comprehensive outlier detection and statistical analysis
+    - run_outlier_analysis_for_gnn: Full analysis pipeline for trained models
+    - analyze_graph_structure_outliers: Detect outliers based on graph properties
+"""
+
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
